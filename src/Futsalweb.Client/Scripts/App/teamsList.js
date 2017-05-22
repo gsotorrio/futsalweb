@@ -16,3 +16,16 @@ const addNewTeam = (team) => {
         "</td></tr>")
 }
 
+const linkEventClickDelete = () => {
+    $(".delete").click(function (event) {
+        let trTeam = event.target.parentElement.parentElement;
+
+        $.ajax({
+            url: "",
+            methiod: "DELETE"
+        }).done(function (){
+            
+            });
+    });
+}
+
