@@ -21,11 +21,29 @@ const linkEventClickDelete = () => {
         let trTeam = event.target.parentElement.parentElement;
 
         $.ajax({
-            url: "",
+            url: "http://localhost:5159/",
             methiod: "DELETE"
         }).done(function (){
-            
-            });
+            $().remove();
+        });
     });
 }
+// add something for ask you if you are sure.
+
+
+const linkEventClickUpdate = () => {
+    $(".update").click(function (event) {
+        let trPlayer = event.target.parentElement.parentElement;
+        
+        $.get("http://localhost:5159/", function (team) {
+
+            $("#teamName").val(team.teamName);
+            $("teamCategory").val(team.teamCategory);
+        });
+    });
+}
+
+
+
+
 
