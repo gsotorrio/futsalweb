@@ -24,7 +24,7 @@
         }).done(function () {
             teams.remove(team);
         });
-    };
+    }; // messege: Are you sure???
 
     const select = function () {
         $.get("", function (data) {
