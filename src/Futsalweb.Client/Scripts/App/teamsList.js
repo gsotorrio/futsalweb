@@ -17,11 +17,34 @@
         team.category("");
     };
 
-    // ViewModel
-    let viewModel = {
-        clean: clean
+    const remove = function () {
+        $.ajax({
+            url: "",
+            method: "DELETE"
+        }).done(function () {
+            teams.remove(team);
+        });
     };
 
+    const select = function () {
+        $.get("", function (data) {
+            console.log(data);
+
+            team.teamId(data.teamId);
+            team.name(data.name);
+            team.category(data.category);
+        });
+    };
+
+
+
+    // ViewModel
+    let viewModel = {
+        clean: clean,
+        remove: remove,
+        select: select
+    };
+    
     // On initialize
     $(function () {
         console.log("Ready!!");
