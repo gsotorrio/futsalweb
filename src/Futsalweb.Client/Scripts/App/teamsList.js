@@ -36,13 +36,30 @@
         });
     };
 
+    const updateTeam = function () {
+        let updateDataTeam = {
+            name: team.name(),
+            category: team.category()
+        };
+
+        $.ajax({
+            type: "PUT",
+            url: "",
+            contentType: "application/json",
+            data: JSON.stringify(updateDataTeam)
+        }).done(function (data) {
+
+        });
+    };
+
 
 
     // ViewModel
     let viewModel = {
         clean: clean,
         remove: remove,
-        select: select
+        select: select,
+        updateTeam: updateTeam
     };
     
     // On initialize
