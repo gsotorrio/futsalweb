@@ -52,14 +52,31 @@
         });
     };
 
+    const createTeam = function () {
+        let newTeam = {
+            name: team.name(),
+            category: team.category()
+        };
+
+        $.post("").done(function (data) {
+
+            teams.push(data);
+
+            clean();
+        });
+    };
+
 
 
     // ViewModel
     let viewModel = {
+        teams: teams,
+        team: team,
         clean: clean,
         remove: remove,
         select: select,
-        updateTeam: updateTeam
+        updateTeam: updateTeam,
+        createTeam: createTeam
     };
     
     // On initialize
