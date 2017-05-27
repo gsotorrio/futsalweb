@@ -17,6 +17,10 @@
         team.category("");
     };
 
+    const edit = function () {
+
+    };
+
     const remove = function () {
         $.ajax({
             url: "",
@@ -72,6 +76,7 @@
     let viewModel = {
         teams: teams,
         team: team,
+        edit: edit,
         clean: clean,
         remove: remove,
         select: select,
