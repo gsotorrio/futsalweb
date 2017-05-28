@@ -35,7 +35,7 @@
 <table id="tableTeams" class="table table-striped">
     <thead>
         <tr>
-            <th>Team Id</th>
+            <th class="hideId">Team Id</th>
             <th>Team Name</th>
             <th>Category</th>
             <th></th>
@@ -46,7 +46,7 @@
 
     <tbody data-bind="foreach: teams">
         <tr>
-            <td data-bind="text: teamId"></td>
+            <td class="hideId" data-bind="text: teamId"></td>
             <td data-bind="text: name"></td>
             <td data-bind="text: category"></td>
             <td data-bind="click: $root."><a href="#">Edit</a></td>

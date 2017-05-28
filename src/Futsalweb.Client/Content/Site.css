@@ -23,6 +23,10 @@ textarea {
 */
 
 .button:hover{
-    background-color: deepskyblue;
+    background-color: lightgrey;
+}
+
+.hideId {
+    display: none;
 }
 
