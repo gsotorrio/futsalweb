@@ -10,10 +10,10 @@ namespace Futsalweb.Client.Controllers.Api
     public class TeamsController : ApiController
     {
         private ITeamService _teamSrv;
-
-        public TeamsController()
+        
+        public TeamsController(ITeamService teamService)
         {
-            _teamSrv = new TeamService();
+            _teamSrv = teamService;
         }
 
         // GET: /teams

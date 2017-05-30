@@ -11,12 +11,7 @@ namespace Futsalweb.Business.Services
     public class TeamService : ITeamService
     {
         private ITeamRepository _teamRepo;
-
-        public TeamService()
-        {
-            _teamRepo = new TeamRepository();
-        }
-
+        
         public TeamService(ITeamRepository teamRepository)
         {
             _teamRepo = teamRepository;
