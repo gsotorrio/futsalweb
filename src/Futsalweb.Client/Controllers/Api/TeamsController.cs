@@ -29,7 +29,6 @@ namespace Futsalweb.Client.Controllers.Api
         }
 
         // POST: /teams
-        [HttpPost]
         public IHttpActionResult Post([FromBody] Team team)
         {
             team = _teamSrv.CreateTeam(team);
@@ -38,7 +37,6 @@ namespace Futsalweb.Client.Controllers.Api
         }
 
         // PUT: /teams/id
-        [HttpPut]
         public IHttpActionResult Put([FromBody] Team team)
         {
             _teamSrv.UpdateTeam(team);
@@ -46,7 +44,6 @@ namespace Futsalweb.Client.Controllers.Api
         }
 
         // DELETE: /teams/id
-        [HttpDelete]
         public IHttpActionResult Delete(Guid id)
         {
             _teamSrv.DeleteTeam(id);
