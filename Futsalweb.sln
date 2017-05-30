@@ -5,6 +5,19 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Futsalweb.Client", "src\Futsalweb.Client\Futsalweb.Client.csproj", "{E3458C48-54CE-4B2A-8E9C-F4EAFE076658}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Futsalweb.Dal", "src\Futsalweb.Dal\Futsalweb.Dal.csproj", "{D3332D28-B1F6-4F89-8184-FA608CB22C69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Futsalweb.Domain", "src\Futsalweb.Domain\Futsalweb.Domain.csproj", "{6BD87E2B-1CDD-491F-A49B-2FB47E4AE3AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Futsalweb.CrossLayer", "src\Futsalweb.CrossLayer\Futsalweb.CrossLayer.csproj", "{6B5A9E99-A24F-43CD-9739-278FA35E4208}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Futsalweb.Business", "src\Futsalweb.Business\Futsalweb.Business.csproj", "{F08A57C6-CBA0-479A-93BE-0F85F7B0AE49}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SqlScripts", "SqlScripts", "{C8131C93-C902-4944-939C-726564EA9F3A}"
+	ProjectSection(SolutionItems) = preProject
+		create-tables.sql = create-tables.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +28,22 @@ Global
 		{E3458C48-54CE-4B2A-8E9C-F4EAFE076658}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3458C48-54CE-4B2A-8E9C-F4EAFE076658}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3458C48-54CE-4B2A-8E9C-F4EAFE076658}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3332D28-B1F6-4F89-8184-FA608CB22C69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3332D28-B1F6-4F89-8184-FA608CB22C69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3332D28-B1F6-4F89-8184-FA608CB22C69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3332D28-B1F6-4F89-8184-FA608CB22C69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BD87E2B-1CDD-491F-A49B-2FB47E4AE3AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BD87E2B-1CDD-491F-A49B-2FB47E4AE3AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BD87E2B-1CDD-491F-A49B-2FB47E4AE3AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BD87E2B-1CDD-491F-A49B-2FB47E4AE3AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B5A9E99-A24F-43CD-9739-278FA35E4208}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B5A9E99-A24F-43CD-9739-278FA35E4208}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B5A9E99-A24F-43CD-9739-278FA35E4208}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B5A9E99-A24F-43CD-9739-278FA35E4208}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F08A57C6-CBA0-479A-93BE-0F85F7B0AE49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F08A57C6-CBA0-479A-93BE-0F85F7B0AE49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F08A57C6-CBA0-479A-93BE-0F85F7B0AE49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F08A57C6-CBA0-479A-93BE-0F85F7B0AE49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

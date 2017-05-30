@@ -137,6 +137,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Api\TeamsController.cs" />
     <Compile Include="Controllers\TeamsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -162,6 +163,20 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Futsalweb.Business\Futsalweb.Business.csproj">
+      <Project>{F08A57C6-CBA0-479A-93BE-0F85F7B0AE49}</Project>
+      <Name>Futsalweb.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Futsalweb.CrossLayer\Futsalweb.CrossLayer.csproj">
+      <Project>{6b5a9e99-a24f-43cd-9739-278fa35e4208}</Project>
+      <Name>Futsalweb.CrossLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Futsalweb.Domain\Futsalweb.Domain.csproj">
+      <Project>{6bd87e2b-1cdd-491f-a49b-2fb47e4ae3aa}</Project>
+      <Name>Futsalweb.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
