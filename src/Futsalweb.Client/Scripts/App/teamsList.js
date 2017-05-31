@@ -21,9 +21,9 @@
 
     };
 
-    const remove = function () {
+    const remove = function (team, event) {
         $.ajax({
-            url: "",
+            url: "http://localhost:5159/api/teams/" + team.id,
             method: "DELETE"
         }).done(function () {
             teams.remove(team);
@@ -69,8 +69,6 @@
             clean();
         });
     };
-
-
 
     // ViewModel
     let viewModel = {
