@@ -21,9 +21,8 @@
 
     <br/>
 
-    <input data-bind="click: createTeam" type="button" value="Save" class="button col-md-2 col-md-offset-2">
-    <input data-bind="click: clean" type="button" value="Cancel" class="button col-md-2 col-md-offset-1">
-    <input data-bind="click: updateTeam" type="button" value="Update" class="button col-md-2 col-md-offset-1">
+    <input data-bind="click: createTeam" type="button" value="Save" class="col-md-offset-2 col-md-3 btn btn-primary">
+    <input data-bind="click: clean" type="button" value="Cancel" class="col-md-offset-2 col-md-3 btn btn-primary">
 </form>
 
 <br/>
@@ -46,10 +45,10 @@
 
     <tbody data-bind="foreach: teams">
         <tr>
-            <td class="hideId" data-bind="text: teamId"></td>
+            <td class="hideId" data-bind="text: id"></td>
             <td data-bind="text: name"></td>
             <td data-bind="text: category"></td>
-            <td data-bind="click: $root."><a href="#">Edit</a></td>
+            <td><a href="#">Edit</a></td>
             <td data-bind="click: $root.select"><a href="#">Select</a></td>
             <td data-bind="click: $root.remove"><a href="#">Delete</a></td>
         </tr>  

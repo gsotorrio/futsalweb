@@ -6,7 +6,7 @@
     let teams = ko.observableArray();
 
     let team = {
-        teamId: ko.observable(),
+        id: ko.observable(),
         name: ko.observable(),
         category: ko.observable()
     };
@@ -86,13 +86,13 @@
     
     // On initialize
     $(function () {
-        console.log("Ready!!");
+        console.log("ready!");
 
-        $.get("", function (data) {
+        $.get("http://localhost:5159/api/teams", function (data) {
 
             teams(data);
             ko.applyBindings(viewModel);
         });
     });
 
-}) ();
+})();
