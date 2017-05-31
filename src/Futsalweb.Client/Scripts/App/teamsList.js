@@ -30,11 +30,11 @@
         });
     }; // messege: Are you sure???
 
-    const select = function () {
-        $.get("", function (data) {
+    const select = function (slectedTeam) {
+        $.get("http://localhost:5159/api/teams/" + slectedTeam.id, function (data) {
             console.log(data);
 
-            team.teamId(data.teamId);
+            team.id(data.id);
             team.name(data.name);
             team.category(data.category);
         });
