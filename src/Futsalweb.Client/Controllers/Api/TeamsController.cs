@@ -16,19 +16,19 @@ namespace Futsalweb.Client.Controllers.Api
             _teamSrv = teamService;
         }
 
-        // GET: /teams
+        // GET: api/teams
         public IHttpActionResult Get()
         {
             return Ok(_teamSrv.GetAllTeams());
         }
 
-        // GET: /teams/id
+        // GET: api/teams/id
         public IHttpActionResult Get(Guid id)
         {
             return Ok(_teamSrv.GetTeamById(id));
         }
 
-        // POST: /teams
+        // POST: api/teams
         public IHttpActionResult Post([FromBody] Team team)
         {
             team = _teamSrv.CreateTeam(team);
@@ -36,14 +36,14 @@ namespace Futsalweb.Client.Controllers.Api
             return Created(new Uri($"{Request.RequestUri}/{team.Id}"), team);
         }
 
-        // PUT: /teams/id
+        // PUT: api/teams
         public IHttpActionResult Put([FromBody] Team team)
         {
             _teamSrv.UpdateTeam(team);
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // DELETE: /teams/id
+        // DELETE: api/teams/id
         public IHttpActionResult Delete(Guid id)
         {
             _teamSrv.DeleteTeam(id);
