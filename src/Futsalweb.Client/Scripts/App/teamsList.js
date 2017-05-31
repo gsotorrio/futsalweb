@@ -62,7 +62,7 @@
             category: team.category()
         };
 
-        $.post("").done(function (data) {
+        $.post("http://localhost:5159/api/teams", newTeam).done(function (data) {
 
             teams.push(data);
 
