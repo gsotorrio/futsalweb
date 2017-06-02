@@ -13,6 +13,7 @@
 
     // Public Functions
     const clean = function () {
+        team.id("");
         team.name("");
         team.category("");
     };
@@ -20,7 +21,7 @@
     const edit = function () {
 
     };
-
+    
     const remove = function (team, event) {
         $.ajax({
             url: "http://localhost:5159/api/teams/" + team.id,
@@ -42,43 +43,45 @@
 
     const updateTeam = function () {
         let updateDataTeam = {
+            id: team.id(),
             name: team.name(),
             category: team.category()
         };
 
         $.ajax({
             type: "PUT",
-            url: "http://localhost:5159/api/teams/" + team.id,
+            url: "http://localhost:5159/api/teams",
             contentType: "application/json",
             data: JSON.stringify(updateDataTeam)
-        }).done(function (data) {
+        }).done(function () {
 
             var indexTeam;
 
             for (var i = 0; i < teams().length; i++) {
-                if (teams()[i].id == data.id) {
-                    indexteam = i;
+                if (teams()[i].id == updateDataTeam.id) {
+                    indexTeam = i;
                 }
             }
 
-            teams.replace(teams()[indexTeam], data);
+            teams.replace(teams()[indexTeam], updateDataTeam);
 
             clean();
         });
     };
 
     const createTeam = function () {
-        let newTeam = {
-            name: team.name(),
-            category: team.category()
-        };
+      
+            let newTeam = {
+                name: team.name(),
+                category: team.category()
+            };
 
-        $.post("http://localhost:5159/api/teams", newTeam).done(function (data) {
+            $.post("http://localhost:5159/api/teams", newTeam).done(function (data) {
 
-            teams.push(data);
+                teams.push(data);
 
-            clean();
-        });
+                clean();
+            });
     };
 
     // ViewModel

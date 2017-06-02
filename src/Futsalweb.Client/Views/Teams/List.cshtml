@@ -6,7 +6,9 @@
 <h2>Teams datas</h2>
 
 <form class="form-horizontal">
-    <div class="form-group">
+    <input type="hidden" data-bind="textInput: team.id">
+           
+     <div class="form-group">
         <label for="" class="col-sm-2 control-label">Name</label>
         <div class="col-sm-8">
             <input type="text" class="form-control" data-bind="textInput: team.name" placeholder="Name">
