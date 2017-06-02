@@ -48,11 +48,22 @@
 
         $.ajax({
             type: "PUT",
-            url: "",
+            url: "http://localhost:5159/api/teams/" + team.id,
             contentType: "application/json",
             data: JSON.stringify(updateDataTeam)
         }).done(function (data) {
 
+            var indexTeam;
+
+            for (var i = 0; i < teams().length; i++) {
+                if (teams()[i].id == data.id) {
+                    indexteam = i;
+                }
+            }
+
+            teams.replace(teams()[indexTeam], data);
+
+            clean();
         });
     };
 
@@ -84,7 +95,7 @@
     
     // On initialize
     $(function () {
-        console.log("ready!");
+        console.log("Ready!!!");
 
         $.get("http://localhost:5159/api/teams", function (data) {
 
