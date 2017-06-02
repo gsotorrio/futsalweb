@@ -41,36 +41,10 @@
         });
     };
 
-    const updateTeam = function () {
-        let updateDataTeam = {
-            id: team.id(),
-            name: team.name(),
-            category: team.category()
-        };
+    const createUpdateTeam = function () {
+        let id = team.id();
 
-        $.ajax({
-            type: "PUT",
-            url: "http://localhost:5159/api/teams",
-            contentType: "application/json",
-            data: JSON.stringify(updateDataTeam)
-        }).done(function () {
-
-            var indexTeam;
-
-            for (var i = 0; i < teams().length; i++) {
-                if (teams()[i].id == updateDataTeam.id) {
-                    indexTeam = i;
-                }
-            }
-
-            teams.replace(teams()[indexTeam], updateDataTeam);
-
-            clean();
-        });
-    };
-
-    const createTeam = function () {
-      
+        if (!id){
             let newTeam = {
                 name: team.name(),
                 category: team.category()
@@ -82,6 +56,35 @@
 
                 clean();
             });
+        }
+
+        else {
+            let updateDataTeam = {
+                id: team.id(),
+                name: team.name(),
+                category: team.category()
+            };
+
+            $.ajax({
+                type: "PUT",
+                url: "http://localhost:5159/api/teams",
+                contentType: "application/json",
+                data: JSON.stringify(updateDataTeam)
+            }).done(function () {
+
+                let indexTeam;
+
+                for (var i = 0; i < teams().length; i++) {
+                    if (teams()[i].id == updateDataTeam.id) {
+                        indexTeam = i;
+                    }
+                }
+
+                teams.replace(teams()[indexTeam], updateDataTeam);
+
+                clean();
+            });
+        }
     };
 
     // ViewModel
@@ -92,8 +95,7 @@
         clean: clean,
         remove: remove,
         select: select,
-        updateTeam: updateTeam,
-        createTeam: createTeam
+        createUpdateTeam: createUpdateTeam
     };
     
     // On initialize
