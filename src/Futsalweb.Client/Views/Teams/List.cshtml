@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "List Teams";
+}
+
+<h2>Teams datas</h2>
+
+<form class="form-horizontal">
+    <input type="hidden" data-bind="textInput: team.id">
+           
+     <div class="form-group">
+        <label for="" class="col-sm-2 control-label">Name</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" data-bind="textInput: team.name" placeholder="Name">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label">Category</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" data-bind="textInput: team.category" placeholder="Category">
+        </div>
+    </div>
+
+    <br/>
+
+    <input data-bind="click: createUpdateTeam" type="button" value="Save" class="col-md-offset-2 col-md-3 btn btn-primary">
+    <input data-bind="click: clean" type="button" value="Cancel" class="col-md-offset-2 col-md-3 btn btn-primary">
+</form>
+
+<br/>
+
+<hr/>
+
+<h2>Table Teams</h2>
+
+<table id="tableTeams" class="table table-striped">
+    <thead>
+        <tr>
+            <th class="hideId">Team Id</th>
+            <th>Team Name</th>
+            <th>Category</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody data-bind="foreach: teams">
+        <tr>
+            <td class="hideId" data-bind="text: id"></td>
+            <td data-bind="text: name"></td>
+            <td data-bind="text: category"></td>
+            <td><a href="#">Edit</a></td>
+            <td data-bind="click: $root.select"><a href="#">Select</a></td>
+            <td data-bind="click: $root.remove"><a href="#">Delete</a></td>
+        </tr>  
+    </tbody>
+</table>
