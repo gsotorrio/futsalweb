@@ -34,10 +34,12 @@ namespace Futsalweb.Client.App_Start
             // Services
             container.Register<ITeamService, TeamService>(Lifestyle.Scoped);
             container.Register<IPlayerService, PlayerService>(Lifestyle.Scoped);
+            container.Register<ICoacheService, CoacheService>(Lifestyle.Scoped);
 
             // Repositories
             container.Register<ITeamRepository, TeamRepository>(Lifestyle.Scoped);
             container.Register<IPlayerRepository, PlayerRepository>(Lifestyle.Scoped);
+            container.Register<ICoacheRepository, CoacheRepository>(Lifestyle.Scoped);
         }
     }
 }

@@ -10,6 +10,7 @@ namespace Futsalweb.Client.Controllers.Api
     {
         private ITeamService _teamSrv;
         private IPlayerService _playerSrv;
+        private ICoacheService _coacheSrv;
 
         public TeamsController(ITeamService teamService, IPlayerService playerService)
         {
@@ -27,13 +28,6 @@ namespace Futsalweb.Client.Controllers.Api
         public IHttpActionResult Get(Guid id)
         {
             return Ok(_teamSrv.GetTeamById(id));
-        }
-
-        // GET: api/teams/id/players
-        [Route("api/teams/{id}/players")]
-        public IHttpActionResult GetPlayers(Guid id)
-        {
-            return Ok(_playerSrv.GetAllPlayersForATeam(id));
         }
 
         // POST: api/teams
@@ -56,6 +50,20 @@ namespace Futsalweb.Client.Controllers.Api
         {
             _teamSrv.DeleteTeam(id);
             return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        // GET
+        [Route("api/teams/{id}/players")]
+        public IHttpActionResult GetPlayers(Guid id)
+        {
+            return Ok(_playerSrv.GetAllPlayersForATeam(id));
+        }
+
+        // GET
+        [Route("api/teams/{id}/coaches")]
+        public IHttpActionResult GetCoaches(Guid id)
+        {
+            return Ok(_coacheSrv.GetAllCoachesForATeam(id));
         }
     }
 }
