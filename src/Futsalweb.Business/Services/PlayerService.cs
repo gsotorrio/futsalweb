@@ -16,9 +16,26 @@ namespace Futsalweb.Business.Services
             _playerRepo = playerRepository;
         }
 
+        public Player CreatePlayer(Player player)
+        {
+            player.Id = Guid.NewGuid();
+            _playerRepo.Save(player);
+            return player;
+        }
+
+        public void DeletePlayer(Guid id)
+        {
+            _playerRepo.Delete(id);
+        }
+
         public List<Player> GetAllPlayersForATeam(Guid teamId)
         {
             return _playerRepo.GetPlayersByTeamId(teamId).ToList();
+        }
+
+        public void UpdatePlayer(Player player)
+        {
+            _playerRepo.Update(player);
         }
     }
 }

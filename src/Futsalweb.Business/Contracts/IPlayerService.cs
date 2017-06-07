@@ -7,5 +7,11 @@ namespace Futsalweb.Business.Contracts
     public interface IPlayerService
     {
         List<Player> GetAllPlayersForATeam(Guid teamId);
+
+        Player CreatePlayer(Player player);
+
+        void UpdatePlayer(Player player);
+
+        void DeletePlayer(Guid id);
     }
 }
