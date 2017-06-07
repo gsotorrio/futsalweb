@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IPlayerService.cs" />
     <Compile Include="Contracts\ITeamService.cs" />
+    <Compile Include="Services\PlayerService.cs" />
     <Compile Include="Services\TeamService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

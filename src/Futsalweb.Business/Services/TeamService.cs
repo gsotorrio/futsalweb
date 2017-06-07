@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Futsalweb.Business.Contracts;
 using Futsalweb.Dal.Contracts;
-using Futsalweb.Dal.Repositories;
 using Futsalweb.Domain.Entities;
 
 namespace Futsalweb.Business.Services

@@ -31,8 +31,13 @@ namespace Futsalweb.Client.App_Start
      
         private static void InitializeContainer(Container container)
         {
-            container.Register<ITeamRepository, TeamRepository>(Lifestyle.Scoped);
+            // Services
             container.Register<ITeamService, TeamService>(Lifestyle.Scoped);
+            container.Register<IPlayerService, PlayerService>(Lifestyle.Scoped);
+
+            // Repositories
+            container.Register<ITeamRepository, TeamRepository>(Lifestyle.Scoped);
+            container.Register<IPlayerRepository, PlayerRepository>(Lifestyle.Scoped);
         }
     }
 }

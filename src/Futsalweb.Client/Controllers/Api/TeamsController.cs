@@ -2,7 +2,6 @@
 using System.Net;
 using System.Web.Http;
 using Futsalweb.Business.Contracts;
-using Futsalweb.Business.Services;
 using Futsalweb.Domain.Entities;
 
 namespace Futsalweb.Client.Controllers.Api
@@ -10,10 +9,12 @@ namespace Futsalweb.Client.Controllers.Api
     public class TeamsController : ApiController
     {
         private ITeamService _teamSrv;
-        
-        public TeamsController(ITeamService teamService)
+        private IPlayerService _playerSrv;
+
+        public TeamsController(ITeamService teamService, IPlayerService playerService)
         {
             _teamSrv = teamService;
+            _playerSrv = playerService;
         }
 
         // GET: api/teams
@@ -26,6 +27,13 @@ namespace Futsalweb.Client.Controllers.Api
         public IHttpActionResult Get(Guid id)
         {
             return Ok(_teamSrv.GetTeamById(id));
+        }
+
+        // GET: api/teams/id/players
+        [Route("api/teams/{id}/players")]
+        public IHttpActionResult GetPlayers(Guid id)
+        {
+            return Ok(_playerSrv.GetAllPlayersForATeam(id));
         }
 
         // POST: api/teams
