@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "List Teams";
 }
-<input data-bind="click: createNewTeam" type="button" value="New Team" class="col-md-offset-10 col-md-2 btn btn-primary">
+<input type="button" value="New Team" class="col-md-offset-10 col-md-2 btn btn-primary">
 
 <h2>Table Teams</h2>
 <hr />
@@ -23,7 +23,7 @@
             <td class="hideId" data-bind="text: id"></td>
             <td data-bind="text: name"></td>
             <td data-bind="text: category"></td>
-            <td data-bind="click: $root.detail"><a href="#">Detail</a></td>
+            <td><a href="#">Detail</a></td>
             <td data-bind="click: $root.remove"><a href="#">Delete</a></td>
         </tr>  
     </tbody>

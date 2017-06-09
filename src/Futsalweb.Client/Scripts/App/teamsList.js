@@ -21,21 +21,12 @@
         });
     }; // messege: Are you sure???
 
-    const detail = function () {
-
-    };
-
-    const createNewTeam = function () {
-
-    };
 
     // ViewModel
     let viewModel = {
         teams: teams,
         team: team,
-        remove: remove,
-        detail: detail,
-        createNewTeam: createNewTeam
+        remove: remove
     };
     
     // On initialize
