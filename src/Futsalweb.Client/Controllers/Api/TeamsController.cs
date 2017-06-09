@@ -12,10 +12,11 @@ namespace Futsalweb.Client.Controllers.Api
         private IPlayerService _playerSrv;
         private ICoacheService _coacheSrv;
 
-        public TeamsController(ITeamService teamService, IPlayerService playerService)
+        public TeamsController(ITeamService teamService, IPlayerService playerService, ICoacheService coacheService)
         {
             _teamSrv = teamService;
             _playerSrv = playerService;
+            _coacheSrv = coacheService;
         }
 
         // GET: api/teams
