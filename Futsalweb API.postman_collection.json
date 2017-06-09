@@ -1,0 +1,226 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Futsalweb API",
+		"_postman_id": "dfb58526-57de-6655-9149-7e1ad9af9653",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Coaches API",
+			"description": "",
+			"item": [
+				{
+					"name": "http://localhost:5159/api/coaches",
+					"request": {
+						"url": "http://localhost:5159/api/coaches",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"teamId\": \"9845b602-7cde-46a8-ac7b-e4bb0b3a4556\",\r\n  \"name\": \"name 1\",\r\n  \"surname\": \"surname 2\",\r\n  \"birthdate\": \"1990-01-01T00:00:00\",\r\n  \"role\": \"I don't know\"\r\n}"
+						},
+						"description": "Create coache for a team\n\nRequest\n{\n  \"teamId\": \"9845b602-7cde-46a8-ac7b-e4bb0b3a4556\",\n  \"name\": \"name 1\",\n  \"surname\": \"surname 2\",\n  \"birthdate\": \"1990-01-01T00:00:00\",\n  \"role\": \"I don't know\"\n}\n\nResponse\n{\n  \"id\": \"429eb3e6-2a13-446e-a268-7d86361cab63\",\n  \"teamId\": \"9845b602-7cde-46a8-ac7b-e4bb0b3a4556\",\n  \"name\": \"name 1\",\n  \"surname\": \"surname 2\",\n  \"birthdate\": \"1990-01-01T00:00:00\",\n  \"role\": \"I don't know\"\n}"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5159/api/coaches",
+					"request": {
+						"url": "http://localhost:5159/api/coaches",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"429eb3e6-2a13-446e-a268-7d86361cab63\",\r\n  \"name\": \"name new\",\r\n  \"surname\": \"surname new\",\r\n  \"birthdate\": \"1990-01-01T00:00:00\",\r\n  \"role\": \"I don't know\"\r\n}"
+						},
+						"description": "Edit a coache by ID\n\nRequest\n{\n  \"id\": \"429eb3e6-2a13-446e-a268-7d86361cab63\",\n  \"name\": \"name new\",\n  \"surname\": \"surname new\",\n  \"birthdate\": \"1990-01-01T00:00:00\",\n  \"role\": \"I don't know\"\n}"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5159/api/coaches/429eb3e6-2a13-446e-a268-7d86361cab63",
+					"request": {
+						"url": "http://localhost:5159/api/coaches/429eb3e6-2a13-446e-a268-7d86361cab63",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": "Delete coache by ID"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Players API",
+			"description": "",
+			"item": [
+				{
+					"name": "http://localhost:5159/api/players",
+					"request": {
+						"url": "http://localhost:5159/api/players",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"teamId\": \"9845b602-7cde-46a8-ac7b-e4bb0b3a4556\",\r\n  \"name\": \"name 1\",\r\n  \"surname\": \"name 2\",\r\n  \"birthdate\": \"1980-01-01T00:00:00\",\r\n  \"height\": 175.5,\r\n  \"weight\": 85.4,\r\n  \"strongLeg\": \"right\",\r\n  \"status\": \"I don't know\"\r\n}"
+						},
+						"description": "Create a player for a team\n\nRequest\n{\n  \"teamId\": \"9845b602-7cde-46a8-ac7b-e4bb0b3a4556\",\n  \"name\": \"name 1\",\n  \"surname\": \"name 2\",\n  \"birthdate\": \"1980-01-01T00:00:00\",\n  \"height\": 175.5,\n  \"weight\": 85.4,\n  \"strongLeg\": \"right\",\n  \"status\": \"I don't know\"\n}\n\nResponse\n{\n  \"id\": \"d8b0b600-3c0c-4df6-a8cd-a2e87caa3ecf\",\n  \"teamId\": \"9845b602-7cde-46a8-ac7b-e4bb0b3a4556\",\n  \"name\": \"name 1\",\n  \"surname\": \"name 2\",\n  \"birthdate\": \"1980-01-01T00:00:00\",\n  \"height\": 175.5,\n  \"weight\": 85.4,\n  \"strongLeg\": \"right\",\n  \"status\": \"I don't know\"\n}"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5159/api/players",
+					"request": {
+						"url": "http://localhost:5159/api/players",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"d8b0b600-3c0c-4df6-a8cd-a2e87caa3ecf\",\r\n  \"name\": \"name new\",\r\n  \"surname\": \"name new\",\r\n  \"birthdate\": \"1980-01-01T00:00:00\",\r\n  \"height\": 175.5,\r\n  \"weight\": 85.4,\r\n  \"strongLeg\": \"right\",\r\n  \"status\": \"I don't know\"\r\n}"
+						},
+						"description": "Edit a player by ID\n\nRequest\n{\n  \"id\": \"d8b0b600-3c0c-4df6-a8cd-a2e87caa3ecf\",\n  \"name\": \"name new\",\n  \"surname\": \"name new\",\n  \"birthdate\": \"1980-01-01T00:00:00\",\n  \"height\": 175.5,\n  \"weight\": 85.4,\n  \"strongLeg\": \"right\",\n  \"status\": \"I don't know\"\n}"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5159/api/players/d8b0b600-3c0c-4df6-a8cd-a2e87caa3ecf",
+					"request": {
+						"url": "http://localhost:5159/api/players/d8b0b600-3c0c-4df6-a8cd-a2e87caa3ecf",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": "Delete player by ID"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Teams API",
+			"description": "",
+			"item": [
+				{
+					"name": "http://localhost:5159/api/teams",
+					"request": {
+						"url": "http://localhost:5159/api/teams",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Get all teams"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5159/api/teams/042cee61-884d-4c50-a28e-74c1f68b316e",
+					"request": {
+						"url": "http://localhost:5159/api/teams/042cee61-884d-4c50-a28e-74c1f68b316e",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Get a team by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5159/api/teams/042cee61-884d-4c50-a28e-74c1f68b316e",
+					"request": {
+						"url": "http://localhost:5159/api/teams/042cee61-884d-4c50-a28e-74c1f68b316e",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": "Delete a team by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5159/api/teams",
+					"request": {
+						"url": "http://localhost:5159/api/teams",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"some name\",\n\t\"category\": \"some category\"\n}"
+						},
+						"description": "Create a new team.\nRequest\n{\n  \"name\": \"some name\",\n  \"category\": \"some category\"\n}\nResponse\n{\n  \"id\": \"69b469c7-a75a-4c69-a88d-024d8e1e668a\",\n  \"name\": \"some name\",\n  \"category\": \"some category\"\n}"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5159/api/teams",
+					"request": {
+						"url": "http://localhost:5159/api/teams",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"69b469c7-a75a-4c69-a88d-024d8e1e668a\",\n  \"name\": \"new name\",\n  \"category\": \"new category\"\n}"
+						},
+						"description": "Edit a team by ID\n\nRequest\n{\n  \"id\": \"69b469c7-a75a-4c69-a88d-024d8e1e668a\",\n  \"name\": \"new name\",\n  \"category\": \"new category\"\n}"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5159/api/teams/69b469c7-a75a-4c69-a88d-024d8e1e668a/coaches",
+					"request": {
+						"url": "http://localhost:5159/api/teams/69b469c7-a75a-4c69-a88d-024d8e1e668a/coaches",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Get all coaches for a team"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5159/api/teams/69b469c7-a75a-4c69-a88d-024d8e1e668a/coaches",
+					"request": {
+						"url": "http://localhost:5159/api/teams/69b469c7-a75a-4c69-a88d-024d8e1e668a/players",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Get all coaches for a team"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -16,7 +16,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{C8131C93-C902-4944-939C-726564EA9F3A}"
 	ProjectSection(SolutionItems) = preProject
 		create-tables.sql = create-tables.sql
-		..\..\..\..\Users\Oscar Sotorrio\Desktop\Downloads\Futsalweb API.postman_collection.json = ..\..\..\..\Users\Oscar Sotorrio\Desktop\Downloads\Futsalweb API.postman_collection.json
+		Futsalweb API.postman_collection.json = Futsalweb API.postman_collection.json
 	EndProjectSection
 EndProject
 Global
