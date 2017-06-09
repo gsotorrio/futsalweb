@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "Players";
+}
+
+<h1>Players</h1>
+<hr />
+
+<form class="form-horizontal">
+    <input type="hidden" data-bind="textInput: team.id">
+
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label">Name</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" placeholder="Name">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label">Surname</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" placeholder="Surname">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label">Birthdate</label>
+        <div class="col-sm-8">
+            <input type="date" class="form-control" placeholder="Birthdate">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label">Height</label>
+        <div class="col-sm-8">
+            <input type="number" class="form-control" placeholder="Height">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label">Weight</label>
+        <div class="col-sm-8">
+            <input type="number" class="form-control" placeholder="Weight">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label">Strong-Leg</label>
+        <div class="col-sm-8">
+            <label class="checkbox-inline">
+                <input type="checkbox"> Left
+            </label>   
+            <label class="checkbox-inline">
+                <input type="checkbox"> Right
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label">Status</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" placeholder="Status">
+        </div>
+    </div>
+</form>
+<br />
+<input data-bind="click: " type="button" value="Back" class="col-md-offset-2 col-md-2 btn btn-primary">
+<input data-bind="click: " type="button" value="Next" class="col-md-offset-4 col-md-2 btn btn-primary">
+
