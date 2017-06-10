@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-(function () {
+
 
     // Variables
     let teamManager = {
@@ -16,6 +16,8 @@
             category: teamManager.category()
         };
 
+        console.log(newTeam);
+
         $.post("http://localhost:5159/api/teams/Manager", newTeam).done(function (data) {
             //teams.push(data);
             console.log(data);
@@ -26,17 +28,16 @@
 
 
     // ViewModel
-    let viewModel = {
-        teams: teams,
-        team: team,
-        remove: remove,
-        teamManager: teamManager,
-        createTeam: createTeam
-    };
+    //let viewModel = {
+    //    teams: teams,
+    //    team: team,
+    //    remove: remove,
+    //    teamManager: teamManager,
+    //    createTeam: createTeam
+    //};
 
     // On initialize
     $(function () {
         console.log("Ready!!!");
-        ko.applyBindings(viewModel);
+        //ko.applyBindings(viewModel);
     });
-})();
