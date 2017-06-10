@@ -20,7 +20,7 @@
             //teams.push(data);
             console.log(data);
 
-            window.location.href = "http://localhost:5159/api/teams/Players";
+            window.location.href = "http://localhost:5159/teams/Players?"+ data.id;
         });
     };
 
