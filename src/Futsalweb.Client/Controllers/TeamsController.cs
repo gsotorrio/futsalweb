@@ -9,5 +9,23 @@ namespace Futsalweb.Client.Controllers
         {
             return View();
         }
+
+        // GET: teams/Manager
+        public ActionResult Manager()
+        {
+            return View();
+        }
+
+        // GET: teams/Players
+        public ActionResult Players()
+        {
+            return View();
+        }
+
+        // GET: teams/Coaches
+        public ActionResult Coaches()
+        {
+            return View();
+        }
     }
 }
