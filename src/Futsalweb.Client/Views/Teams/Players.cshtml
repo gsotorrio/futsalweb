@@ -42,12 +42,11 @@
     <div class="form-group">
         <label for="" class="col-sm-2 control-label">Strong-Leg</label>
         <div class="col-sm-8">
-            <label class="checkbox-inline">
-                <input type="checkbox" data-bind="checked: player.strongLeg1"> Left
-            </label>   
-            <label class="checkbox-inline">
-                <input type="checkbox" data-bind="checked: player.strongLeg2"> Right
-            </label>
+            <div data-bind="visible: strongLeg">
+                <div><input type="checkbox" value="Left" data-bind="checked: whatLeg" /> Left</div>
+                <div><input type="checkbox" value="Right" data-bind="checked: whatLeg" /> Right</div>
+
+            </div>
         </div>
     </div>
     <div class="form-group">
