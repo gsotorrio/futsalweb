@@ -7,6 +7,7 @@
         id: ko.observable(),
         name: ko.observable(),
         surname: ko.observable(),
+        birthdate: ko.observable(),
         height: ko.observable(),
         weight: ko.observable(),
         strongLeg1: ko.observable(),
@@ -14,28 +15,10 @@
         status: ko.observable()
     };
 
-    ko.bindingHandlers.datePicker = {
-        init: function (element, valueAccessor, allBindingsAccessor, viewModel) {                    
-            // Register change callbacks to update the model
-            // if the control changes.       
-            ko.utils.registerEventHandler(element, "change", function () {            
-                var value = valueAccessor();
-                value(new Date(element.value));            
-            });
-        },
-        // Update the control whenever the view model changes
-        update: function (element, valueAccessor, allBindingsAccessor, viewModel) {
-            var value =  valueAccessor();        
-            element.value = value().toISOString();
-        }
-    };
-
-  
-
     // Public Functions
     const next = function () {
         var newPlayer = {
-            birthdate: MyDate(),
+            birthdate: player.birthdate(),
             name: player.name(),
             surname: player.surname(),
             height: player.height(),

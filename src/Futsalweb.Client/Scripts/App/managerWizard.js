@@ -22,7 +22,7 @@
             //teams.push(data);
             console.log(data);
 
-            window.location.href = "http://localhost:5159/teams/Players?"+ data.id;
+            window.location.href = "http://localhost:5159/teams/Players?"+ "teamManager.id=" + data.id;
         });
     };
 
