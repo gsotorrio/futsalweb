@@ -18,19 +18,22 @@
 
     // Public Functions
     const next = function () {
-        var urlTeam = window.location.search.substr(1);
-
         var newPlayer = {
-            birthdate: player.birthdate(),
+            teamId: window.location.search.substr(1),
             name: player.name(),
             surname: player.surname(),
+            birthdate: player.birthdate(),
             height: player.height(),
             weight: player.weight(),
             strongLeg: player.strongLeg[0],
             status: player.status()
         };
 
+        console.log(newPlayer);
 
+        $.post("http://localhost:5159/api/teams/Player", newPlayer).done(function (data) {
+            console.log(data);
+        });
     };
 
 
