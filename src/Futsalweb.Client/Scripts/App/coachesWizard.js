@@ -34,7 +34,7 @@
         createTeam: createTeam,
         player: player,
         createPlayer: createPlayer,
-        strongLeg: strongLeg,
+        legOption: legOption,
         whatLeg: whatLeg,
         coach: coach,
         createCoach: createCoach

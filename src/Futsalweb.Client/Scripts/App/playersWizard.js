@@ -3,8 +3,8 @@
 
    
     // Variables
-    let strongLeg = ko.observable(true);
-    let whatLeg = ko.observableArray(["Left", "Right"]);
+    let legOption = ko.observable(true);
+    let whatLeg = ko.observableArray();
 
     let player = {
         id: ko.observable(),
