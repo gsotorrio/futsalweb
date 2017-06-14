@@ -1,10 +1,11 @@
 ﻿"use strict";
 
-(function () {
-    var strongLeg = ko.observable(true);
 
-    var whatLeg = ko.observableArray(["Left", "Right"]);
+   
     // Variables
+    let strongLeg = ko.observable(true);
+    let whatLeg = ko.observableArray(["Left", "Right"]);
+
     let player = {
         id: ko.observable(),
         name: ko.observable(),
@@ -17,7 +18,7 @@
     };
 
     // Public Functions
-    const next = function () {
+    const createPlayer = function () {
         var newPlayer = {
             teamId: window.location.search.substr(1),
             name: player.name(),
@@ -40,23 +41,22 @@
     };
 
 
-    // ViewModel
-    let viewModel = {
-        teams: teams,
-        team: team,
-        remove: remove,
-        teamManager: teamManager,
-        createTeam: createTeam,
-        player: player,
-        next: next,
-        strongLeg: strongLeg,
-        whatLeg: whatLeg
-    };
+    //// ViewModel
+    //let viewModel = {
+    //    teams: teams,
+    //    team: team,
+    //    remove: remove,
+    //    teamManager: teamManager,
+    //    createTeam: createTeam,
+    //    player: player,
+    //    next: next,
+    //    strongLeg: strongLeg,
+    //    whatLeg: whatLeg
+    //};
     
 
-    // On initialize
-    $(function () {
-        console.log("Ready!!!");
-        ko.applyBindings(viewModel);
-    });
-})();
+    //// On initialize
+    //$(function () {
+    //    console.log("Ready!!!");
+    //    ko.applyBindings(viewModel);
+    //});
