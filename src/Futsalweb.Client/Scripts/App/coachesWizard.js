@@ -19,6 +19,9 @@
             role: coach.role()
         };
 
+        $.post("http://localhost:5159/api/coaches", newCoach).done(function (data) {
+            window.location.href = "http://localhost:5159";
+        });
     };
 
 
@@ -33,7 +36,8 @@
         createPlayer: createPlayer,
         strongLeg: strongLeg,
         whatLeg: whatLeg,
-        coach: coach
+        coach: coach,
+        createCoach: createCoach
     };
 
     // On initialize
