@@ -31,8 +31,11 @@
 
         console.log(newPlayer);
 
-        $.post("http://localhost:5159/api/teams/Player", newPlayer).done(function (data) {
+        $.post("http://localhost:5159/api/players", newPlayer).done(function (data) {
             console.log(data);
+
+            window.location.href = "http://localhost:5159/teams/Coaches?" + data.teamId;
+
         });
     };
 
