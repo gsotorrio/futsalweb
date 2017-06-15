@@ -20,7 +20,7 @@
     // Public Functions
     const createPlayer = function () {
         var newPlayer = {
-            teamId: window.location.search.substr(1),
+            teamId: window.location.search.substr(8),
             name: player.name(),
             surname: player.surname(),
             birthdate: player.birthdate(),
@@ -35,7 +35,7 @@
         $.post("http://localhost:5159/api/players", newPlayer).done(function (data) {
             console.log(data);
 
-            window.location.href = "http://localhost:5159/teams/Coaches?" + data.teamId;
+            window.location.href = "http://localhost:5159/teams/Coaches?teamId=" + data.teamId;
 
         });
     };
