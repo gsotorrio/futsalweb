@@ -71,9 +71,7 @@
 <table id="tablePlayers" class="table table-striped">
     <thead>
         <tr>
-            <th class="hideId">Team Id</th>
             <th class="hideId">Player Id</th>
-            <th>#</th>
             <th>Name</th>
             <th>Surname</th>
             <th>Birthdate</th>
@@ -83,24 +81,21 @@
             <th>Status</th>
             <th></th>
             <th></th>
-
         </tr>
     </thead>
 
     <tbody data-bind="foreach: players">
         <tr>
-            <td class="hideId"></td>
-            <td class="hideId"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><a href="#">Edit</a></td>
-            <td><a href="#">Delete</a></td>
+            <td class="hideId" data-bind="text: id"></td>
+            <td data-bind="text: name"></td>
+            <td data-bind="text: surname"></td>
+            <td data-bind="text: birthdate"></td>
+            <td data-bind="text: height"></td>
+            <td data-bind="text: weight"></td>
+            <td data-bind="text: strongLeg"></td>
+            <td data-bind="text: status"></td>
+            <td data-bind="click: "><a href="#">Edit</a></td>
+            <td data-bind="click: "><a href="#">Delete</a></td>
         </tr>
     </tbody>
 </table>

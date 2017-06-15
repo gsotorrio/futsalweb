@@ -27,7 +27,6 @@
         player.birthdate("");
         player.height("");
         player.weight("");
-        //player.strongLeg("");
         player.status("");
     };
 
@@ -39,7 +38,7 @@
             birthdate: player.birthdate(),
             height: player.height(),
             weight: player.weight(),
-            strongLeg: player.strongLeg[0],
+            strongLeg: player.strongLeg.toString(),
             status: player.status()
         };
 
@@ -48,6 +47,7 @@
         $.post("http://localhost:5159/api/players", newPlayer).done(function (data) {
             console.log(data);
             players.push(data);
+            cleanFormPlayer();
 
             //window.location.href = "http://localhost:5159/teams/Coaches?teamId=" + data.teamId;
 
