@@ -35,7 +35,9 @@
         teamManager: teamManager,
         createTeam: createTeam,
         //Player 
+        players: players,
         player: player,
+        cleanFormPlayer: cleanFormPlayer,
         createPlayer: createPlayer,
         legOption: legOption,
         whatLeg: whatLeg,

@@ -6,6 +6,8 @@
     let legOption = ko.observable(true);
     let whatLeg = ko.observableArray();
 
+    let players = ko.observableArray();
+
     let player = {
         id: ko.observable(),
         name: ko.observable(),
@@ -17,7 +19,18 @@
         status: ko.observable()
     };
 
-    // Public Functions
+// Public Functions
+    const cleanFormPlayer = function () {
+        player.id("");
+        player.name("");
+        player.surname("");
+        player.birthdate("");
+        player.height("");
+        player.weight("");
+        //player.strongLeg("");
+        player.status("");
+    };
+
     const createPlayer = function () {
         var newPlayer = {
             teamId: window.location.search.substr(8),
@@ -34,8 +47,9 @@
 
         $.post("http://localhost:5159/api/players", newPlayer).done(function (data) {
             console.log(data);
+            players.push(data);
 
-            window.location.href = "http://localhost:5159/teams/Coaches?teamId=" + data.teamId;
+            //window.location.href = "http://localhost:5159/teams/Coaches?teamId=" + data.teamId;
 
         });
     };
