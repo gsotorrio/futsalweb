@@ -42,15 +42,24 @@
             status: player.status()
         };
 
-        console.log(newPlayer);
 
         $.post("http://localhost:5159/api/players", newPlayer).done(function (data) {
-            console.log(data);
+            
             players.push(data);
             cleanFormPlayer();
 
             //window.location.href = "http://localhost:5159/teams/Coaches?teamId=" + data.teamId;
 
+        });
+    };
+
+    const removePlayer = function (player, event) {
+        console.log(player);
+        $.ajax({
+            url: "http://localhost:5159/api/players" + player.id,
+            method: "DELETE"
+        }).done(function () {
+            players.remove(player);
         });
     };
 

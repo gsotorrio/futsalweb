@@ -38,6 +38,7 @@
         players: players,
         player: player,
         cleanFormPlayer: cleanFormPlayer,
+        removePlayer: removePlayer,
         createPlayer: createPlayer,
         legOption: legOption,
         whatLeg: whatLeg,
