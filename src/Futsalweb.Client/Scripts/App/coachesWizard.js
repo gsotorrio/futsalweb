@@ -42,6 +42,8 @@
         createPlayer: createPlayer,
         legOption: legOption,
         whatLeg: whatLeg,
+        putDataInForm: putDataInForm,
+        goCoacheswizard: goCoacheswizard,
         //Coach
         coach: coach,
         createCoach: createCoach
