@@ -55,6 +55,7 @@
         else {
             let playerData = {
                 teamId: window.location.search.substr(8),
+                id: player.id(),
                 name: player.name(),
                 surname: player.surname(),
                 birthdate: player.birthdate(),
@@ -75,13 +76,13 @@
 
                 for (var i = 0; i < players().length; i++) {
                     if (players()[i].id == playerData.id) {
-                        indexTeam = i;
+                        indexPlayer = i;
                     }
                 }
 
                 players.replace(players()[indexPlayer], playerData);
 
-                clean();
+                cleanFormPlayer();
             });
         }
     };

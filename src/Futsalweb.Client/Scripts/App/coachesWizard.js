@@ -59,12 +59,41 @@
                 cleanFormCoach();
             });
         }
+        
+        else {
+            let coachData = {
+                teamId: window.location.search.substr(8),
+                id: coach.id(),
+                name: coach.name(),
+                surname: coach.surname(),
+                birthdate: coach.birthdate(),
+                status: coach.role()
+            };
+
+            $.ajax({
+                type: "PUT",
+                url: "http://localhost:5159/api/coaches",
+                contentType: "application/json",
+                data: JSON.stringify(coachData)
+            }).done(function () {
+
+                let indexcoach;
+
+                for (var i = 0; i < coaches().length; i++) {
+                    if (coaches()[i].id == coachData.id) {
+                        indexCoach = i;
+                    }
+                }
+
+                coaches.replace(coaches()[indexcoach], coachData);
+
+                cleanFormCoach();
+            });
+        }
     };
  
-
     const goTeamList = function () {
-        //window.location.href = "http://localhost:5159";
-        console.log("ouh yeah!!!");
+        window.location.href = "http://localhost:5159";
     };
  
     // ViewModel
