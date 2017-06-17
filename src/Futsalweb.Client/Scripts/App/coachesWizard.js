@@ -1,6 +1,7 @@
 ﻿"use strict";
 (function () { 
     // Variables
+    const teamId = location.pathname.split('/')[2];
     let coaches = ko.observableArray();
 
     let coach = {
@@ -46,7 +47,7 @@
 
         if (!coachId){
             let newCoach = {
-                teamId: window.location.search.substr(8),
+                teamId: teamId,
                 name: coach.name(),
                 surname: coach.surname(),
                 birthdate: coach.birthdate(),
@@ -62,7 +63,7 @@
         
         else {
             let coachData = {
-                teamId: window.location.search.substr(8),
+                teamId: teamId,
                 id: coach.id(),
                 name: coach.name(),
                 surname: coach.surname(),

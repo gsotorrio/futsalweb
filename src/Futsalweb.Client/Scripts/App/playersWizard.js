@@ -1,13 +1,15 @@
 ﻿"use strict";
 
     // Variables
+    const teamId = location.pathname.split('/')[2];
+
     let legOption = ko.observable(true);
     let whatLeg = ko.observableArray();
 
     let players = ko.observableArray();
 
     let player = {
-        teamId: window.location.search.substr(8),
+        teamId: teamId,
         id: ko.observable(),
         name: ko.observable(),
         surname: ko.observable(),
@@ -34,7 +36,7 @@
         let playerId = player.id();
 
         let newPlayer = {
-            teamId: window.location.search.substr(8),
+            teamId: teamId,
             id: player.id(),
             name: player.name(),
             surname: player.surname(),
@@ -55,7 +57,7 @@
 
         else {
             let playerData = {
-                teamId: window.location.search.substr(8),
+                teamId: teamId,
                 id: player.id(),
                 name: player.name(),
                 surname: player.surname(),
@@ -113,5 +115,5 @@
     };
 
     const goCoacheswizard = function () {
-        window.location.href = "http://localhost:5159/teams/Coaches?teamId=" + player.teamId;
+        window.location.href = "http://localhost:5159/teams/" + teamId + "/coaches";
     };
