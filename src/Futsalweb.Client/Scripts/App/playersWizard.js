@@ -27,6 +27,7 @@
         player.height("");
         player.weight("");
         player.status("");
+        whatLeg([]);
     };
 
     const createPlayer = function () {
