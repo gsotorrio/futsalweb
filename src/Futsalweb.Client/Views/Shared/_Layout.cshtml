@@ -81,22 +81,11 @@
         </div>
     </div>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="~/Scripts/ie10-viewport-bug-workaround.js"></script>
-
-    <!-- Knockot -->
-    <script src="~/Scripts/knockout-3.4.2.js"></script>
-
-    <!--My javaScript-->
-    <script src="~/Scripts/App/teamsList.js"></script>
-    <script src="~/Scripts/App/managerWizard.js"></script>
-    <script src="~/Scripts/App/playersWizard.js"></script>
-    <script src="~/Scripts/App/coachesWizard.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/others")
+    @Scripts.Render("~/bundles/knockout")
+    
+    @RenderSection("scripts", required: false)
 </body>
 </html>
