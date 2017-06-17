@@ -130,5 +130,4 @@
         console.log("Ready!!!");
         ko.applyBindings(viewModel);
     });
-
 })();

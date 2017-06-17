@@ -20,11 +20,7 @@
             teams.remove(team);
         });
     }; // messege: Are you sure???
-
-
-    // ViewModel
   
-    
     // On initialize
     $(function () {
         console.log("Ready!!!");
@@ -32,7 +28,6 @@
         $.get("http://localhost:5159/api/teams", function (data) {
 
             teams(data);
-            //ko.applyBindings(viewModelA);
         });
     });
 

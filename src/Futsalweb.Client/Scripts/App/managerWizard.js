@@ -26,18 +26,7 @@
         });
     };
 
-
-    // ViewModel
-    //let viewModel = {
-    //    teams: teams,
-    //    team: team,
-    //    remove: remove,
-    //    teamManager: teamManager,
-    //    createTeam: createTeam
-    //};
-
     // On initialize
     $(function () {
         console.log("Ready!!!");
-        //ko.applyBindings(viewModel);
     });
