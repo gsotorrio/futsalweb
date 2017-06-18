@@ -1,7 +1,6 @@
 ﻿"use strict";
 
-
-
+(function () { 
     // Variables
     let teamManager = {
         id: ko.observable(),
@@ -26,7 +25,15 @@
         });
     };
 
+    //ViewModel
+    let viewModel = {
+        teamManager: teamManager,
+        createTeam: createTeam
+    };
+
     // On initialize
     $(function () {
         console.log("Ready!!!");
+        ko.applyBindings(viewModel);
     });
+})();

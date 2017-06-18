@@ -99,24 +99,6 @@
  
     // ViewModel
     let viewModel = {
-        //List
-        teams: teams,
-        team: team,
-        remove: remove,
-        //Manager
-        teamManager: teamManager,
-        createTeam: createTeam,
-        //Player 
-        players: players,
-        player: player,
-        cleanFormPlayer: cleanFormPlayer,
-        removePlayer: removePlayer,
-        createPlayer: createPlayer,
-        legOption: legOption,
-        whatLeg: whatLeg,
-        putDataInForm: putDataInForm,
-        goCoacheswizard: goCoacheswizard,
-        //Coach
         coaches: coaches,
         coach: coach,
         cleanFormCoach: cleanFormCoach,

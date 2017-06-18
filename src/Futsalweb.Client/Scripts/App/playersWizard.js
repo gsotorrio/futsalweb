@@ -1,5 +1,6 @@
 ﻿"use strict";
 
+(function () { 
     // Variables
     const teamId = location.pathname.split('/')[2];
 
@@ -117,3 +118,22 @@
     const goCoacheswizard = function () {
         window.location.href = "http://localhost:5159/teams/" + teamId + "/coaches";
     };
+
+    //ViewModel
+    let viewModel = {
+        players: players,
+        player: player,
+        cleanFormPlayer: cleanFormPlayer,
+        removePlayer: removePlayer,
+        createPlayer: createPlayer,
+        legOption: legOption,
+        whatLeg: whatLeg,
+        putDataInForm: putDataInForm,
+        goCoacheswizard: goCoacheswizard
+    };
+
+    $(function () {
+        console.log("Ready!!!");
+        ko.applyBindings(viewModel);
+    });
+})();

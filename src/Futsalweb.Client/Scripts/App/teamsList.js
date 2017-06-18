@@ -1,6 +1,6 @@
 "use strict";
 
-
+(function () { 
 
     // Variables
     let teams = ko.observableArray();
@@ -21,13 +21,20 @@
         });
     }; // messege: Are you sure???
   
+    //ViewModel
+    let viewModel = {
+        teams: teams,
+        team: team,
+        remove: remove
+    };
+
     // On initialize
     $(function () {
         console.log("Ready!!!");
+        ko.applyBindings(viewModel);
 
         $.get("http://localhost:5159/api/teams", function (data) {
-
             teams(data);
         });
     });
-
+})();
