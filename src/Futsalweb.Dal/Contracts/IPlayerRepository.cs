@@ -13,5 +13,7 @@ namespace Futsalweb.Dal.Contracts
         void Update(Player player);
 
         void Delete(Guid id);
+
+        void DeleteAllForTeam(Guid teamId);
     }
 }

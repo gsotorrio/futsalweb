@@ -25,6 +25,14 @@ namespace Futsalweb.Dal.Repositories
             }
         }
 
+        public void DeleteAllForTeam(Guid teamId)
+        {
+            using (var db = new SqlConnection(_connectionString))
+            {
+                db.Execute("DELETE FROM Coaches WHERE TeamId = @TeamId;", new { TeamId = teamId });
+            }
+        }
+
         public IEnumerable<Coache> GetCoachesByTeamId(Guid teamId)
         {
             using (var db = new SqlConnection(_connectionString))

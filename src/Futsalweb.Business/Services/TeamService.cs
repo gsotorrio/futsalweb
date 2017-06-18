@@ -10,10 +10,14 @@ namespace Futsalweb.Business.Services
     public class TeamService : ITeamService
     {
         private ITeamRepository _teamRepo;
-        
-        public TeamService(ITeamRepository teamRepository)
+        private IPlayerRepository _playerRepo;
+        private ICoacheRepository _coacheRepo;
+
+        public TeamService(ITeamRepository teamRepository, IPlayerRepository playerRepository, ICoacheRepository coacheRepository)
         {
             _teamRepo = teamRepository;
+            _playerRepo = playerRepository;
+            _coacheRepo = coacheRepository;
         }
 
         public Team CreateTeam(Team team)
@@ -25,6 +29,8 @@ namespace Futsalweb.Business.Services
 
         public void DeleteTeam(Guid id)
         {
+            _playerRepo.DeleteAllForTeam(id);
+            _coacheRepo.DeleteAllForTeam(id);
             _teamRepo.Delete(id);
         }
 
