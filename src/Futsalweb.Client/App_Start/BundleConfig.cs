@@ -1,7 +1,6 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
-namespace WebApplication3
+namespace Futsalweb.Client
 {
     public class BundleConfig
     {

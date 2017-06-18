@@ -1,4 +1,5 @@
 ﻿"use strict";
+
 (function () { 
     // Variables
     const teamId = location.pathname.split('/')[2];
