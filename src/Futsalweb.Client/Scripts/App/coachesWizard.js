@@ -23,15 +23,12 @@
     };
 
     const putDataCoachInForm = function (selectedCoach) {
-        $.get("http://localhost:5159/api/coaches/" + selectedCoach.id, function (data) {
-            console.log(data);
 
-            coach.id(data.id);
-            coach.name(data.name);
-            coach.surname(data.surname);
-            coach.birthdate(data.birthdate);
-            coach.role(data.role);
-        });
+        coach.id(selectedCoach.id);
+        coach.name(selectedCoach.name);
+        coach.surname(selectedCoach.surname);
+        coach.birthdate(selectedCoach.birthdate.replace("T00:00:00", ""));
+        coach.role(selectedCoach.role);
     };
 
     const removeCoach = function (coach, event) {
@@ -54,9 +51,10 @@
                 birthdate: coach.birthdate(),
                 role: coach.role()
             };
+            console.log(newCoach.birthdate);
 
             $.post("http://localhost:5159/api/coaches", newCoach).done(function (data) {
-
+                console.log(data.birthdate.replace("T00:00:00", ""));
                 coaches.push(data);
                 cleanFormCoach();
             });
@@ -69,7 +67,7 @@
                 name: coach.name(),
                 surname: coach.surname(),
                 birthdate: coach.birthdate(),
-                status: coach.role()
+                role: coach.role()
             };
 
             $.ajax({
@@ -79,7 +77,7 @@
                 data: JSON.stringify(coachData)
             }).done(function () {
 
-                let indexcoach;
+                let indexCoach;
 
                 for (var i = 0; i < coaches().length; i++) {
                     if (coaches()[i].id == coachData.id) {
@@ -87,7 +85,7 @@
                     }
                 }
 
-                coaches.replace(coaches()[indexcoach], coachData);
+                coaches.replace(coaches()[indexCoach], coachData);
 
                 cleanFormCoach();
             });

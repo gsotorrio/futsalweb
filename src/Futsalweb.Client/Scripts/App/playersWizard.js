@@ -75,7 +75,7 @@
                 contentType: "application/json",
                 data: JSON.stringify(playerData)
             }).done(function () {
-
+                console.log(playerData);
                 let indexPlayer;
 
                 for (var i = 0; i < players().length; i++) {
@@ -101,18 +101,15 @@
     };
 
     const putDataInForm = function (selectedPlayer) {
-        $.get("http://localhost:5159/api/players/" + selectedPlayer.id, function (data) {
-            console.log(data);
-
-            player.id(data.id);
-            player.name(data.name);
-            player.surname(data.surname);
-            player.birthdate(data.birthdate);
-            player.strongLeg(data.strongLeg);
-            player.height(data.height);
-            player.weight(data.weight);
-            player.status(data.status);
-        });
+        console.log(selectedPlayer);
+        player.id(selectedPlayer.id);
+        player.name(selectedPlayer.name);
+        player.surname(selectedPlayer.surname);
+        player.birthdate(selectedPlayer.birthdate.replace("T00:00:00", ""));
+        whatLeg([selectedPlayer.strongLeg]);
+        player.height(selectedPlayer.height);
+        player.weight(selectedPlayer.weight);
+        player.status(selectedPlayer.status);
     };
 
     const goCoacheswizard = function () {
