@@ -51,10 +51,9 @@
                 birthdate: coach.birthdate(),
                 role: coach.role()
             };
-            console.log(newCoach.birthdate);
 
             $.post("http://localhost:5159/api/coaches", newCoach).done(function (data) {
-                console.log(data.birthdate.replace("T00:00:00", ""));
+                
                 coaches.push(data);
                 cleanFormCoach();
             });
