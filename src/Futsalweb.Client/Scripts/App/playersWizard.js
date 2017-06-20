@@ -95,15 +95,16 @@
     };
 
     const removePlayer = function (player, event) {
-        console.log(players());
+        console.log(players().length);
 
         $.ajax({
             url: "http://localhost:5159/api/players/" + player.id,
             method: "DELETE"
         }).done(function () {
             players.remove(player);
-            if (players().lenght === 0) {
-                hiddeTableButtonPlayer().splice();
+            if (players().length === 0) {
+                console.log(hiddeTableButtonPlayer().splice());
+                
             }
         });
     };
