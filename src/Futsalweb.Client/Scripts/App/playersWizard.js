@@ -57,6 +57,7 @@
         }
 
         else {
+            var leg = whatLeg();
             let playerData = {
                 teamId: teamId,
                 id: player.id(),
@@ -65,7 +66,7 @@
                 birthdate: player.birthdate(),
                 height: player.height(),
                 weight: player.weight(),
-                strongLeg: player.strongLeg.toString(),
+                strongLeg: leg.toString(),
                 status: player.status()
             };
 
@@ -75,7 +76,6 @@
                 contentType: "application/json",
                 data: JSON.stringify(playerData)
             }).done(function () {
-                console.log(playerData);
                 let indexPlayer;
 
                 for (var i = 0; i < players().length; i++) {
@@ -101,15 +101,19 @@
     };
 
     const putDataInForm = function (selectedPlayer) {
-        console.log(selectedPlayer);
         player.id(selectedPlayer.id);
         player.name(selectedPlayer.name);
         player.surname(selectedPlayer.surname);
         player.birthdate(selectedPlayer.birthdate.replace("T00:00:00", ""));
-        whatLeg([selectedPlayer.strongLeg]);
         player.height(selectedPlayer.height);
         player.weight(selectedPlayer.weight);
         player.status(selectedPlayer.status);
+        if (selectedPlayer.strongLeg === "Left,Right" || selectedPlayer.strongLeg === "Right,Left") {
+            whatLeg(["Left", "Right"]);
+        }
+        else{
+            whatLeg([selectedPlayer.strongLeg]);
+        }
     };
 
     const goCoacheswizard = function () {
