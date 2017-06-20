@@ -47,7 +47,7 @@
 <br />
 <br />
 
-<table id="tableCoaches" class="table table-striped">
+<table id="tableCoaches" class="table table-striped" data-bind="visible: hiddeTableButtonCoach().length > 0">
     <thead>
         <tr>
             <th class="hideId">Coach Id</th>
@@ -78,5 +78,5 @@
 <br />
 
 <input data-bind="click: " type="button" value="Back" class="col-md-offset-1 col-md-2 btn btn-primary">
-<input data-bind="click: goTeamList" type="button" value="Finish" class="col-md-offset-6 col-md-2 btn btn-primary">
+<input data-bind="click: goTeamList , visible: hiddeTableButtonCoach().length > 0" type="button" value="Finish" class="col-md-offset-6 col-md-2 btn btn-primary">
 

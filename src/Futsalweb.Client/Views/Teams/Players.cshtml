@@ -70,7 +70,7 @@
 <br />
 <br />
 
-<table id="tablePlayers" class="table table-striped">
+<table id="tablePlayers" class="table table-striped" data-bind="visible: hiddeTableButtonPlayer().length > 0">
     <thead>
         <tr>
             <th class="hideId">Player Id</th>
@@ -107,6 +107,6 @@
 <br />
 
 <input data-bind="click: " type="button" value="Back" class="col-md-offset-1 col-md-2 btn btn-primary">
-<input data-bind="click: goCoacheswizard" type="button" value="Next" class="col-md-offset-6 col-md-2 btn btn-primary">
+<input data-bind="click: goCoacheswizard , visible: hiddeTableButtonPlayer().length > 0" type="button" value="Next" class="col-md-offset-6 col-md-2 btn btn-primary">
 
 

@@ -4,6 +4,8 @@
     // Variables
     const teamId = location.pathname.split('/')[2];
 
+    let hiddeTableButtonPlayer = ko.observableArray([])
+
     let legOption = ko.observable(true);
     let whatLeg = ko.observableArray();
 
@@ -53,6 +55,7 @@
             
                 players.push(data);
                 cleanFormPlayer();
+                hiddeTableButtonPlayer.push("some value");
             });
         }
 
@@ -92,11 +95,16 @@
     };
 
     const removePlayer = function (player, event) {
+        console.log(players());
+
         $.ajax({
             url: "http://localhost:5159/api/players/" + player.id,
             method: "DELETE"
         }).done(function () {
             players.remove(player);
+            if (players().lenght === 0) {
+                hiddeTableButtonPlayer().splice();
+            }
         });
     };
 
@@ -130,7 +138,8 @@
         legOption: legOption,
         whatLeg: whatLeg,
         putDataInForm: putDataInForm,
-        goCoacheswizard: goCoacheswizard
+        goCoacheswizard: goCoacheswizard,
+        hiddeTableButtonPlayer: hiddeTableButtonPlayer
     };
 
     $(function () {

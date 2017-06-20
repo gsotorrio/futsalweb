@@ -4,6 +4,7 @@
     // Variables
     const teamId = location.pathname.split('/')[2];
     let coaches = ko.observableArray();
+    let hiddeTableButtonCoach = ko.observableArray([]);
 
     let coach = {
         id: ko.observable(),
@@ -36,7 +37,7 @@
             url: "http://localhost:5159/api/coaches/" + coach.id,
             method: "DELETE"
         }).done(function () {
-            coaches.remove(coaches);
+            coaches.remove(coach);
         });
     };
 
@@ -56,6 +57,7 @@
                 
                 coaches.push(data);
                 cleanFormCoach();
+                hiddeTableButtonCoach.push("some value");
             });
         }
         
@@ -103,7 +105,8 @@
         putDataCoachInForm: putDataCoachInForm,
         removeCoach: removeCoach,
         createCoach: createCoach,
-        goTeamList: goTeamList
+        goTeamList: goTeamList,
+        hiddeTableButtonCoach: hiddeTableButtonCoach
     };
 
     // On initialize
