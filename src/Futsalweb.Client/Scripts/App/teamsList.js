@@ -11,6 +11,10 @@
         category: ko.observable()
     };
 
+    let hiddeTable = ko.observableArray([])
+
+    let displayMassage = ko.observable(false);
+
     // Public Functions
     const remove = function (team, event) {
         $.ajax({
@@ -18,6 +22,10 @@
             method: "DELETE"
         }).done(function () {
             teams.remove(team);
+            if (teams().length == 0) {
+                hiddeTable([]);
+                displayMassage(true);
+            }
         });
     }; // messege: Are you sure???
   
@@ -25,7 +33,9 @@
     let viewModel = {
         teams: teams,
         team: team,
-        remove: remove
+        remove: remove,
+        displayMassage: displayMassage,
+        hiddeTable: hiddeTable
     };
 
     // On initialize
@@ -34,7 +44,13 @@
         ko.applyBindings(viewModel);
 
         $.get("http://localhost:5159/api/teams", function (data) {
-            teams(data);
+            if (data.length == 0) {
+                displayMassage(true);
+            }
+            else {
+                teams(data);
+                hiddeTable.push("some value");
+            }
         });
     });
 })();

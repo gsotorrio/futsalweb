@@ -8,8 +8,8 @@
 
 <h2>Your Teams</h2>
 <hr />
-
-<table id="tableTeams" class="table table-striped">
+<div data-bind="if: displayMassage">Any team was created. If you want create a team, please pres "New Team" button.</div>
+<table id="tableTeams" class="table table-striped" data-bind="visible: hiddeTable().length > 0">
     <thead>
         <tr>
             <th class="hideId">Team Id</th>
