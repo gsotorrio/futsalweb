@@ -122,6 +122,10 @@
         }
     };
 
+    const goManagerWizard = function () {
+        window.location.href = "http://localhost:5159/teams/manager"
+    }
+
     const goCoacheswizard = function () {
         window.location.href = "http://localhost:5159/teams/" + teamId + "/coaches";
     };
@@ -137,11 +141,19 @@
         whatLeg: whatLeg,
         putDataInForm: putDataInForm,
         goCoacheswizard: goCoacheswizard,
-        hiddeTableButtonPlayer: hiddeTableButtonPlayer
+        hiddeTableButtonPlayer: hiddeTableButtonPlayer,
+        goManagerWizard: goManagerWizard
     };
 
     $(function () {
         console.log("Ready!!!");
         ko.applyBindings(viewModel);
+        $.get("http://localhost:5159/api/teams/" + teamId + "/players", function (data) {
+
+            if(data.length > 0){
+                players(data);
+                hiddeTableButtonPlayer.push("some value");
+            }   
+        });
     });
 })();
