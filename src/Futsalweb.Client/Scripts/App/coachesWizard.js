@@ -38,6 +38,9 @@
             method: "DELETE"
         }).done(function () {
             coaches.remove(coach);
+            if (coaches().length == 0) {
+                hiddeTableButtonCoach([]);
+            }
         });
     };
 
