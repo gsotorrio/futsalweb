@@ -58,7 +58,7 @@
 
         if (!playerId) {
             $.post("http://localhost:5159/api/players", newPlayer).done(function (data) {
-            
+
                 players.push(data);
                 cleanFormPlayer();
                 hiddeTableButtonPlayer.push("some value");
