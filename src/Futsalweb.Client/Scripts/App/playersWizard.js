@@ -4,6 +4,10 @@
     // Variables
     const teamId = location.pathname.split('/')[2];
 
+    let displayButtonAdd = ko.observable(true);
+    let displayButtonSave = ko.observable(false);
+
+
     let hiddeTableButtonPlayer = ko.observableArray([])
 
     let legOption = ko.observable(true);
@@ -33,6 +37,8 @@
         player.weight("");
         player.status("");
         whatLeg([]);
+        displayButtonAdd(true);
+        displayButtonSave(false);
     };
 
     const createPlayer = function () {
@@ -91,6 +97,8 @@
 
                 cleanFormPlayer();
             });
+            displayButtonAdd(true);
+            displayButtonSave(false);
         }
     };
 
@@ -120,6 +128,9 @@
         else{
             whatLeg([selectedPlayer.strongLeg]);
         }
+
+        displayButtonAdd(false);
+        displayButtonSave(true);
     };
 
     const goManagerWizard = function () {
@@ -142,7 +153,9 @@
         putDataInForm: putDataInForm,
         goCoacheswizard: goCoacheswizard,
         hiddeTableButtonPlayer: hiddeTableButtonPlayer,
-        goManagerWizard: goManagerWizard
+        goManagerWizard: goManagerWizard,
+        displayButtonSave: displayButtonSave,
+        displayButtonAdd: displayButtonAdd
     };
 
     $(function () {
