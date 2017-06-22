@@ -1,0 +1,3 @@
+﻿DROP TABLE Coaches
+DROP TABLE Players
+DROP TABLE Teams
