@@ -40,6 +40,8 @@ CREATE TABLE [dbo].[Players](
 	[Weight] [float] NULL,
 	[StrongLeg] [varchar](50) NULL,
 	[Status] [varchar](50) NULL,
+	[Position] [varchar](100) NULL,
+	[Number] [int] NULL,
  CONSTRAINT [PK_Players] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

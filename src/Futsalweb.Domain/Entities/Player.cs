@@ -21,5 +21,9 @@ namespace Futsalweb.Domain.Entities
         public string StrongLeg { get; set; }
 
         public string Status { get; set; }
+
+        public string Position { get; set; }
+
+        public int Number { get; set; }
     }
 }

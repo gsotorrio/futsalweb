@@ -46,7 +46,7 @@ namespace Futsalweb.Dal.Repositories
             using (var db = new SqlConnection(_connectionString))
             {
                 var query = @"INSERT INTO Players " + 
-                    "VALUES (@Id, @TeamId, @Name, @Surname, @Birthdate, @Height, @Weight, @StrongLeg, @Status);";
+                    "VALUES (@Id, @TeamId, @Name, @Surname, @Birthdate, @Height, @Weight, @StrongLeg, @Status, @Position, @Number);";
 
                 db.Execute(query, player);
             }
@@ -57,7 +57,7 @@ namespace Futsalweb.Dal.Repositories
             using (var db = new SqlConnection(_connectionString))
             {
                 var query = @"UPDATE Players SET Name = @Name, Surname = @Surname, Birthdate = @Birthdate, Height = @Height, " + 
-                    "Weight = @Weight, StrongLeg = @StrongLeg, Status = @Status " + 
+                    "Weight = @Weight, StrongLeg = @StrongLeg, Status = @Status, Position = @Position, Number = @Number " + 
                     "WHERE Id = @Id;";
 
                 db.Execute(query, player);
