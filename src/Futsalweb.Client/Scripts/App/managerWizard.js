@@ -32,7 +32,7 @@
     };
 
     // On initialize
-    $(function () {
+     $(function () {
         console.log("Ready!!!");
         ko.applyBindings(viewModel);
     });
