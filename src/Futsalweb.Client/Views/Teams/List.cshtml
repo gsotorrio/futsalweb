@@ -8,7 +8,9 @@
 
 <h2>Your Teams</h2>
 <hr />
-<div class="alert alert-info"" role="alert" data-bind="if: displayMassage"><h2>Any team was created. If you want create a team, please pres <strong>"New Team"</strong> button.</h2></div>
+<div data-bind="if: displayMassage">
+    <div class="alert alert-info" " role="alert"><h2>Any team was created. If you want create a team, please pres <strong>"New Team"</strong> button.</h2></div>
+</div>
 <table id="tableTeams" class="table table-striped" data-bind="visible: hiddeTable().length > 0">
     <thead>
         <tr>
