@@ -24,6 +24,8 @@
         height: ko.observable(),
         weight: ko.observable(),
         strongLeg: whatLeg(),
+        position: ko.observable(),
+        number: ko.observable(),
         status: ko.observable()
     };
 
@@ -35,6 +37,8 @@
         player.birthdate("");
         player.height("");
         player.weight("");
+        player.position("");
+        player.number("");
         player.status("");
         whatLeg([]);
         displayButtonAdd(true);
@@ -53,6 +57,8 @@
             height: player.height(),
             weight: player.weight(),
             strongLeg: player.strongLeg.toString(),
+            position: player.position(),
+            number: player.number(),
             status: player.status()
         };
 
@@ -76,6 +82,8 @@
                 height: player.height(),
                 weight: player.weight(),
                 strongLeg: leg.toString(),
+                position: player.position(),
+                number: player.number(),
                 status: player.status()
             };
 
@@ -121,6 +129,8 @@
         player.birthdate(selectedPlayer.birthdate.replace("T00:00:00", ""));
         player.height(selectedPlayer.height);
         player.weight(selectedPlayer.weight);
+        player.position(selectedPlayer.position);
+        player.number(selectedPlayer.number);
         player.status(selectedPlayer.status);
         if (selectedPlayer.strongLeg === "Left,Right" || selectedPlayer.strongLeg === "Right,Left") {
             whatLeg(["Left", "Right"]);
