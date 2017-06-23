@@ -11,6 +11,9 @@
 <hr />
 
 <h2>Your Teams</h2>
+<input data-bind="click: editTeamData" type="button" value="Edit" class="col-md-offset-10 col-md-2 btn btn-primary">
+<br />
+
 <h2>Manage your players</h2>
 <table id="tablePlayers" class="table table-striped">
     <thead>
@@ -45,6 +48,8 @@
         </tr>
     </tbody>
 </table>
+<input data-bind="click: editPlayersData" type="button" value="Edit" class="col-md-offset-10 col-md-2 btn btn-primary">
+<br />
 
 <h2>Manage your couching staff</h2>
 <table id="tableCoaches" class="table table-striped">
@@ -68,5 +73,7 @@
         </tr>
     </tbody>
 </table>
+<input data-bind="click: editCoachesData" type="button" value="Edit" class="col-md-offset-10 col-md-2 btn btn-primary">
+
 
 

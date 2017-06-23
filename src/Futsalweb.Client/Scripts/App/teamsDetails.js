@@ -8,11 +8,25 @@
     let coaches = ko.observableArray();
 
     // Functions
+    const editTeamData = function () {
+        window.location.href = "http://localhost:5159/teams/" + teamId + "/manager";
+    };
+
+    const editPlayersData = function () {
+        window.location.href = "http://localhost:5159/teams/" + teamId + "/players";
+    };
+
+    const editCoachesData = function () {
+        window.location.href = "http://localhost:5159/teams/" + teamId + "/coaches";
+    };
 
     // ViewModel
     let viewModel = {
         players: players,
-        coaches: coaches
+        coaches: coaches,
+        editTeamData: editTeamData,
+        editPlayersData: editPlayersData,
+        editCoachesData: editCoachesData
     };
 
 
