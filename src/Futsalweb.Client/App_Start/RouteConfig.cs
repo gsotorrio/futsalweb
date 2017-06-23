@@ -10,6 +10,12 @@ namespace Futsalweb.Client
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "TeamsManager",
+                url: "teams/{id}/manager",
+                defaults: new { controller = "Teams", action = "Manager" }
+            );
+
+            routes.MapRoute(
                 name: "TeamsPlayers",
                 url: "teams/{id}/players",
                 defaults: new { controller = "Teams", action = "Players" }

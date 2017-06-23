@@ -50,7 +50,6 @@
 
         let newPlayer = {
             teamId: teamId,
-            id: player.id(),
             name: player.name(),
             surname: player.surname(),
             birthdate: player.birthdate(),
@@ -144,7 +143,7 @@
     };
 
     const goManagerWizard = function () {
-        window.location.href = "http://localhost:5159/teams/manager"
+        window.location.href = "http://localhost:5159/teams/" + teamId + "/manager";
     }
 
     const goCoacheswizard = function () {
