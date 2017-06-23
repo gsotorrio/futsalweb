@@ -29,7 +29,7 @@
         editCoachesData: editCoachesData
     };
 
-
+    // On initialize
     $(function () {
         console.log("Ready!!!");
         ko.applyBindings(viewModel);
@@ -39,15 +39,11 @@
         });
        
         $.get("http://localhost:5159/api/teams/" + teamId + "/players", function (data) {
-            console.log(data);
             players(data);
-
         });
 
         $.get("http://localhost:5159/api/teams/" + teamId + "/coaches", function (data) {
-            console.log(data);
             coaches(data);
-
         });
     });
 })();

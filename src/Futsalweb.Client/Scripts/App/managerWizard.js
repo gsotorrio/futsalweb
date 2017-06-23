@@ -21,8 +21,6 @@
 
         if (!managerId) {
             $.post("http://localhost:5159/api/teams/Manager", newTeam).done(function (data) {
-                //teams.push(data);
-                console.log(data);
 
                 window.location.href = "http://localhost:5159/teams/" + data.id + "/players";
             });
@@ -33,7 +31,7 @@
                 name: teamManager.name(),
                 category: teamManager.category()
             };
-            console.log(newhDataTeam);
+
             $.ajax({
                 type: "PUT",
                 url: "http://localhost:5159/api/teams",
@@ -55,8 +53,8 @@
      $(function () {
         console.log("Ready!!!");
         ko.applyBindings(viewModel);
-        console.log(teamManager.id());
-        if (teamId) {
+        
+        if (teamId != "manager") {
             $.get("http://localhost:5159/api/teams/" + teamId, function (data) {
                 teamManager.id(data.id);
                 teamManager.name(data.name);

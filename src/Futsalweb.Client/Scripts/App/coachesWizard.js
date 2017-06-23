@@ -31,7 +31,6 @@
     };
 
     const putDataCoachInForm = function (selectedCoach) {
-
         coach.id(selectedCoach.id);
         coach.name(selectedCoach.name);
         coach.surname(selectedCoach.surname);
@@ -99,7 +98,6 @@
                 }
 
                 coaches.replace(coaches()[indexCoach], coachData);
-
                 cleanFormCoach();
             });
             displayButtonAdd(true);

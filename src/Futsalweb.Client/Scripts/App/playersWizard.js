@@ -71,7 +71,8 @@
         }
 
         else {
-            var leg = whatLeg();
+            let leg = whatLeg();
+
             let playerData = {
                 teamId: teamId,
                 id: player.id(),
@@ -170,6 +171,7 @@
     $(function () {
         console.log("Ready!!!");
         ko.applyBindings(viewModel);
+
         $.get("http://localhost:5159/api/teams/" + teamId + "/players", function (data) {
 
             if(data.length > 0){
