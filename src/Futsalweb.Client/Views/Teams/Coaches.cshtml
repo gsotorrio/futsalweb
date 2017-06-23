@@ -40,7 +40,8 @@
 </form>
 <br />
 
-<input data-bind="click: createCoach" type="button" value="Save" class="col-md-offset-3 col-md-2 btn btn-primary">
+<div data-bind="if: displayButtonAdd"><input data-bind="click: createCoach" type="button" value="Add" class="col-md-offset-3 col-md-2 btn btn-primary"></div>
+<div data-bind="if: displayButtonSave"><input data-bind="click: createCoach" type="button" value="Save" class="col-md-offset-3 col-md-2 btn btn-primary"></div>
 <input data-bind="click: cleanFormCoach" type="button" value="Cancel" class="col-md-offset-2 col-md-2 btn btn-primary">
 
 <br />

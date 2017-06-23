@@ -3,8 +3,13 @@
 (function () { 
     // Variables
     const teamId = location.pathname.split('/')[2];
-    let coaches = ko.observableArray();
+
+    let displayButtonAdd = ko.observable(true);
+    let displayButtonSave = ko.observable(false);
+
     let hiddeTableButtonCoach = ko.observableArray([]);
+
+    let coaches = ko.observableArray();
 
     let coach = {
         id: ko.observable(),
@@ -21,6 +26,8 @@
         coach.surname("");
         coach.birthdate("");
         coach.role("");
+        displayButtonAdd(true);
+        displayButtonSave(false);
     };
 
     const putDataCoachInForm = function (selectedCoach) {
@@ -30,6 +37,8 @@
         coach.surname(selectedCoach.surname);
         coach.birthdate(selectedCoach.birthdate.replace("T00:00:00", ""));
         coach.role(selectedCoach.role);
+        displayButtonAdd(false);
+        displayButtonSave(true);
     };
 
     const removeCoach = function (coach, event) {
@@ -93,6 +102,8 @@
 
                 cleanFormCoach();
             });
+            displayButtonAdd(true);
+            displayButtonSave(false);
         }
     };
  
@@ -114,7 +125,9 @@
         createCoach: createCoach,
         goTeamList: goTeamList,
         hiddeTableButtonCoach: hiddeTableButtonCoach,
-        goPlayersWizard: goPlayersWizard
+        goPlayersWizard: goPlayersWizard,
+        displayButtonAdd: displayButtonAdd,
+        displayButtonSave: displayButtonSave
     };
 
     // On initialize
