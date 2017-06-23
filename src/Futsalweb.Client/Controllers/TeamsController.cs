@@ -28,5 +28,11 @@ namespace Futsalweb.Client.Controllers
         {
             return View();
         }
+
+        // GET: teams/Details
+        public ActionResult Details()
+        {
+            return View();
+        }
     }
 }

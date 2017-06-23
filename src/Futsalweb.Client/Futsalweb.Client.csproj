@@ -146,6 +146,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Scripts\App\coachesWizard.js" />
+    <Content Include="Scripts\App\teamsDetails.js" />
     <Content Include="Scripts\App\managerWizard.js" />
     <Content Include="Scripts\App\playersWizard.js" />
     <Content Include="Scripts\App\teamsList.js" />
@@ -187,6 +188,7 @@
     <Content Include="Views\Teams\Manager.cshtml" />
     <Content Include="Views\Teams\Players.cshtml" />
     <Content Include="Views\Teams\Coaches.cshtml" />
+    <Content Include="Views\Teams\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
