@@ -7,5 +7,66 @@
     <script src="~/Scripts/App/teamsDetails.js"></script>
 }
 
-<h2>Details</h2>
+<h2>Your team details</h2>
+<hr />
+
+<h2>Your Teams</h2>
+<h2>Manage your players</h2>
+<table id="tablePlayers" class="table table-striped">
+    <thead>
+        <tr>
+            <th class="hideId">Player Id</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Birthdate</th>
+            <th>Height</th>
+            <th>Weight</th>
+            <th>Strong-Leg</th>
+            <th>Position</th>
+            <th>Number</th>
+            <th>Status</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody data-bind="foreach: players">
+        <tr>
+            <td class="hideId" data-bind="text: id"></td>
+            <td data-bind="text: name"></td>
+            <td data-bind="text: surname"></td>
+            <td data-bind="text: birthdate"></td>
+            <td data-bind="text: height"></td>
+            <td data-bind="text: weight"></td>
+            <td data-bind="text: strongLeg"></td>
+            <td data-bind="text: position"></td>
+            <td data-bind="text: number"></td>
+            <td data-bind="text: status"></td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Manage your couching staff</h2>
+<table id="tableCoaches" class="table table-striped">
+    <thead>
+        <tr>
+            <th class="hideId">Coach Id</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Birthdate</th>
+            <th>Role</th>
+        </tr>
+    </thead>
+
+    <tbody data-bind="foreach: coaches">
+        <tr>
+            <td class="hideId" data-bind="text: id"></td>
+            <td data-bind="text: name"></td>
+            <td data-bind="text: surname"></td>
+            <td data-bind="text: birthdate"></td>
+            <td data-bind="text: role"></td>
+        </tr>
+    </tbody>
+</table>
+
 

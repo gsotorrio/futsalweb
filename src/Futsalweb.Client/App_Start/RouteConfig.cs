@@ -28,6 +28,12 @@ namespace Futsalweb.Client
             );
 
             routes.MapRoute(
+               name: "DetalView",
+               url: "teams/{id}/details",
+               defaults: new { controller = "Teams", action = "Details" }
+           );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Teams", action = "List", id = UrlParameter.Optional }

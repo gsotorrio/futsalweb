@@ -28,6 +28,11 @@
             }
         });
     }; // messege: Are you sure???
+
+    const goDetailView = function (teamDatas) {
+        let teamId = teamDatas.id;
+        window.location.href = "http://localhost:5159/teams/" + teamId+ "/details";
+    }
   
     //ViewModel
     let viewModel = {
@@ -35,7 +40,8 @@
         team: team,
         remove: remove,
         displayMassage: displayMassage,
-        hiddeTable: hiddeTable
+        hiddeTable: hiddeTable,
+        goDetailView: goDetailView
     };
 
     // On initialize

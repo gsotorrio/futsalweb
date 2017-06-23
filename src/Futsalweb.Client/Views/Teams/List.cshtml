@@ -27,7 +27,7 @@
             <td class="hideId" data-bind="text: id"></td>
             <td data-bind="text: name"></td>
             <td data-bind="text: category"></td>
-            <td><a href="#">Detail</a></td>
+            <td data-bind="click: $root.goDetailView"><a href="#">Detail</a></td>
             <td data-bind="click: $root.remove"><a href="#">Delete</a></td>
         </tr>  
     </tbody>
