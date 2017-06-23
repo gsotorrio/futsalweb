@@ -4,6 +4,7 @@
     const teamId = location.pathname.split('/')[2];
 
     // Variables
+    let teamData = ko.observableArray();
     let players = ko.observableArray();
     let coaches = ko.observableArray();
 
@@ -20,13 +21,19 @@
         window.location.href = "http://localhost:5159/teams/" + teamId + "/coaches";
     };
 
+    const goListView = function () {
+        window.location.href = "http://localhost:5159";
+    };
+
     // ViewModel
     let viewModel = {
+        teamData: teamData,
         players: players,
         coaches: coaches,
         editTeamData: editTeamData,
         editPlayersData: editPlayersData,
-        editCoachesData: editCoachesData
+        editCoachesData: editCoachesData,
+        goListView: goListView
     };
 
     // On initialize
@@ -35,7 +42,7 @@
         ko.applyBindings(viewModel);
 
         $.get("http://localhost:5159/api/teams/" + teamId, function (data) {
-            console.log(data)
+            teamData(data);
         });
        
         $.get("http://localhost:5159/api/teams/" + teamId + "/players", function (data) {

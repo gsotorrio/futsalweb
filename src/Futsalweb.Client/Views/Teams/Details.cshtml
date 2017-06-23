@@ -9,8 +9,27 @@
 
 <h2>Your team details</h2>
 <hr />
+<input data-bind="click: goListView" type="button" value="Exit" class="col-md-2 btn btn-primary">
+<br />
 
 <h2>Your Team</h2>
+<table id="tableCoaches" class="table table-striped">
+    <thead>
+        <tr>
+            <th class="hideId">Team Id</th>
+            <th>Name</th>
+            <th>Category</th>
+        </tr>
+    </thead>
+
+    <tbody data-bind="foreach: teamData">
+        <tr>
+            <td class="hideId" data-bind="text: id"></td>
+            <td data-bind="text: name"></td>
+            <td data-bind="text: category"></td>
+        </tr>
+    </tbody>
+</table>
 <input data-bind="click: editTeamData" type="button" value="Edit" class="col-md-offset-10 col-md-2 btn btn-primary">
 <br />
 
@@ -74,3 +93,7 @@
     </tbody>
 </table>
 <input data-bind="click: editCoachesData" type="button" value="Edit" class="col-md-offset-10 col-md-2 btn btn-primary">
+<br />
+<br />
+
+<input data-bind="click: goListView" type="button" value="Exit" class="col-md-2 btn btn-primary">
