@@ -40,15 +40,14 @@
         player.position("");
         player.number("");
         player.status("");
-        //player.strongLeg.splice(0, player.strongLeg.length);
-        //whatLeg([]);
+        whatLeg([]);
         displayButtonAdd(true);
-        displayButtonSave(false);
+        displayButtonSave(false);     
     };
 
     const createPlayer = function () {
         let playerId = player.id();
-        console.log(player.strongLeg);
+
         let newPlayer = {
             teamId: teamId,
             name: player.name(),
@@ -56,7 +55,7 @@
             birthdate: player.birthdate(),
             height: player.height(),
             weight: player.weight(),
-            strongLeg: player.strongLeg .toString(),
+            strongLeg: whatLeg().toString(),
             position: player.position(),
             number: player.number(),
             status: player.status()
