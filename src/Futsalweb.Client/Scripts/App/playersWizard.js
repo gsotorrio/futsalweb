@@ -9,7 +9,7 @@
 
 
     let hiddeTableButtonPlayer = ko.observableArray([])
-
+        
     let legOption = ko.observable(true);
     let whatLeg = ko.observableArray();
 
@@ -40,14 +40,15 @@
         player.position("");
         player.number("");
         player.status("");
-        whatLeg([]);
+        //player.strongLeg.splice(0, player.strongLeg.length);
+        //whatLeg([]);
         displayButtonAdd(true);
         displayButtonSave(false);
     };
 
     const createPlayer = function () {
         let playerId = player.id();
-
+        console.log(player.strongLeg);
         let newPlayer = {
             teamId: teamId,
             name: player.name(),
@@ -55,7 +56,7 @@
             birthdate: player.birthdate(),
             height: player.height(),
             weight: player.weight(),
-            strongLeg: player.strongLeg.toString(),
+            strongLeg: player.strongLeg .toString(),
             position: player.position(),
             number: player.number(),
             status: player.status()
