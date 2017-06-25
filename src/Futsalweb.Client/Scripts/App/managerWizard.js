@@ -26,19 +26,15 @@
             });
         }
         else {
-            let newhDataTeam = {
-                id: teamManager.id(),
-                name: teamManager.name(),
-                category: teamManager.category()
-            };
+            newTeam.id = managerId;
 
             $.ajax({
                 type: "PUT",
                 url: "http://localhost:5159/api/teams",
                 contentType: "application/json",
-                data: JSON.stringify(newhDataTeam)
+                data: JSON.stringify(newTeam)
             }).done(function () {
-                window.location.href = "http://localhost:5159/teams/" + newhDataTeam.id + "/players";
+                window.location.href = "http://localhost:5159/teams/" + managerId + "/players";
             });
         }
     };
@@ -50,9 +46,10 @@
     };
 
     // On initialize
+    ko.applyBindings(viewModel);
+
      $(function () {
         console.log("Ready!!!");
-        ko.applyBindings(viewModel);
         
         if (teamId != "manager") {
             $.get("http://localhost:5159/api/teams/" + teamId, function (data) {
