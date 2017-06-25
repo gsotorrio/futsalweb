@@ -1,7 +1,6 @@
 "use strict";
 
 (function () { 
-
     // Variables
     let teams = ko.observableArray();
 
@@ -30,17 +29,16 @@
     }; // messege: Are you sure???
 
     const goDetailView = function (teamDatas) {
-        let teamId = teamDatas.id;
-        window.location.href = "http://localhost:5159/teams/" + teamId+ "/details";
+        window.location.href = "http://localhost:5159/teams/" + teamDatas.id + "/details";
     }
   
     //ViewModel
     let viewModel = {
         teams: teams,
         team: team,
-        remove: remove,
-        displayMassage: displayMassage,
         hiddeTable: hiddeTable,
+        displayMassage: displayMassage,
+        remove: remove,
         goDetailView: goDetailView
     };
 

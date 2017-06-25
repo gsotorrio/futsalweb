@@ -45,7 +45,7 @@
         displayButtonSave(false);     
     };
 
-    const createPlayer = function () {
+    const createUpdatePlayer = function () {
         let playerId = player.id();
 
         let newPlayer = {
@@ -71,8 +71,6 @@
         }
 
         else {
-            let leg = whatLeg();
-
             let playerData = {
                 teamId: teamId,
                 id: player.id(),
@@ -81,7 +79,7 @@
                 birthdate: player.birthdate(),
                 height: player.height(),
                 weight: player.weight(),
-                strongLeg: leg.toString(),
+                strongLeg: whatLeg().toString(),
                 position: player.position(),
                 number: player.number(),
                 status: player.status()
@@ -153,19 +151,19 @@
 
     //ViewModel
     let viewModel = {
+        displayButtonAdd: displayButtonAdd,
+        displayButtonSave: displayButtonSave,
+        hiddeTableButtonPlayer: hiddeTableButtonPlayer,
+        legOption: legOption,
+        whatLeg: whatLeg,
         players: players,
         player: player,
         cleanFormPlayer: cleanFormPlayer,
+        createUpdatePlayer: createUpdatePlayer,
         removePlayer: removePlayer,
-        createPlayer: createPlayer,
-        legOption: legOption,
-        whatLeg: whatLeg,
         putDataInForm: putDataInForm,
-        goCoacheswizard: goCoacheswizard,
-        hiddeTableButtonPlayer: hiddeTableButtonPlayer,
         goManagerWizard: goManagerWizard,
-        displayButtonSave: displayButtonSave,
-        displayButtonAdd: displayButtonAdd
+        goCoacheswizard: goCoacheswizard
     };
 
     $(function () {
@@ -173,7 +171,6 @@
         ko.applyBindings(viewModel);
 
         $.get("http://localhost:5159/api/teams/" + teamId + "/players", function (data) {
-
             if(data.length > 0){
                 players(data);
                 hiddeTableButtonPlayer.push("some value");

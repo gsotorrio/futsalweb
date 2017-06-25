@@ -9,15 +9,15 @@
     let coaches = ko.observableArray();
 
     // Functions
-    const editTeamData = function () {
+    const goManagerWizard = function () {
         window.location.href = "http://localhost:5159/teams/" + teamId + "/manager";
     };
 
-    const editPlayersData = function () {
+    const goPlayersWizard = function () {
         window.location.href = "http://localhost:5159/teams/" + teamId + "/players";
     };
 
-    const editCoachesData = function () {
+    const goCoachesWizard = function () {
         window.location.href = "http://localhost:5159/teams/" + teamId + "/coaches";
     };
 
@@ -30,9 +30,9 @@
         teamData: teamData,
         players: players,
         coaches: coaches,
-        editTeamData: editTeamData,
-        editPlayersData: editPlayersData,
-        editCoachesData: editCoachesData,
+        goManagerWizard: goManagerWizard,
+        goPlayersWizard: goPlayersWizard,
+        goCoachesWizard: goCoachesWizard,
         goListView: goListView
     };
 

@@ -11,7 +11,7 @@
     };
 
     // Public Functions
-    const createTeam = function () {
+    const createUpdateTeam = function () {
         let managerId = teamManager.id();
 
         let newTeam = {
@@ -46,7 +46,7 @@
     //ViewModel
     let viewModel = {
         teamManager: teamManager,
-        createTeam: createTeam
+        createUpdateTeam: createUpdateTeam
     };
 
     // On initialize

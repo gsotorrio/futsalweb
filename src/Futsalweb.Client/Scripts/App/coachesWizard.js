@@ -52,7 +52,7 @@
         });
     };
 
-    const createCoach = function () {
+    const createUpdateCoach = function () {
         let coachId = coach.id();
 
         if (!coachId){
@@ -64,14 +64,12 @@
                 role: coach.role()
             };
 
-            $.post("http://localhost:5159/api/coaches", newCoach).done(function (data) {
-                
+        $.post("http://localhost:5159/api/coaches", newCoach).done(function (data) {
                 coaches.push(data);
                 cleanFormCoach();
                 hiddeTableButtonCoach.push("some value");
             });
-        }
-        
+        }      
         else {
             let coachData = {
                 teamId: teamId,
@@ -115,17 +113,17 @@
  
     // ViewModel
     let viewModel = {
+        displayButtonAdd: displayButtonAdd,
+        displayButtonSave: displayButtonSave,
+        hiddeTableButtonCoach: hiddeTableButtonCoach,
         coaches: coaches,
         coach: coach,
         cleanFormCoach: cleanFormCoach,
         putDataCoachInForm: putDataCoachInForm,
         removeCoach: removeCoach,
-        createCoach: createCoach,
-        goTeamList: goTeamList,
-        hiddeTableButtonCoach: hiddeTableButtonCoach,
+        createUpdateCoach: createUpdateCoach,
         goPlayersWizard: goPlayersWizard,
-        displayButtonAdd: displayButtonAdd,
-        displayButtonSave: displayButtonSave
+        goTeamList: goTeamList
     };
 
     // On initialize
@@ -134,7 +132,6 @@
         ko.applyBindings(viewModel);
 
         $.get("http://localhost:5159/api/teams/" + teamId + "/coaches", function (data) {
-
             if(data.length > 0){
                 coaches(data);
                 hiddeTableButtonCoach.push("some value");
