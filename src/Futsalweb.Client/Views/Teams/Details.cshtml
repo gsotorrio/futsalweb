@@ -7,8 +7,6 @@
     <script src="~/Scripts/App/teamsDetails.js"></script>
 }
 
-<h2>Your team details</h2>
-<hr />
 <input data-bind="click: goListView" type="button" value="Exit" class="col-md-2 btn btn-primary">
 <br />
 
@@ -19,7 +17,6 @@
             <th class="hideId">Team Id</th>
             <th>Name</th>
             <th>Category</th>
-            <th></th>
         </tr>
     </thead>
 
@@ -28,14 +25,13 @@
             <td class="hideId" data-bind="text: id"></td>
             <td data-bind="text: name"></td>
             <td data-bind="text: category"></td>
-            <td><img src="~/Content/images/c2f7d6ba-647c-4f9f-85b5-e43f642d3870.jpg" /></td>
         </tr>
     </tbody>
 </table>
 <input data-bind="click: goManagerWizard" type="button" value="Edit" class="col-md-offset-10 col-md-2 btn btn-primary">
 <br />
 
-<h2>Your players</h2>
+<h2>Team Players</h2>
 <table id="tablePlayers" class="table table-striped">
     <thead>
         <tr>
@@ -72,7 +68,7 @@
 <input data-bind="click: goPlayersWizard" type="button" value="Edit" class="col-md-offset-10 col-md-2 btn btn-primary">
 <br />
 
-<h2>Your couching staff</h2>
+<h2>Team Couching Staff</h2>
 <table id="tableCoaches" class="table table-striped">
     <thead>
         <tr>
