@@ -146,6 +146,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Scripts\App\coachesWizard.js" />
+    <Content Include="Scripts\App\settings.js" />
     <Content Include="Scripts\App\teamsDetails.js" />
     <Content Include="Scripts\App\managerWizard.js" />
     <Content Include="Scripts\App\playersWizard.js" />

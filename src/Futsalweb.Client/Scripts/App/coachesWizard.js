@@ -3,6 +3,8 @@
 (function () { 
     // Variables
     const teamId = location.pathname.split('/')[2];
+    let protocolHost = new SaveUrl();
+
 
     let displayButtonAdd = ko.observable(true);
     let displayButtonSave = ko.observable(false);
@@ -42,7 +44,7 @@
 
     const removeCoach = function (coach, event) {
         $.ajax({
-            url: "http://localhost:5159/api/coaches/" + coach.id,
+            url: protocolHost.url + "/api/coaches/" + coach.id,
             method: "DELETE"
         }).done(function () {
             coaches.remove(coach);
@@ -64,7 +66,7 @@
                 role: coach.role()
             };
 
-        $.post("http://localhost:5159/api/coaches", newCoach).done(function (data) {
+            $.post(protocolHost.url + "/api/coaches", newCoach).done(function (data) {
                 coaches.push(data);
                 cleanFormCoach();
                 hiddeTableButtonCoach.push("some value");
@@ -82,7 +84,7 @@
 
             $.ajax({
                 type: "PUT",
-                url: "http://localhost:5159/api/coaches",
+                url: protocolHost.url + "/api/coaches",
                 contentType: "application/json",
                 data: JSON.stringify(coachData)
             }).done(function () {
@@ -104,11 +106,11 @@
     };
  
     const goPlayersWizard = function () {
-        window.location.href = "http://localhost:5159/teams/" + teamId + "/players";
+        window.location.href = protocolHost.url + "/teams/" + teamId + "/players";
     }
 
     const goTeamList = function () {
-        window.location.href = "http://localhost:5159";
+        window.location.href = protocolHost.url;
     };
  
     // ViewModel
@@ -131,7 +133,7 @@
         console.log("Ready!!!");
         ko.applyBindings(viewModel);
 
-        $.get("http://localhost:5159/api/teams/" + teamId + "/coaches", function (data) {
+        $.get(protocolHost.url + "/api/teams/" + teamId + "/coaches", function (data) {
             if(data.length > 0){
                 coaches(data);
                 hiddeTableButtonCoach.push("some value");

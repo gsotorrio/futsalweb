@@ -3,6 +3,8 @@
 (function () { 
     // Variables
     const teamId = location.pathname.split('/')[2];
+    let protocolHost = new SaveUrl();
+
 
     let displayButtonAdd = ko.observable(true);
     let displayButtonSave = ko.observable(false);
@@ -62,7 +64,7 @@
         };
 
         if (!playerId) {
-            $.post("http://localhost:5159/api/players", newPlayer).done(function (data) {
+            $.post(protocolHost.url + "/api/players", newPlayer).done(function (data) {
 
                 players.push(data);
                 cleanFormPlayer();
@@ -87,7 +89,7 @@
 
             $.ajax({
                 type: "PUT",
-                url: "http://localhost:5159/api/players",
+                url: protocolHost + "/api/players",
                 contentType: "application/json",
                 data: JSON.stringify(playerData)
             }).done(function () {
@@ -110,7 +112,7 @@
 
     const removePlayer = function (player, event) {
         $.ajax({
-            url: "http://localhost:5159/api/players/" + player.id,
+            url: protocolHost.url + "/api/players/" + player.id,
             method: "DELETE"
         }).done(function () {
             players.remove(player);
@@ -142,11 +144,11 @@
     };
 
     const goManagerWizard = function () {
-        window.location.href = "http://localhost:5159/teams/" + teamId + "/manager";
+        window.location.href = protocolHost.url + "/teams/" + teamId + "/manager";
     }
 
     const goCoacheswizard = function () {
-        window.location.href = "http://localhost:5159/teams/" + teamId + "/coaches";
+        window.location.href = protocolHost.url + "/teams/" + teamId + "/coaches";
     };
 
     //ViewModel
@@ -170,7 +172,7 @@
         console.log("Ready!!!");
         ko.applyBindings(viewModel);
 
-        $.get("http://localhost:5159/api/teams/" + teamId + "/players", function (data) {
+        $.get(protocolHost.url + "/api/teams/" + teamId + "/players", function (data) {
             if(data.length > 0){
                 players(data);
                 hiddeTableButtonPlayer.push("some value");

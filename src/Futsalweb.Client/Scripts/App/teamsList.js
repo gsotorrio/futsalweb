@@ -1,7 +1,9 @@
 "use strict";
 
-(function () { 
+(function () {
     // Variables
+    let protocolHost = new SaveUrl();
+
     let teams = ko.observableArray();
 
     let team = {
@@ -17,7 +19,7 @@
     // Public Functions
     const remove = function (team, event) {
         $.ajax({
-            url: "http://localhost:5159/api/teams/" + team.id,
+            url: protocolHost.url + "/api/teams/" + team.id,
             method: "DELETE"
         }).done(function () {
             teams.remove(team);
@@ -29,7 +31,7 @@
     }; // messege: Are you sure???
 
     const goDetailView = function (teamDatas) {
-        window.location.href = "http://localhost:5159/teams/" + teamDatas.id + "/details";
+        window.location.href = protocolHost.url + "/teams/" + teamDatas.id + "/details";
     }
   
     //ViewModel
@@ -47,7 +49,7 @@
         console.log("Ready!!!");
         ko.applyBindings(viewModel);
 
-        $.get("http://localhost:5159/api/teams", function (data) {
+        $.get(protocolHost.url + "/api/teams", function (data) {
             if (data.length == 0) {
                 displayMassage(true);
             }

@@ -1,7 +1,9 @@
 ﻿"use strict";
 
-(function () { 
+(function () {
     // Variables
+    let protocolHost = new SaveUrl();
+
     let teamManager = {
         id: ko.observable(),
         name: ko.observable(),
@@ -18,9 +20,9 @@
         };
 
         if (!managerId) {
-            $.post("http://localhost:5159/api/teams/Manager", newTeam).done(function (data) {
+            $.post(protocolHost.url + "/api/teams/Manager", newTeam).done(function (data) {
 
-                window.location.href = "http://localhost:5159/teams/" + data.id + "/players";
+                window.location.href = protocolHost.url + "/teams/" + data.id + "/players";
             });
         }
         else {
@@ -28,11 +30,11 @@
 
             $.ajax({
                 type: "PUT",
-                url: "http://localhost:5159/api/teams",
+                url: protocolHost.url + "/api/teams",
                 contentType: "application/json",
                 data: JSON.stringify(newTeam)
             }).done(function () {
-                window.location.href = "http://localhost:5159/teams/" + managerId + "/players";
+                window.location.href = protocolHost.url + "/teams/" + managerId + "/players";
             });
         }
     };
@@ -53,7 +55,7 @@
          let teamId = url.match(re);
 
         if (teamId) {
-            $.get("http://localhost:5159/api/teams/" + teamId, function (data) {
+            $.get(protocolHost.url + "/api/teams/" + teamId, function (data) {
                 teamManager.id(data.id);
                 teamManager.name(data.name);
                 teamManager.category(data.category);

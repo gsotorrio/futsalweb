@@ -2,6 +2,7 @@
 
 (function () {
     const teamId = location.pathname.split('/')[2];
+    let protocolHost = new SaveUrl();
 
     // Variables
     let teamData = ko.observableArray();
@@ -10,19 +11,19 @@
 
     // Functions
     const goManagerWizard = function () {
-        window.location.href = "http://localhost:5159/teams/" + teamId + "/manager";
+        window.location.href = protocolHost.url + "/teams/" + teamId + "/manager";
     };
 
     const goPlayersWizard = function () {
-        window.location.href = "http://localhost:5159/teams/" + teamId + "/players";
+        window.location.href = protocolHost.url + "/teams/" + teamId + "/players";
     };
 
     const goCoachesWizard = function () {
-        window.location.href = "http://localhost:5159/teams/" + teamId + "/coaches";
+        window.location.href = protocolHost.url + "/teams/" + teamId + "/coaches";
     };
 
     const goListView = function () {
-        window.location.href = "http://localhost:5159";
+        window.location.href = protocolHost.url;
     };
 
     // ViewModel
@@ -41,15 +42,15 @@
         console.log("Ready!!!");
         ko.applyBindings(viewModel);
 
-        $.get("http://localhost:5159/api/teams/" + teamId, function (data) {
+        $.get(protocolHost.url + "/api/teams/" + teamId, function (data) {
             teamData(data);
         });
        
-        $.get("http://localhost:5159/api/teams/" + teamId + "/players", function (data) {
+        $.get(protocolHost.url + "/api/teams/" + teamId + "/players", function (data) {
             players(data);
         });
 
-        $.get("http://localhost:5159/api/teams/" + teamId + "/coaches", function (data) {
+        $.get(protocolHost.url + "/api/teams/" + teamId + "/coaches", function (data) {
             coaches(data);
         });
     });

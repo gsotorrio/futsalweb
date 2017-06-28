@@ -14,7 +14,8 @@ namespace Futsalweb.Client
                         "~/Scripts/knockout-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/others").Include(
-            "~/Scripts/ie10-viewport-bug-workaround.js"));
+                "~/Scripts/App/settings.js",
+                "~/Scripts/ie10-viewport-bug-workaround.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
