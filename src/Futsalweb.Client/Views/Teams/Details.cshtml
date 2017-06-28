@@ -7,9 +7,6 @@
     <script src="~/Scripts/App/teamsDetails.js"></script>
 }
 
-<input data-bind="click: goListView" type="button" value="Exit" class="col-md-2 btn btn-primary">
-<br />
-
 <h2>Your Team</h2>
 <table id="tableCoaches" class="table table-striped">
     <thead>
@@ -65,7 +62,7 @@
         </tr>
     </tbody>
 </table>
-<input data-bind="click: goPlayersWizard" type="button" value="Edit" class="col-md-offset-10 col-md-2 btn btn-primary">
+<input data-bind="click: goPlayersWizard" type="button" value="Edit Players" class="col-md-offset-10 col-md-2 btn btn-primary">
 <br />
 
 <h2>Team Couching Staff</h2>
@@ -90,8 +87,4 @@
         </tr>
     </tbody>
 </table>
-<input data-bind="click: goCoachesWizard" type="button" value="Edit" class="col-md-offset-10 col-md-2 btn btn-primary">
-<br />
-<br />
-
-<input data-bind="click: goListView" type="button" value="Exit" class="col-md-2 btn btn-primary">
+<input data-bind="click: goCoachesWizard" type="button" value="Edit Staff" class="col-md-offset-10 col-md-2 btn btn-primary">

@@ -2,8 +2,6 @@
 
 (function () { 
     // Variables
-    const teamId = location.pathname.split('/')[2];
-
     let teamManager = {
         id: ko.observable(),
         name: ko.observable(),
@@ -49,9 +47,12 @@
     ko.applyBindings(viewModel);
 
      $(function () {
-        console.log("Ready!!!");
-        
-        if (teamId != "manager") {
+         console.log("Ready!!!");
+         let url = location.pathname;
+         let re = /[a-z\d-]{36}/g;
+         let teamId = url.match(re);
+
+        if (teamId) {
             $.get("http://localhost:5159/api/teams/" + teamId, function (data) {
                 teamManager.id(data.id);
                 teamManager.name(data.name);
