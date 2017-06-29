@@ -172,11 +172,22 @@
         console.log("Ready!!!");
         ko.applyBindings(viewModel);
 
-        $.get(protocolHost.url + "/api/teams/" + teamId + "/players", function (data) {
-            if(data.length > 0){
-                players(data);
-                hiddeTableButtonPlayer.push("some value");
-            }   
-        });
+        const callGetAjax = function () {
+            let path = teamId + "/players";
+            let putDatasForm = function (data) {
+                if (data.length > 0) {
+                    players(data);
+                    hiddeTableButtonPlayer.push("some value");
+                };
+            }
+            new GetAjax(path, putDatasForm);
+        }();
     });
 })();
+
+//$.get(protocolHost.url + "/api/teams/" + teamId + "/players", function (data) {
+//    if (data.length > 0) {
+//        players(data);
+//        hiddeTableButtonPlayer.push("some value");
+//    }
+//});

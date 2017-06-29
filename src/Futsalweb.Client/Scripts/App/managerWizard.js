@@ -48,25 +48,24 @@
     // On initialize
     ko.applyBindings(viewModel);
 
-     $(function () {
-         console.log("Ready!!!");
-         let pathUrl = location.pathname;
-         let regularExpreesion = /[a-z\d-]{36}/g;
-         let teamId = pathUrl.match(regularExpreesion);
-      
-         let callGetAjax = function (teamId) {
-             var teamId = teamId;
-             var putDatasForm = function (data) {
-                 teamManager.id(data.id);
-                 teamManager.name(data.name);
-                 teamManager.category(data.category);
-             };
-             new GetAjax(teamId, putDatasForm);
-         }
+    $(function () {
+        console.log("Ready!!!");
+        let pathUrl = location.pathname;
+        let regularExpreesion = /[a-z\d-]{36}/g;
+        let teamId = pathUrl.match(regularExpreesion);
 
-         if (teamId) {
-             callGetAjax(teamId);
-         }
+        const callGetAjax = function (teamId) {
+
+            let putDatasForm = function (data) {
+                teamManager.id(data.id);
+                teamManager.name(data.name);
+                teamManager.category(data.category);
+            };
+            new GetAjax(teamId, putDatasForm);
+        };
+        if (teamId) {
+            callGetAjax(teamId);
+        }
     });
 })();
 
