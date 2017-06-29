@@ -49,7 +49,7 @@
         console.log("Ready!!!");
         ko.applyBindings(viewModel);
 
-        $.get(protocolHost.url + "/api/teams", function (data) {
+        let showEmtyMassege = function (data) {
             if (data.length == 0) {
                 displayMassage(true);
             }
@@ -57,6 +57,7 @@
                 teams(data);
                 hiddeTable.push("some value");
             }
-        });
+        };
+        new GetAjax("", showEmtyMassege);
     });
 })();

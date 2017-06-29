@@ -53,13 +53,27 @@
          let pathUrl = location.pathname;
          let regularExpreesion = /[a-z\d-]{36}/g;
          let teamId = pathUrl.match(regularExpreesion);
+      
+         let callGetAjax = function (teamId) {
+             var teamId = teamId;
+             var putDatasForm = function (data) {
+                 teamManager.id(data.id);
+                 teamManager.name(data.name);
+                 teamManager.category(data.category);
+             };
+             new GetAjax(teamId, putDatasForm);
+         }
 
-        if (teamId) {
-            $.get(protocolHost.url + "/api/teams/" + teamId, function (data) {
-                teamManager.id(data.id);
-                teamManager.name(data.name);
-                teamManager.category(data.category);
-            });
-        }
+         if (teamId) {
+             callGetAjax(teamId);
+         }
     });
 })();
+
+ //    $.get(protocolHost.url + "/api/teams/" + teamId, function (data) {
+ //        teamManager.id(data.id);
+ //        teamManager.name(data.name);
+ //        teamManager.category(data.category);
+ //    });
+ //}
+
