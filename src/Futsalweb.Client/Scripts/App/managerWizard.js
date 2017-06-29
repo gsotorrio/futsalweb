@@ -50,9 +50,9 @@
 
      $(function () {
          console.log("Ready!!!");
-         let url = location.pathname;
-         let re = /[a-z\d-]{36}/g;
-         let teamId = url.match(re);
+         let pathUrl = location.pathname;
+         let regularExpreesion = /[a-z\d-]{36}/g;
+         let teamId = pathUrl.match(regularExpreesion);
 
         if (teamId) {
             $.get(protocolHost.url + "/api/teams/" + teamId, function (data) {
