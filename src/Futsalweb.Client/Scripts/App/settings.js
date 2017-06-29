@@ -10,12 +10,28 @@ const GetAjax = function (path, parameterFunction) {
     this.path = path;
     this.parameterFunction = parameterFunction;
 
-    if (path){
+    if (path) {
         $.get(protocolHost.url + "/api/teams/" + path, parameterFunction);
     }
     else {
         $.get(protocolHost.url + "/api/teams/", parameterFunction);
     }
-}
+};
 
-//complementos = nada, teamId,teamId/teams o players o coaches
+const PostAjax = function (path, jSon, parameterFunction) {
+    this.path = path;
+    this.jSon = jSon;
+    this.parameterFunction = parameterFunction;
+
+    $.post(protocolHost.url + "/api/" + path, newPlayer).done(parameterFunction);
+};
+
+
+
+
+//$.post(protocolHost.url + "/api/players", newPlayer).done(function (data) {
+
+//    players.push(data);
+//    cleanFormPlayer();
+//    hiddeTableButtonPlayer.push("some value");
+//});

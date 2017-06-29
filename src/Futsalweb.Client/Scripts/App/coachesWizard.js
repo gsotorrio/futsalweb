@@ -133,11 +133,23 @@
         console.log("Ready!!!");
         ko.applyBindings(viewModel);
 
-        $.get(protocolHost.url + "/api/teams/" + teamId + "/coaches", function (data) {
-            if(data.length > 0){
-                coaches(data);
-                hiddeTableButtonCoach.push("some value");
-            }   
-        });
+        const callGetAjax = function () {
+            let path = teamId + "/coaches";
+            let putDatasForm = function (data) {
+                if (data.length > 0) {
+                    coaches(data);
+                    hiddeTableButtonCoach.push("some value");
+                };
+            }
+            new GetAjax(path, putDatasForm);
+        }();
+      
     });
 })();
+
+//$.get(protocolHost.url + "/api/teams/" + teamId + "/coaches", function (data) {
+//    if (data.length > 0) {
+//        coaches(data);
+//        hiddeTableButtonCoach.push("some value");
+//    }
+//});

@@ -64,12 +64,23 @@
         };
 
         if (!playerId) {
-            $.post(protocolHost.url + "/api/players", newPlayer).done(function (data) {
+            const callPostAjax = function () {
+                let path = players;
+                let jSon = newPlayer;
 
-                players.push(data);
-                cleanFormPlayer();
-                hiddeTableButtonPlayer.push("some value");
-            });
+                let createNewPlayer = function () {
+                    players.push(data);
+                    cleanFormPlayer();
+                    hiddeTableButtonPlayer.push("some value");
+                };
+                new PostAjax(path, jSon, createNewPlayer);
+            };
+            //$.post(protocolHost.url + "/api/players", newPlayer).done(function (data) {
+
+            //    players.push(data);
+            //    cleanFormPlayer();
+            //    hiddeTableButtonPlayer.push("some value");
+            //});
         }
 
         else {
