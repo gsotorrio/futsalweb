@@ -75,13 +75,6 @@
                 };
                 new PostAjax(path, jSon, createNewPlayer);
             }();
-         
-            //$.post(protocolHost.url + "/api/players", newPlayer).done(function (data) {
-
-            //    players.push(data);
-            //    cleanFormPlayer();
-            //    hiddeTableButtonPlayer.push("some value");
-            //});
         }
 
         else {
@@ -119,24 +112,6 @@
                 new putAjax(path, jSon, updateDataPlayer);
             }();
 
-            //$.ajax({
-            //    type: "PUT",
-            //    url: protocolHost.url + "/api/players",
-            //    contentType: "application/json",
-            //    data: JSON.stringify(playerData)
-            //}).done(function () {
-            //    let indexPlayer;
-
-            //    for (var i = 0; i < players().length; i++) {
-            //        if (players()[i].id == playerData.id) {
-            //            indexPlayer = i;
-            //        }
-            //    }
-
-            //    players.replace(players()[indexPlayer], playerData);
-
-            //    cleanFormPlayer();
-            //});
             displayButtonAdd(true);
             displayButtonSave(false);
         }
@@ -216,10 +191,3 @@
         }();
     });
 })();
-
-//$.get(protocolHost.url + "/api/teams/" + teamId + "/players", function (data) {
-//    if (data.length > 0) {
-//        players(data);
-//        hiddeTableButtonPlayer.push("some value");
-//    }
-//});

@@ -30,10 +30,7 @@
 
                 new PostAjax(path, jSon, createNewTeam);
             }();
-            //$.post(protocolHost.url + "/api/teams/Manager", newTeam).done(function (data) {
-
-            //    window.location.href = protocolHost.url + "/teams/" + data.id + "/players";
-            //});
+           
         }
         else {
             newTeam.id = managerId;
@@ -48,14 +45,6 @@
 
                 new putAjax(path, jSonTeam, goPlayersWizard);
             }();
-            //$.ajax({
-            //    type: "PUT",
-            //    url: protocolHost.url + "/api/teams",
-            //    contentType: "application/json",
-            //    data: JSON.stringify(newTeam)
-            //}).done(function () {
-            //    window.location.href = protocolHost.url + "/teams/" + managerId + "/players";
-            //});
         }
     };
 
@@ -88,11 +77,3 @@
         }
     });
 })();
-
- //    $.get(protocolHost.url + "/api/teams/" + teamId, function (data) {
- //        teamManager.id(data.id);
- //        teamManager.name(data.name);
- //        teamManager.category(data.category);
- //    });
- //}
-

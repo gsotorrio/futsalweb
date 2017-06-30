@@ -5,7 +5,6 @@
     const teamId = location.pathname.split('/')[2];
     let protocolHost = new SaveUrl();
 
-
     let displayButtonAdd = ko.observable(true);
     let displayButtonSave = ko.observable(false);
 
@@ -77,12 +76,6 @@
                 };
                 new PostAjax(path, jSon, createNewCoach);
             }();
-
-            //$.post(protocolHost.url + "/api/coaches", newCoach).done(function (data) {
-            //    coaches.push(data);
-            //    cleanFormCoach();
-            //    hiddeTableButtonCoach.push("some value");
-            //});
         }      
         else {
             let coachData = {
@@ -113,24 +106,6 @@
                 new putAjax(path, jSonCoach, updateCoachData)
             }();
 
-            //$.ajax({
-            //    type: "PUT",
-            //    url: protocolHost.url + "/api/coaches",
-            //    contentType: "application/json",
-            //    data: JSON.stringify(coachData)
-            //}).done(function () {
-
-            //    let indexCoach;
-
-            //    for (var i = 0; i < coaches().length; i++) {
-            //        if (coaches()[i].id == coachData.id) {
-            //            indexCoach = i;
-            //        }
-            //    }
-
-            //    coaches.replace(coaches()[indexCoach], coachData);
-            //    cleanFormCoach();
-            //});
             displayButtonAdd(true);
             displayButtonSave(false);
         }
@@ -173,14 +148,6 @@
                 };
             }
             new GetAjax(path, putDatasForm);
-        }();
-      
+        }();   
     });
 })();
-
-//$.get(protocolHost.url + "/api/teams/" + teamId + "/coaches", function (data) {
-//    if (data.length > 0) {
-//        coaches(data);
-//        hiddeTableButtonCoach.push("some value");
-//    }
-//});
