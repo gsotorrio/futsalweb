@@ -26,6 +26,15 @@ const PostAjax = function (path, jSon, parameterFunction) {
     $.post(protocolHost.url + "/api/" + path, jSon).done(parameterFunction);
 };
 
+const putAjax = function (path, jSon, parameterFunction) {
+    this.path = path;
+    this.jSon = jSon;
+    this.parameterFunction = parameterFunction;
 
-
-
+    $.ajax({
+        type: "PUT",
+        url: protocolHost + "/api/" + path,
+        contentType: "application/json",
+        data: JSON.stringify(jSon)
+    }).done(parameterFunction);
+};
