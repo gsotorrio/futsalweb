@@ -38,14 +38,24 @@
         else {
             newTeam.id = managerId;
 
-            $.ajax({
-                type: "PUT",
-                url: protocolHost.url + "/api/teams",
-                contentType: "application/json",
-                data: JSON.stringify(newTeam)
-            }).done(function () {
-                window.location.href = protocolHost.url + "/teams/" + managerId + "/players";
-            });
+            const callPutAjax = function () {
+                let path = "teams";
+                let jSonTeam = newTeam;
+
+                const goPlayersWizard = function () {
+                    window.location.href = protocolHost.url + "/teams/" + managerId + "/players";
+                };
+
+                new putAjax(path, jSonTeam, goPlayersWizard);
+            }();
+            //$.ajax({
+            //    type: "PUT",
+            //    url: protocolHost.url + "/api/teams",
+            //    contentType: "application/json",
+            //    data: JSON.stringify(newTeam)
+            //}).done(function () {
+            //    window.location.href = protocolHost.url + "/teams/" + managerId + "/players";
+            //});
         }
     };
 
