@@ -66,11 +66,23 @@
                 role: coach.role()
             };
 
-            $.post(protocolHost.url + "/api/coaches", newCoach).done(function (data) {
-                coaches.push(data);
-                cleanFormCoach();
-                hiddeTableButtonCoach.push("some value");
-            });
+            const callPostAjax = function () {
+                let path = "coaches";
+                let jSon = newCoach;
+
+                const createNewCoach = function (data) {
+                        coaches.push(data);
+                        cleanFormCoach();
+                        hiddeTableButtonCoach.push("some value");
+                };
+                new PostAjax(path, jSon, createNewCoach);
+            }();
+
+            //$.post(protocolHost.url + "/api/coaches", newCoach).done(function (data) {
+            //    coaches.push(data);
+            //    cleanFormCoach();
+            //    hiddeTableButtonCoach.push("some value");
+            //});
         }      
         else {
             let coachData = {
