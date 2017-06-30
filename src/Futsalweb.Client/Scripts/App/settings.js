@@ -33,7 +33,7 @@ const putAjax = function (path, jSon, parameterFunction) {
 
     $.ajax({
         type: "PUT",
-        url: protocolHost + "/api/" + path,
+        url: protocolHost.url + "/api/" + path,
         contentType: "application/json",
         data: JSON.stringify(jSon)
     }).done(parameterFunction);

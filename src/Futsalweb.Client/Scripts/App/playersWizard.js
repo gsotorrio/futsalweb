@@ -99,24 +99,44 @@
                 status: player.status()
             };
 
-            $.ajax({
-                type: "PUT",
-                url: protocolHost + "/api/players",
-                contentType: "application/json",
-                data: JSON.stringify(playerData)
-            }).done(function () {
-                let indexPlayer;
+            const callPutAjax = function () {
+                let path = "players";
+                let jSon = playerData;
 
-                for (var i = 0; i < players().length; i++) {
-                    if (players()[i].id == playerData.id) {
-                        indexPlayer = i;
-                    }
-                }
+                const updateDataPlayer = function (data) {
+                        let indexPlayer;
 
-                players.replace(players()[indexPlayer], playerData);
+                        for (var i = 0; i < players().length; i++) {
+                            if (players()[i].id == playerData.id) {
+                                indexPlayer = i;
+                            }
+                        }
 
-                cleanFormPlayer();
-            });
+                        players.replace(players()[indexPlayer], playerData);
+
+                        cleanFormPlayer();
+                };
+                new putAjax(path, jSon, updateDataPlayer);
+            }();
+
+            //$.ajax({
+            //    type: "PUT",
+            //    url: protocolHost.url + "/api/players",
+            //    contentType: "application/json",
+            //    data: JSON.stringify(playerData)
+            //}).done(function () {
+            //    let indexPlayer;
+
+            //    for (var i = 0; i < players().length; i++) {
+            //        if (players()[i].id == playerData.id) {
+            //            indexPlayer = i;
+            //        }
+            //    }
+
+            //    players.replace(players()[indexPlayer], playerData);
+
+            //    cleanFormPlayer();
+            //});
             displayButtonAdd(true);
             displayButtonSave(false);
         }
