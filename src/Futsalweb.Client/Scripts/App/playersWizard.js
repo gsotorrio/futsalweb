@@ -65,16 +65,17 @@
 
         if (!playerId) {
             const callPostAjax = function () {
-                let path = players;
+                let path = "players";
                 let jSon = newPlayer;
 
-                let createNewPlayer = function () {
+                let createNewPlayer = function (data) {
                     players.push(data);
                     cleanFormPlayer();
                     hiddeTableButtonPlayer.push("some value");
                 };
                 new PostAjax(path, jSon, createNewPlayer);
-            };
+            }();
+         
             //$.post(protocolHost.url + "/api/players", newPlayer).done(function (data) {
 
             //    players.push(data);

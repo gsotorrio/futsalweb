@@ -23,15 +23,9 @@ const PostAjax = function (path, jSon, parameterFunction) {
     this.jSon = jSon;
     this.parameterFunction = parameterFunction;
 
-    $.post(protocolHost.url + "/api/" + path, newPlayer).done(parameterFunction);
+    $.post(protocolHost.url + "/api/" + path, jSon).done(parameterFunction);
 };
 
 
 
 
-//$.post(protocolHost.url + "/api/players", newPlayer).done(function (data) {
-
-//    players.push(data);
-//    cleanFormPlayer();
-//    hiddeTableButtonPlayer.push("some value");
-//});

@@ -20,10 +20,20 @@
         };
 
         if (!managerId) {
-            $.post(protocolHost.url + "/api/teams/Manager", newTeam).done(function (data) {
+            const callPostAjax = function () {
+                let path = "teams/Manager";
+                let jSon = newTeam;
 
-                window.location.href = protocolHost.url + "/teams/" + data.id + "/players";
-            });
+                const createNewTeam = function (data) {
+                    window.location.href = protocolHost.url + "/teams/" + data.id + "/players";
+                };
+
+                new PostAjax(path, jSon, createNewTeam);
+            }();
+            //$.post(protocolHost.url + "/api/teams/Manager", newTeam).done(function (data) {
+
+            //    window.location.href = protocolHost.url + "/teams/" + data.id + "/players";
+            //});
         }
         else {
             newTeam.id = managerId;
