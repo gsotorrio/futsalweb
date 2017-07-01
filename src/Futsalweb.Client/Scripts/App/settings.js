@@ -7,9 +7,6 @@ const SaveUrl = function (url) {
 let protocolHost = new SaveUrl();
 
 const getAjax = function (path, parameterFunction) {
-    this.path = path;
-    this.parameterFunction = parameterFunction;
-
     if (path) {
         $.get(protocolHost.url + "/api/teams/" + path, parameterFunction);
     }
@@ -48,5 +45,9 @@ const deleteAjax = function (path, id, parameterFunction) {
         url: protocolHost.url + "/api/" + path + id,
         method: "DELETE"
     }).done(parameterFunction);
+};
+
+const moveBetwenViews = function (id, path) {
+    window.location.href = protocolHost.url + "/teams/" + id + path;
 };
 

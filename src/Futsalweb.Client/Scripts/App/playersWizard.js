@@ -153,11 +153,11 @@
     };
 
     const goManagerWizard = function () {
-        window.location.href = protocolHost.url + "/teams/" + teamId + "/manager";
+        moveBetwenViews(teamId, "/manager");
     }
 
     const goCoacheswizard = function () {
-        window.location.href = protocolHost.url + "/teams/" + teamId + "/coaches";
+        moveBetwenViews(teamId, "/coaches");
     };
 
     //ViewModel

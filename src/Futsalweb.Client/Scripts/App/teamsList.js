@@ -30,9 +30,9 @@
         });
     }; // messege: Are you sure???
 
-    const goDetailView = function (teamDatas) {
-        window.location.href = protocolHost.url + "/teams/" + teamDatas.id + "/details";
-    }
+    const goDetailView = function (teamData) {
+        moveBetwenViews(teamData, "/details");
+    };
   
     //ViewModel
     let viewModel = {

@@ -70,7 +70,7 @@
                 teamManager.name(data.name);
                 teamManager.category(data.category);
             };
-            new GetAjax(teamId, putDatasForm);
+            new getAjax(teamId, putDatasForm);
         };
         if (teamId) {
             callGetAjax(teamId);

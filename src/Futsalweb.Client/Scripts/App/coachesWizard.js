@@ -114,11 +114,11 @@
     };
  
     const goPlayersWizard = function () {
-        window.location.href = protocolHost.url + "/teams/" + teamId + "/players";
+        moveBetwenViews(teamId, "/players");
     }
 
     const goTeamList = function () {
-        window.location.href = protocolHost.url;
+        moveBetwenViews();
     };
  
     // ViewModel

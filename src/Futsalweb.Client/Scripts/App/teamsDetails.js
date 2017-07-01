@@ -11,19 +11,15 @@
 
     // Functions
     const goManagerWizard = function () {
-        window.location.href = protocolHost.url + "/teams/" + teamId + "/manager";
+        moveBetwenViews(teamId, "/manager");
     };
 
     const goPlayersWizard = function () {
-        window.location.href = protocolHost.url + "/teams/" + teamId + "/players";
+        moveBetwenViews(teamId, "/players");
     };
 
     const goCoachesWizard = function () {
-        window.location.href = protocolHost.url + "/teams/" + teamId + "/coaches";
-    };
-
-    const goListView = function () {
-        window.location.href = protocolHost.url;
+        moveBetwenViews(teamId, "/coaches");
     };
 
     // ViewModel
@@ -33,8 +29,7 @@
         coaches: coaches,
         goManagerWizard: goManagerWizard,
         goPlayersWizard: goPlayersWizard,
-        goCoachesWizard: goCoachesWizard,
-        goListView: goListView
+        goCoachesWizard: goCoachesWizard
     };
 
     // On initialize
