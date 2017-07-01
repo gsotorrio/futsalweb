@@ -38,3 +38,15 @@ const putAjax = function (path, jSon, parameterFunction) {
         data: JSON.stringify(jSon)
     }).done(parameterFunction);
 };
+
+const deleteAjax = function (path, id, parameterFunction) {
+    this.path = path;
+    this.id = id;
+    this.parameterFunction = parameterFunction;
+
+    $.ajax({
+        url: protocolHost.url + "/api/" + path + id,
+        method: "DELETE"
+    }).done(parameterFunction);
+};
+

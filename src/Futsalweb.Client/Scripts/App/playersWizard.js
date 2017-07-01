@@ -117,16 +117,18 @@
         }
     };
 
-    const removePlayer = function (player, event) {
-        $.ajax({
-            url: protocolHost.url + "/api/players/" + player.id,
-            method: "DELETE"
-        }).done(function () {
+    const removePlayer = function (player) {
+        let path = "players/";
+        let playerId = player.id;
+
+        const deletePlayer = function () {
             players.remove(player);
             if (players().length == 0){
                 hiddeTableButtonPlayer([]);
             }
-        });
+        };
+
+        new deleteAjax(path, playerId, deletePlayer);
     };
 
     const putDataInForm = function (selectedPlayer) {
