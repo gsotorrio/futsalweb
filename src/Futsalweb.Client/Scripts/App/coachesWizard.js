@@ -118,7 +118,7 @@
     }
 
     const goTeamList = function () {
-        moveBetwenViews();
+        moveBetwenViews('','');
     };
  
     // ViewModel

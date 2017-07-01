@@ -31,7 +31,7 @@
     }; // messege: Are you sure???
 
     const goDetailView = function (teamData) {
-        moveBetwenViews(teamData, "/details");
+        moveBetwenViews(teamData.id, "/details");
     };
   
     //ViewModel
