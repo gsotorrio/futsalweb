@@ -17,7 +17,7 @@
     let displayMassage = ko.observable(false);
 
     // Public Functions
-    const remove = function (team, event) {
+    const remove = function (team) {
         $.ajax({
             url: protocolHost.url + "/api/teams/" + team.id,
             method: "DELETE"
@@ -58,6 +58,6 @@
                 hiddeTable.push("some value");
             }
         };
-        new GetAjax("", showEmtyMassege);
+        new getAjax("", showEmtyMassege);
     });
 })();

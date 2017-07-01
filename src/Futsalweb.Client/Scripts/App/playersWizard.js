@@ -73,7 +73,7 @@
                     cleanFormPlayer();
                     hiddeTableButtonPlayer.push("some value");
                 };
-                new PostAjax(path, jSon, createNewPlayer);
+                new postAjax(path, jSon, createNewPlayer);
             }();
         }
 
@@ -189,7 +189,7 @@
                     hiddeTableButtonPlayer.push("some value");
                 };
             }
-            new GetAjax(path, putDatasForm);
+            new getAjax(path, putDatasForm);
         }();
     });
 })();

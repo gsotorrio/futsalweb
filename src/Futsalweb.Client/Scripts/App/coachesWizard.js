@@ -76,7 +76,7 @@
                         cleanFormCoach();
                         hiddeTableButtonCoach.push("some value");
                 };
-                new PostAjax(path, jSon, createNewCoach);
+                new postAjax(path, jSon, createNewCoach);
             }();
         }      
         else {
@@ -149,7 +149,7 @@
                     hiddeTableButtonCoach.push("some value");
                 };
             }
-            new GetAjax(path, putDatasForm);
+            new getAjax(path, putDatasForm);
         }();   
     });
 })();

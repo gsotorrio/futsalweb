@@ -6,7 +6,7 @@ const SaveUrl = function (url) {
 
 let protocolHost = new SaveUrl();
 
-const GetAjax = function (path, parameterFunction) {
+const getAjax = function (path, parameterFunction) {
     this.path = path;
     this.parameterFunction = parameterFunction;
 
@@ -18,7 +18,7 @@ const GetAjax = function (path, parameterFunction) {
     }
 };
 
-const PostAjax = function (path, jSon, parameterFunction) {
+const postAjax = function (path, jSon, parameterFunction) {
     this.path = path;
     this.jSon = jSon;
     this.parameterFunction = parameterFunction;
