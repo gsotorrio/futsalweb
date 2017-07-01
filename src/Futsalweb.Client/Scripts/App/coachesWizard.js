@@ -41,16 +41,18 @@
         displayButtonSave(true);
     };
 
-    const removeCoach = function (coach, event) {
-        $.ajax({
-            url: protocolHost.url + "/api/coaches/" + coach.id,
-            method: "DELETE"
-        }).done(function () {
+    const removeCoach = function (coach) {
+        let path = "coaches/";
+        let coachId = coach.id;
+
+        const deleteCoach = function () {
             coaches.remove(coach);
             if (coaches().length == 0) {
                 hiddeTableButtonCoach([]);
             }
-        });
+        };
+        
+        new deleteAjax(path, coachId, deleteCoach);
     };
 
     const createUpdateCoach = function () {
