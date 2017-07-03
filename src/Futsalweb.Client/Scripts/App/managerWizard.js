@@ -17,6 +17,7 @@
         let managerId = teamManager.id();
 
         let newTeam = {
+            id: teamManager.id(),
             name: teamManager.name(),
             category: teamManager.category()
         };
@@ -32,18 +33,13 @@
             ajaxObject.post(path, jSon, createNewTeam); 
         }
         else {
-            newTeam.id = managerId;
+            let path = "teams";
 
-            const callPutAjax = function () {
-                let path = "teams";
-                let jSonTeam = newTeam;
+            const goPlayersWizard = function () {
+                window.location.href = protocolHost.url + "/teams/" + managerId+ "/players";
+            };
 
-                const goPlayersWizard = function () {
-                    window.location.href = protocolHost.url + "/teams/" + managerId + "/players";
-                };
-
-                new putAjax(path, jSonTeam, goPlayersWizard);
-            }();
+            ajaxObject.put(path, newTeam, goPlayersWizard);
         }
     };
 

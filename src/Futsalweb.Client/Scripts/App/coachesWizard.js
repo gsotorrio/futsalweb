@@ -77,9 +77,7 @@
                 hiddeTableButtonCoach.push("some value");
             };
 
-            ajaxObject.post(path, newCoach, createNewCoach);
-             
-            
+            ajaxObject.post(path, newCoach, createNewCoach);     
         }      
         else {
             let coachData = {
@@ -91,25 +89,22 @@
                 role: coach.role()
             };
 
-            const callPutAjax = function () {
-                let path = "coaches";
-                let jSonCoach = coachData;
+            let path = "coaches";
 
-                const updateCoachData = function (data) {
-                    let indexCoach;
+            const updateCoachData = function (data) {
+                let indexCoach;
 
-                    for (var i = 0; i < coaches().length; i++) {
-                        if (coaches()[i].id == coachData.id) {
-                            indexCoach = i;
-                        }
+                for (var i = 0; i < coaches().length; i++) {
+                    if (coaches()[i].id == coachData.id) {
+                        indexCoach = i;
                     }
+                }
+                coaches.replace(coaches()[indexCoach], coachData);
+                cleanFormCoach();
+            };
 
-                    coaches.replace(coaches()[indexCoach], coachData);
-                    cleanFormCoach();
-                };
-                new putAjax(path, jSonCoach, updateCoachData)
-            }();
-
+            ajaxObject.put(path, coachData, updateCoachData)
+      
             displayButtonAdd(true);
             displayButtonSave(false);
         }

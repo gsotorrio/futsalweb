@@ -93,26 +93,22 @@
                 status: player.status()
             };
 
-            const callPutAjax = function () {
-                let path = "players";
-                let jSon = playerData;
+            let path = "players";
+              
+            const updateDataPlayer = function (data) {
+                let indexPlayer;
 
-                const updateDataPlayer = function (data) {
-                        let indexPlayer;
+                for (var i = 0; i < players().length; i++) {
+                    if (players()[i].id == playerData.id) {
+                        indexPlayer = i;
+                    }
+                }
+                players.replace(players()[indexPlayer], playerData);
+                cleanFormPlayer();
+            };
 
-                        for (var i = 0; i < players().length; i++) {
-                            if (players()[i].id == playerData.id) {
-                                indexPlayer = i;
-                            }
-                        }
-
-                        players.replace(players()[indexPlayer], playerData);
-
-                        cleanFormPlayer();
-                };
-                new putAjax(path, jSon, updateDataPlayer);
-            }();
-
+            ajaxObject.put(path, playerData, updateDataPlayer);
+          
             displayButtonAdd(true);
             displayButtonSave(false);
         }
