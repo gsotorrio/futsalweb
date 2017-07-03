@@ -4,6 +4,8 @@
     // Variables
     const teamId = location.pathname.split('/')[2];
     let protocolHost = new SaveUrl();
+    let ajaxObject = new CallsServer();
+
 
     let displayButtonAdd = ko.observable(true);
     let displayButtonSave = ko.observable(false);
@@ -75,8 +77,7 @@
                 hiddeTableButtonCoach.push("some value");
             };
 
-            let ajaxPost = new CallsServer();
-            ajaxPost.post(path, newCoach, createNewCoach);
+            ajaxObject.post(path, newCoach, createNewCoach);
              
             
         }      
