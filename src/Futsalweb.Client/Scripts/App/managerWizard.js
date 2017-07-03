@@ -58,17 +58,12 @@
         let regularExpreesion = /[a-z\d-]{36}/g;
         let teamId = pathUrl.match(regularExpreesion);
 
-        const callGetAjax = function (teamId) {
-
-            let putDatasForm = function (data) {
-                teamManager.id(data.id);
-                teamManager.name(data.name);
-                teamManager.category(data.category);
-            };
-            new getAjax(teamId, putDatasForm);
+        const putDatasForm = function (data) {
+            teamManager.id(data.id);
+            teamManager.name(data.name);
+            teamManager.category(data.category);
         };
-        if (teamId) {
-            callGetAjax(teamId);
-        }
+
+        ajaxObject.get(teamId, putDatasForm);
     });
 })();

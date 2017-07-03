@@ -125,7 +125,7 @@
             }
         };
 
-        new deleteAjax(path, playerId, deletePlayer);
+        ajaxObject.delete(path, playerId, deletePlayer);
     };
 
     const putDataInForm = function (selectedPlayer) {
@@ -178,15 +178,15 @@
         console.log("Ready!!!");
         ko.applyBindings(viewModel);
 
-        const callGetAjax = function () {
-            let path = teamId + "/players";
-            let putDatasForm = function (data) {
-                if (data.length > 0) {
-                    players(data);
-                    hiddeTableButtonPlayer.push("some value");
-                };
-            }
-            new getAjax(path, putDatasForm);
-        }();
+        let path = teamId + "/players";
+
+        let putDatasForm = function (data) {
+            if (data.length > 0) {
+                players(data);
+                hiddeTableButtonPlayer.push("some value");
+            };
+        }
+
+        ajaxObject.get(path, putDatasForm);  
     });
 })();

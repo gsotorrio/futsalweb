@@ -54,7 +54,7 @@
             }
         };
         
-        new deleteAjax(path, coachId, deleteCoach);
+        ajaxObject.delete(path, coachId, deleteCoach);
     };
 
     const createUpdateCoach = function () {
@@ -138,15 +138,15 @@
         console.log("Ready!!!");
         ko.applyBindings(viewModel);
 
-        const callGetAjax = function () {
-            let path = teamId + "/coaches";
-            let putDatasForm = function (data) {
-                if (data.length > 0) {
-                    coaches(data);
-                    hiddeTableButtonCoach.push("some value");
-                };
+        let path = teamId + "/coaches";
+
+        let putDatasForm = function (data) {
+            if (data.length > 0) {
+                coaches(data);
+                hiddeTableButtonCoach.push("some value");
             }
-            new getAjax(path, putDatasForm);
-        }();   
+        };
+
+        ajaxObject.get(path, putDatasForm);
     });
 })();

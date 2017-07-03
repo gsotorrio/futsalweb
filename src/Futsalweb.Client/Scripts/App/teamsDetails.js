@@ -39,16 +39,11 @@
         console.log("Ready!!!");
         ko.applyBindings(viewModel);
 
-        $.get(protocolHost.url + "/api/teams/" + teamId, function (data) {
-            teamData(data);
-        });
+        ajaxObject.get(teamId, function (data) { teamData(data) });
+      
+        ajaxObject.get(teamId + "/players", function (data) { players(data) });
+        
+        ajaxObject.get(teamId + "/coaches", function (data) { coaches(data) });
        
-        $.get(protocolHost.url + "/api/teams/" + teamId + "/players", function (data) {
-            players(data);
-        });
-
-        $.get(protocolHost.url + "/api/teams/" + teamId + "/coaches", function (data) {
-            coaches(data);
-        });
     });
 })();

@@ -59,6 +59,6 @@
                 hiddeTable.push("some value");
             }
         };
-        new getAjax("", showEmtyMassege);
+        ajaxObject.get("", showEmtyMassege);
     });
 })();
