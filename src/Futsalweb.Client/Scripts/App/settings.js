@@ -6,6 +6,43 @@ const SaveUrl = function (url) {
 
 let protocolHost = new SaveUrl();
 
+function CallsServer() {
+    this.post = function (path, jSon, parameterFunction) {
+        $.post(protocolHost.url + "/api/" + path, jSon).done(parameterFunction);
+    };
+
+    this.get = function (path, parameterFunction) {
+        if (path) {
+            $.get(protocolHost.url + "/api/teams/" + path, parameterFunction);
+        }
+        else {
+            $.get(protocolHost.url + "/api/teams/", parameterFunction);
+        }
+    };
+
+    this.put = function (path, jSon, parameterFunction) {
+        $.ajax({
+            type: "PUT",
+            url: protocolHost.url + "/api/" + path,
+            contentType: "application/json",
+            data: JSON.stringify(jSon)
+        }).done(parameterFunction);
+    };
+
+    this.delete = function (path, id, parameterFunction) {
+        $.ajax({
+            url: protocolHost.url + "/api/" + path + id,
+            method: "DELETE"
+        }).done(parameterFunction);
+    };
+}
+
+
+
+
+
+
+
 const getAjax = function (path, parameterFunction) {
     if (path) {
         $.get(protocolHost.url + "/api/teams/" + path, parameterFunction);

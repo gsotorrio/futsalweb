@@ -68,15 +68,15 @@
             };
 
             let path = "coaches";
-            let jSon = newCoach;
 
             const createNewCoach = function (data) {
                 coaches.push(data);
                 cleanFormCoach();
                 hiddeTableButtonCoach.push("some value");
             };
-            let pot = new PostAjax();
-            pot.post(path, jSon, createNewCoach);
+
+            let ajaxPost = new CallsServer();
+            ajaxPost.post(path, newCoach, createNewCoach);
              
             
         }      
