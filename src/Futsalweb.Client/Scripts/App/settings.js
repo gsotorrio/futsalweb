@@ -15,13 +15,11 @@ const getAjax = function (path, parameterFunction) {
     }
 };
 
-const postAjax = function (path, jSon, parameterFunction) {
-    this.path = path;
-    this.jSon = jSon;
-    this.parameterFunction = parameterFunction;
-
-    $.post(protocolHost.url + "/api/" + path, jSon).done(parameterFunction);
-};
+function PostAjax() {
+    this.post = function (path, jSon, parameterFunction) {
+        $.post(protocolHost.url + "/api/" + path, jSon).done(parameterFunction);
+    };
+}
 
 const putAjax = function (path, jSon, parameterFunction) {
     this.path = path;

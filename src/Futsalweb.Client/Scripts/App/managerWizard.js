@@ -28,7 +28,7 @@
                     window.location.href = protocolHost.url + "/teams/" + data.id + "/players";
                 };
 
-                new PostAjax(path, jSon, createNewTeam);
+                new postAjax(path, jSon, createNewTeam);
             }();
            
         }

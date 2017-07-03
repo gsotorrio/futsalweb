@@ -67,17 +67,18 @@
                 role: coach.role()
             };
 
-            const callPostAjax = function () {
-                let path = "coaches";
-                let jSon = newCoach;
+            let path = "coaches";
+            let jSon = newCoach;
 
-                const createNewCoach = function (data) {
-                        coaches.push(data);
-                        cleanFormCoach();
-                        hiddeTableButtonCoach.push("some value");
-                };
-                new postAjax(path, jSon, createNewCoach);
-            }();
+            const createNewCoach = function (data) {
+                coaches.push(data);
+                cleanFormCoach();
+                hiddeTableButtonCoach.push("some value");
+            };
+            let pot = new PostAjax();
+            pot.post(path, jSon, createNewCoach);
+             
+            
         }      
         else {
             let coachData = {
