@@ -4,6 +4,8 @@
     // Variables
     const teamId = location.pathname.split('/')[2];
     let protocolHost = new SaveUrl();
+    let ajaxObject = new CallsServer();
+
 
 
     let displayButtonAdd = ko.observable(true);
@@ -64,17 +66,16 @@
         };
 
         if (!playerId) {
-            const callPostAjax = function () {
-                let path = "players";
-                let jSon = newPlayer;
+            let path = "players";
+            let jSon = newPlayer;
 
-                let createNewPlayer = function (data) {
-                    players.push(data);
-                    cleanFormPlayer();
-                    hiddeTableButtonPlayer.push("some value");
-                };
-                new postAjax(path, jSon, createNewPlayer);
-            }();
+            let createNewPlayer = function (data) {
+                players.push(data);
+                cleanFormPlayer();
+                hiddeTableButtonPlayer.push("some value");
+            };
+
+            ajaxObject.post(path, jSon, createNewPlayer);
         }
 
         else {

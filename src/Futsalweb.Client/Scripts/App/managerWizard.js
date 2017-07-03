@@ -3,6 +3,8 @@
 (function () {
     // Variables
     let protocolHost = new SaveUrl();
+    let ajaxObject = new CallsServer();
+
 
     let teamManager = {
         id: ko.observable(),
@@ -20,17 +22,14 @@
         };
 
         if (!managerId) {
-            const callPostAjax = function () {
-                let path = "teams/Manager";
-                let jSon = newTeam;
+            let path = "teams/Manager";
+            let jSon = newTeam;
 
-                const createNewTeam = function (data) {
-                    window.location.href = protocolHost.url + "/teams/" + data.id + "/players";
-                };
+            const createNewTeam = function (data) {
+                window.location.href = protocolHost.url + "/teams/" + data.id + "/players";
+            };
 
-                new postAjax(path, jSon, createNewTeam);
-            }();
-           
+            ajaxObject.post(path, jSon, createNewTeam); 
         }
         else {
             newTeam.id = managerId;

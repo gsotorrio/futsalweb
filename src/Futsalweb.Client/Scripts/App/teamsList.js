@@ -3,6 +3,7 @@
 (function () {
     // Variables
     let protocolHost = new SaveUrl();
+    let ajaxObject = new CallsServer();
 
     let teams = ko.observableArray();
 
