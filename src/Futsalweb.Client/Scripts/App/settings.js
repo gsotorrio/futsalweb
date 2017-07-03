@@ -6,7 +6,7 @@ const SaveUrl = function (url) {
 
 let protocolHost = new SaveUrl();
 
-function CallsServer() {
+const CallsServer = function () {
     this.post = function (path, jSon, parameterFunction) {
         $.post(protocolHost.url + "/api/" + path, jSon).done(parameterFunction);
     };
@@ -35,7 +35,7 @@ function CallsServer() {
             method: "DELETE"
         }).done(parameterFunction);
     };
-}
+};
 
 const moveBetwenViews = function (id, path) {
     window.location.href = protocolHost.url + "/teams/" + id + path;
