@@ -2,9 +2,7 @@
 
 (function () {
     // Variables
-    let protocolHost = new SaveUrl();
     let ajaxObject = new CallsServer();
-
 
     let teamManager = {
         id: ko.observable(),
@@ -27,7 +25,7 @@
             let jSon = newTeam;
 
             const createNewTeam = function (data) {
-                window.location.href = protocolHost.url + "/teams/" + data.id + "/players";
+                moveBetwenViews(data.id, "/players")
             };
 
             ajaxObject.post(path, jSon, createNewTeam); 
@@ -36,7 +34,7 @@
             let path = "teams";
 
             const goPlayersWizard = function () {
-                window.location.href = protocolHost.url + "/teams/" + managerId+ "/players";
+                moveBetwenViews(managerId, "/players")
             };
 
             ajaxObject.put(path, newTeam, goPlayersWizard);

@@ -3,9 +3,7 @@
 (function () { 
     // Variables
     const teamId = location.pathname.split('/')[2];
-    let protocolHost = new SaveUrl();
     let ajaxObject = new CallsServer();
-
 
     let displayButtonAdd = ko.observable(true);
     let displayButtonSave = ko.observable(false);

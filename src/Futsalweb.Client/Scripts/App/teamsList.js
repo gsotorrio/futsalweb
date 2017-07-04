@@ -2,7 +2,6 @@
 
 (function () {
     // Variables
-    let protocolHost = new SaveUrl();
     let ajaxObject = new CallsServer();
 
     let teams = ko.observableArray();
@@ -19,16 +18,18 @@
 
     // Public Functions
     const remove = function (team) {
-        $.ajax({
-            url: protocolHost.url + "/api/teams/" + team.id,
-            method: "DELETE"
-        }).done(function () {
-            teams.remove(team);
-            if (teams().length == 0) {
-                hiddeTable([]);
-                displayMassage(true);
-            }
-        });
+        let path = "teams/";
+
+        const deleteTeam = function () {
+                teams.remove(team);
+                if (teams().length == 0) {
+                    hiddeTable([]);
+                    displayMassage(true);
+                }
+        };
+
+        ajaxObject.delete(path, team.id, deleteTeam)
+
     }; // messege: Are you sure???
 
     const goDetailView = function (teamData) {

@@ -1,12 +1,10 @@
 ﻿"use strict";
 
 (function () {
+    // Variables
     const teamId = location.pathname.split('/')[2];
-    let protocolHost = new SaveUrl();
     let ajaxObject = new CallsServer();
 
-
-    // Variables
     let teamData = ko.observableArray();
     let players = ko.observableArray();
     let coaches = ko.observableArray();
