@@ -3,7 +3,7 @@
 (function () { 
     // Variables
     const teamId = location.pathname.split('/')[2];
-    let ajaxObject = new CallsServer();
+    let httpAjax = new HttpAjax();
 
     let displayButtonAdd = ko.observable(true);
     let displayButtonSave = ko.observable(false);
@@ -42,8 +42,7 @@
     };
 
     const removeCoach = function (coach) {
-        let path = "coaches/";
-        let coachId = coach.id;
+        let path = "/api/coaches/" + coach.id;
 
         const deleteCoach = function () {
             coaches.remove(coach);
@@ -52,7 +51,7 @@
             }
         };
         
-        ajaxObject.delete(path, coachId, deleteCoach);
+        httpAjax.delete(path, deleteCoach);
     };
 
     const createUpdateCoach = function () {
@@ -67,7 +66,7 @@
                 role: coach.role()
             };
 
-            let path = "coaches";
+            let path = "/api/coaches";
 
             const createNewCoach = function (data) {
                 coaches.push(data);
@@ -75,7 +74,7 @@
                 hiddeTableButtonCoach.push("some value");
             };
 
-            ajaxObject.post(path, newCoach, createNewCoach);     
+            httpAjax.post(path, newCoach, createNewCoach);
         }      
         else {
             let coachData = {
@@ -87,7 +86,7 @@
                 role: coach.role()
             };
 
-            let path = "coaches";
+            let path = "/api/coaches";
 
             const updateCoachData = function (data) {
                 let indexCoach;
@@ -101,7 +100,7 @@
                 cleanFormCoach();
             };
 
-            ajaxObject.put(path, coachData, updateCoachData)
+            httpAjax.put(path, coachData, updateCoachData)
       
             displayButtonAdd(true);
             displayButtonSave(false);
@@ -109,11 +108,11 @@
     };
  
     const goPlayersWizard = function () {
-        moveBetwenViews(teamId, "/players");
+        window.location.href = "http://localhost:5159/Teams/" + teamId + "/players";
     }
 
     const goTeamList = function () {
-        moveBetwenViews('','');
+        window.location.href = "http://localhost:5159/Teams";
     };
  
     // ViewModel
@@ -136,7 +135,7 @@
         console.log("Ready!!!");
         ko.applyBindings(viewModel);
 
-        let path = teamId + "/coaches";
+        let path = "/api/teams/" + teamId + "/coaches";
 
         let putDatasForm = function (data) {
             if (data.length > 0) {
@@ -145,6 +144,6 @@
             }
         };
 
-        ajaxObject.get(path, putDatasForm);
+        httpAjax.get(path, putDatasForm);
     });
 })();

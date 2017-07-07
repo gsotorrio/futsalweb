@@ -2,7 +2,7 @@
 
 (function () {
     // Variables
-    let ajaxObject = new CallsServer();
+    let httpAjax = new HttpAjax();
 
     let teams = ko.observableArray();
 
@@ -18,7 +18,7 @@
 
     // Public Functions
     const remove = function (team) {
-        let path = "teams/";
+        let path = "/api/teams/" + team.id;
 
         const deleteTeam = function () {
                 teams.remove(team);
@@ -28,7 +28,7 @@
                 }
         };
 
-        ajaxObject.delete(path, team.id, deleteTeam)
+        httpAjax.delete(path, deleteTeam)
 
     }; // messege: Are you sure???
 
@@ -50,8 +50,9 @@
     $(function () {
         console.log("Ready!!!");
         ko.applyBindings(viewModel);
+        let path = "/api/teams";
 
-        let showEmtyMassege = function (data) {
+        const showEmtyMassege = function (data) {
             if (data.length == 0) {
                 displayMassage(true);
             }
@@ -60,6 +61,6 @@
                 hiddeTable.push("some value");
             }
         };
-        ajaxObject.get("", showEmtyMassege);
+        httpAjax.get(path, showEmtyMassege);
     });
 })();

@@ -4,7 +4,7 @@
     // Variables
     let httpAjax = new HttpAjax();
 
-    let teamManager = {
+    let team = {
         id: ko.observable(),
         name: ko.observable(),
         category: ko.observable()
@@ -12,38 +12,38 @@
 
     // Public Functions
     const createUpdateTeam = function () {
-        let managerId = teamManager.id();
 
         let newTeam = {
-            id: teamManager.id(),
-            name: teamManager.name(),
-            category: teamManager.category()
+            id: team.id(),
+            name: team.name(),
+            category: team.category()
         };
 
-        if (!managerId) {
-            let path = "teams/Manager";
-            let jSon = newTeam;
-
-            const createNewTeam = function (data) {
-                moveBetwenViews(data.id, "/players")
-            };
-
-            ajaxObject.post(path, jSon, createNewTeam); 
-        }
-        else {
-            let path = ;
+        if (newTeam.id) {
+            let path = "/api/teams";
 
             const goPlayersWizard = function () {
-                moveBetwenViews(managerId, "/players")
+                window.location.href = "http://localhost:5159/Teams/" + newTeam.id + "/Players";
+
             };
 
-            ajaxObject.put(path, newTeam, goPlayersWizard);
+            httpAjax.put(path, newTeam, goPlayersWizard);
+        }
+        else {
+            let path = "/api/teams";
+            
+
+            const goPlayersWizard = function (data) {
+                window.location.href = "http://localhost:5159/Teams/" + data.id + "/Players";
+            };
+
+            httpAjax.post(path, newTeam, goPlayersWizard);
         }
     };
 
     //ViewModel
     let viewModel = {
-        teamManager: teamManager,
+        team: team,
         createUpdateTeam: createUpdateTeam
     };
 
@@ -56,12 +56,16 @@
         let regularExpreesion = /[a-z\d-]{36}/g;
         let teamId = pathUrl.match(regularExpreesion);
 
-        const putDatasForm = function (data) {
-            teamManager.id(data.id);
-            teamManager.name(data.name);
-            teamManager.category(data.category);
-        };
+        if (teamId) {
+            let path = "/api/teams/" + teamId;
 
-        ajaxObject.get(teamId, putDatasForm);
+            const putDatasForm = function (data) {
+                team.id(data.id);
+                team.name(data.name);
+                team.category(data.category);
+            };
+
+            httpAjax.get(path, putDatasForm);
+        }
     });
 })();

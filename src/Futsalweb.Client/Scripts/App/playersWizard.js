@@ -144,11 +144,12 @@
     };
 
     const goManagerWizard = function () {
-        moveBetwenViews(teamId, "/manager");
+        window.location.href = "http://localhost:5159/Teams/" + teamId + "/manager";
+        ;
     }
 
     const goCoacheswizard = function () {
-        moveBetwenViews(teamId, "/coaches");
+        window.location.href = "http://localhost:5159/Teams/" + teamId + "/coaches";
     };
 
     //ViewModel
