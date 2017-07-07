@@ -3,7 +3,7 @@
 (function () {
     // Variables
     const teamId = location.pathname.split('/')[2];
-    let ajaxObject = new CallsServer();
+    let httpAjax = new HttpAjax();
 
     let teamData = ko.observableArray();
     let players = ko.observableArray();
@@ -11,15 +11,15 @@
 
     // Functions
     const goManagerWizard = function () {
-        moveBetwenViews(teamId, "/manager");
+        window.location.href = "http://localhost:5159/Teams/" + teamId + "/manager";
     };
 
     const goPlayersWizard = function () {
-        moveBetwenViews(teamId, "/players");
+        window.location.href = "http://localhost:5159/Teams/" + teamId + "/Players";
     };
 
     const goCoachesWizard = function () {
-        moveBetwenViews(teamId, "/coaches");
+        window.location.href = "http://localhost:5159/Teams/" + teamId + "/coaches";
     };
 
     // ViewModel
@@ -37,11 +37,10 @@
         console.log("Ready!!!");
         ko.applyBindings(viewModel);
 
-        ajaxObject.get(teamId, function (data) { teamData(data) });
+        httpAjax.get("/api/teams/" + teamId, function (data) { teamData(data) });
       
-        ajaxObject.get(teamId + "/players", function (data) { players(data) });
+        httpAjax.get("/api/teams/" + teamId + "/players", function (data) { players(data) });
         
-        ajaxObject.get(teamId + "/coaches", function (data) { coaches(data) });
-       
+        httpAjax.get("/api/teams/" + teamId + "/coaches", function (data) { coaches(data) });
     });
 })();

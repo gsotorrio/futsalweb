@@ -32,8 +32,8 @@
 
     }; // messege: Are you sure???
 
-    const goDetailView = function (teamData) {
-        moveBetwenViews(teamData.id, "/details");
+    const goDetailView = function (data) {
+        window.location.href = "http://localhost:5159/Teams/" + data.id + "/details";
     };
   
     //ViewModel
