@@ -1,53 +1,29 @@
 ﻿"use strict";
 
-const SaveUrl = function (url) {
-    this.url = "http://localhost:5159";
-};
+const HttpAjax = function () {
+    const protocoloHost = "http://localhost:5159";
 
-let protocolHost = new SaveUrl();
-
-const moveBetwenViews = function (id, path) {
-    window.location.href = protocolHost.url + "/teams/" + id + path;
-};
-
-const CallsServer = function () {
-    this.post = function (path, jSon, parameterFunction) {
-        $.post(protocolHost.url + "/api/" + path, jSon).done(parameterFunction);
+    this.get = (url, callback) => {
+        $.get(protocoloHost + url, callback)
     };
 
-    this.get = function (path, parameterFunction) {
-        if (path) {
-            $.get(protocolHost.url + "/api/teams/" + path, parameterFunction);
-        }
-        else {
-            $.get(protocolHost.url + "/api/teams/", parameterFunction);
-        }
+    this.post = (url, data, callback) => {
+        $.post(protocoloHost + url, data, callback)
     };
 
-    this.put = function (path, jSon, parameterFunction) {
+    this.put = (url, data, callback) => {
         $.ajax({
             type: "PUT",
-            url: protocolHost.url + "/api/" + path,
+            url: protocoloHost + url,
             contentType: "application/json",
-            data: JSON.stringify(jSon)
-        }).done(parameterFunction);
+            data: JSON.stringify(data)
+        }).done(callback);
     };
 
-    this.delete = function (path, id, parameterFunction) {
+    this.delete = (url, callback) => {
         $.ajax({
-            url: protocolHost.url + "/api/" + path + id,
+            url: protocoloHost + url,
             method: "DELETE"
-        }).done(parameterFunction);
+        }).done(callback)
     };
-};
-
-const HttpAjax = () => {
-
-    this.get = (url, callback) => { };
-
-    this.post = (url, data, callback) => { };
-
-    this.put = (url, data, callback) => { };
-
-    this.get = (url, callback) => { };
 };

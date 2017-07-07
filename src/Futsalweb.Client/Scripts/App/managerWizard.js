@@ -2,7 +2,7 @@
 
 (function () {
     // Variables
-    let ajaxObject = new CallsServer();
+    let httpAjax = new HttpAjax();
 
     let teamManager = {
         id: ko.observable(),
@@ -31,7 +31,7 @@
             ajaxObject.post(path, jSon, createNewTeam); 
         }
         else {
-            let path = "teams";
+            let path = ;
 
             const goPlayersWizard = function () {
                 moveBetwenViews(managerId, "/players")

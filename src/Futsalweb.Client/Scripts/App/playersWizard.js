@@ -3,7 +3,7 @@
 (function () { 
     // Variables
     const teamId = location.pathname.split('/')[2];
-    let ajaxObject = new CallsServer();
+    let httpAjax = new HttpAjax();
 
     let displayButtonAdd = ko.observable(true);
     let displayButtonSave = ko.observable(false);
@@ -62,7 +62,7 @@
         };
 
         if (!playerId) {
-            let path = "players";
+            let path = "/api/players";
 
             let createNewPlayer = function (data) {
                 players.push(data);
@@ -70,7 +70,7 @@
                 hiddeTableButtonPlayer.push("some value");
             };
 
-            ajaxObject.post(path, newPlayer, createNewPlayer);
+            httpAjax.post(path, newPlayer, createNewPlayer);
         }
 
         else {
@@ -88,7 +88,7 @@
                 status: player.status()
             };
 
-            let path = "players";
+            let path = "/api/players";
               
             const updateDataPlayer = function (data) {
                 let indexPlayer;
@@ -102,7 +102,7 @@
                 cleanFormPlayer();
             };
 
-            ajaxObject.put(path, playerData, updateDataPlayer);
+            httpAjax.put(path, playerData, updateDataPlayer);
           
             displayButtonAdd(true);
             displayButtonSave(false);
@@ -110,8 +110,7 @@
     };
 
     const removePlayer = function (player) {
-        let path = "players/";
-        let playerId = player.id;
+        let path = "/api/players/" + player.id;
 
         const deletePlayer = function () {
             players.remove(player);
@@ -120,7 +119,7 @@
             }
         };
 
-        ajaxObject.delete(path, playerId, deletePlayer);
+        httpAjax.delete(path, deletePlayer);
     };
 
     const putDataInForm = function (selectedPlayer) {
@@ -173,7 +172,7 @@
         console.log("Ready!!!");
         ko.applyBindings(viewModel);
 
-        let path = teamId + "/players";
+        let path = "/api/teams/" + teamId + "/players";
 
         let putDatasForm = function (data) {
             if (data.length > 0) {
@@ -182,6 +181,6 @@
             };
         }
 
-        ajaxObject.get(path, putDatasForm);  
+        httpAjax.get(path, putDatasForm);
     });
 })();
