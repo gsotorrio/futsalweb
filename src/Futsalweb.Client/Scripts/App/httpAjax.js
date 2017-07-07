@@ -40,3 +40,14 @@ const CallsServer = function () {
         }).done(parameterFunction);
     };
 };
+
+const HttpAjax = () => {
+
+    this.get = (url, callback) => { };
+
+    this.post = (url, data, callback) => { };
+
+    this.put = (url, data, callback) => { };
+
+    this.get = (url, callback) => { };
+};
