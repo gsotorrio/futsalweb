@@ -3,7 +3,7 @@
 (function () { 
     // Variables
     const teamId = location.pathname.split('/')[2];
-    let httpAjax = new HttpAjax();
+    const httpAjax = new HttpAjax();
 
     let displayButtonAdd = ko.observable(true);
     let displayButtonSave = ko.observable(false);
@@ -46,8 +46,6 @@
     };
 
     const createUpdatePlayer = () => {
-        let playerId = player.id();
-
         let newPlayer = {
             teamId: teamId,
             name: player.name(),
@@ -61,19 +59,7 @@
             status: player.status()
         };
 
-        if (!playerId) {
-            let path = "/api/players";
-
-            let createNewPlayer = (data) => {
-                players.push(data);
-                cleanFormPlayer();
-                hiddeTableButtonPlayer.push("some value");
-            };
-
-            httpAjax.post(path, newPlayer, createNewPlayer);
-        }
-
-        else {
+        if (player.id()) {
             let playerData = {
                 teamId: teamId,
                 id: player.id(),
@@ -88,8 +74,8 @@
                 status: player.status()
             };
 
-            let path = "/api/players";
-              
+            const path = "/api/players";
+
             const updateDataPlayer = (data) => {
                 let indexPlayer;
 
@@ -103,14 +89,26 @@
             };
 
             httpAjax.put(path, playerData, updateDataPlayer);
-          
+
             displayButtonAdd(true);
             displayButtonSave(false);
+        }
+
+        else {
+            const path = "/api/players";
+
+            const createNewPlayer = (data) => {
+                players.push(data);
+                cleanFormPlayer();
+                hiddeTableButtonPlayer.push("some value");
+            };
+
+            httpAjax.post(path, newPlayer, createNewPlayer);
         }
     };
 
     const removePlayer = (player) => {
-        let path = "/api/players/" + player.id;
+        const path = "/api/players/" + player.id;
 
         const deletePlayer = function () {
             players.remove(player);
@@ -173,9 +171,9 @@
         console.log("Ready!!!");
         ko.applyBindings(viewModel);
 
-        let path = "/api/teams/" + teamId + "/players";
+        const path = "/api/teams/" + teamId + "/players";
 
-        let putDatasForm = (data) => {
+        const putDatasForm = (data) => {
             if (data.length > 0) {
                 players(data);
                 hiddeTableButtonPlayer.push("some value");
