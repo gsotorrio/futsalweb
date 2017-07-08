@@ -3,7 +3,7 @@
 (function () {
     // Variables
     const teamId = location.pathname.split('/')[2];
-    let httpAjax = new HttpAjax();
+    const httpAjax = new HttpAjax();
 
     let teamData = ko.observableArray();
     let players = ko.observableArray();
