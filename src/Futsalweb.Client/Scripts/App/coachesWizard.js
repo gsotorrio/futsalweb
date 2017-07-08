@@ -21,7 +21,7 @@
     };
 
     // Public Functions
-    const cleanFormCoach = function () {
+    const cleanFormCoach = () => {
         coach.id("");
         coach.name("");
         coach.surname("");
@@ -31,7 +31,7 @@
         displayButtonSave(false);
     };
 
-    const putDataCoachInForm = function (selectedCoach) {
+    const putDataCoachInForm = (selectedCoach) => {
         coach.id(selectedCoach.id);
         coach.name(selectedCoach.name);
         coach.surname(selectedCoach.surname);
@@ -41,7 +41,7 @@
         displayButtonSave(true);
     };
 
-    const removeCoach = function (coach) {
+    const removeCoach = (coach) => {
         let path = "/api/coaches/" + coach.id;
 
         const deleteCoach = function () {
@@ -54,7 +54,7 @@
         httpAjax.delete(path, deleteCoach);
     };
 
-    const createUpdateCoach = function () {
+    const createUpdateCoach = () => {
         let coachId = coach.id();
 
         if (!coachId){
@@ -68,7 +68,7 @@
 
             let path = "/api/coaches";
 
-            const createNewCoach = function (data) {
+            const createNewCoach = (data) => {
                 coaches.push(data);
                 cleanFormCoach();
                 hiddeTableButtonCoach.push("some value");
@@ -88,7 +88,7 @@
 
             let path = "/api/coaches";
 
-            const updateCoachData = function (data) {
+            const updateCoachData = (data) => {
                 let indexCoach;
 
                 for (var i = 0; i < coaches().length; i++) {
@@ -107,11 +107,11 @@
         }
     };
  
-    const goPlayersWizard = function () {
+    const goPlayersWizard = () => {
         window.location.href = "http://localhost:5159/Teams/" + teamId + "/players";
     }
 
-    const goTeamList = function () {
+    const goTeamList = () => {
         window.location.href = "http://localhost:5159/Teams";
     };
  
@@ -137,7 +137,7 @@
 
         let path = "/api/teams/" + teamId + "/coaches";
 
-        let putDatasForm = function (data) {
+        let putDatasForm = (data) => {
             if (data.length > 0) {
                 coaches(data);
                 hiddeTableButtonCoach.push("some value");

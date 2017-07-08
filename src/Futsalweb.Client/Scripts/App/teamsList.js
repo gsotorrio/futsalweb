@@ -17,7 +17,7 @@
     let displayMassage = ko.observable(false);
 
     // Public Functions
-    const remove = function (team) {
+    const remove = (team) => {
         let path = "/api/teams/" + team.id;
 
         const deleteTeam = function () {
@@ -32,7 +32,7 @@
 
     }; // messege: Are you sure???
 
-    const goDetailView = function (data) {
+    const goDetailView = (data) => {
         window.location.href = "http://localhost:5159/Teams/" + data.id + "/details";
     };
   
@@ -52,7 +52,7 @@
         ko.applyBindings(viewModel);
         let path = "/api/teams";
 
-        const showEmtyMassege = function (data) {
+        const showEmtyMassege = (data) => {
             if (data.length == 0) {
                 displayMassage(true);
             }

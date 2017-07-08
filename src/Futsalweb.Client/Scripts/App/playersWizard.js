@@ -30,7 +30,7 @@
     };
 
     // Public Functions
-    const cleanFormPlayer = function () {
+    const cleanFormPlayer = () => {
         player.id("");
         player.name("");
         player.surname("");
@@ -45,7 +45,7 @@
         displayButtonSave(false);     
     };
 
-    const createUpdatePlayer = function () {
+    const createUpdatePlayer = () => {
         let playerId = player.id();
 
         let newPlayer = {
@@ -64,7 +64,7 @@
         if (!playerId) {
             let path = "/api/players";
 
-            let createNewPlayer = function (data) {
+            let createNewPlayer = (data) => {
                 players.push(data);
                 cleanFormPlayer();
                 hiddeTableButtonPlayer.push("some value");
@@ -90,7 +90,7 @@
 
             let path = "/api/players";
               
-            const updateDataPlayer = function (data) {
+            const updateDataPlayer = (data) => {
                 let indexPlayer;
 
                 for (var i = 0; i < players().length; i++) {
@@ -109,7 +109,7 @@
         }
     };
 
-    const removePlayer = function (player) {
+    const removePlayer = (player) => {
         let path = "/api/players/" + player.id;
 
         const deletePlayer = function () {
@@ -122,7 +122,7 @@
         httpAjax.delete(path, deletePlayer);
     };
 
-    const putDataInForm = function (selectedPlayer) {
+    const putDataInForm = (selectedPlayer) => {
         player.id(selectedPlayer.id);
         player.name(selectedPlayer.name);
         player.surname(selectedPlayer.surname);
@@ -143,12 +143,12 @@
         displayButtonSave(true);
     };
 
-    const goManagerWizard = function () {
+    const goManagerWizard = () => {
         window.location.href = "http://localhost:5159/Teams/" + teamId + "/manager";
         ;
     }
 
-    const goCoacheswizard = function () {
+    const goCoacheswizard = () => {
         window.location.href = "http://localhost:5159/Teams/" + teamId + "/coaches";
     };
 
@@ -175,7 +175,7 @@
 
         let path = "/api/teams/" + teamId + "/players";
 
-        let putDatasForm = function (data) {
+        let putDatasForm = (data) => {
             if (data.length > 0) {
                 players(data);
                 hiddeTableButtonPlayer.push("some value");

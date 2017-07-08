@@ -11,7 +11,7 @@
     };
 
     // Public Functions
-    const createUpdateTeam = function () {
+    const createUpdateTeam = () => {
 
         let newTeam = {
             id: team.id(),
@@ -22,7 +22,7 @@
         if (newTeam.id) {
             let path = "/api/teams";
 
-            const goPlayersWizard = function () {
+            const goPlayersWizard = () => {
                 window.location.href = "http://localhost:5159/Teams/" + newTeam.id + "/Players";
 
             };
@@ -33,7 +33,7 @@
             let path = "/api/teams";
             
 
-            const goPlayersWizard = function (data) {
+            const goPlayersWizard = (data) => {
                 window.location.href = "http://localhost:5159/Teams/" + data.id + "/Players";
             };
 
@@ -59,7 +59,7 @@
         if (teamId) {
             let path = "/api/teams/" + teamId;
 
-            const putDatasForm = function (data) {
+            const putDatasForm = (data) => {
                 team.id(data.id);
                 team.name(data.name);
                 team.category(data.category);

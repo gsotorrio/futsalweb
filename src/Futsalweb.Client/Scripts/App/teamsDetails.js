@@ -10,15 +10,15 @@
     let coaches = ko.observableArray();
 
     // Functions
-    const goManagerWizard = function () {
+    const goManagerWizard = () => {
         window.location.href = "http://localhost:5159/Teams/" + teamId + "/manager";
     };
 
-    const goPlayersWizard = function () {
+    const goPlayersWizard = () => {
         window.location.href = "http://localhost:5159/Teams/" + teamId + "/Players";
     };
 
-    const goCoachesWizard = function () {
+    const goCoachesWizard = () => {
         window.location.href = "http://localhost:5159/Teams/" + teamId + "/coaches";
     };
 
