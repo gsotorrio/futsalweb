@@ -3,7 +3,7 @@
 (function () { 
     // Variables
     const teamId = location.pathname.split('/')[2];
-    let httpAjax = new HttpAjax();
+    const httpAjax = new HttpAjax();
 
     let displayButtonAdd = ko.observable(true);
     let displayButtonSave = ko.observable(false);
@@ -55,28 +55,7 @@
     };
 
     const createUpdateCoach = () => {
-        let coachId = coach.id();
-
-        if (!coachId){
-            let newCoach = {
-                teamId: teamId,
-                name: coach.name(),
-                surname: coach.surname(),
-                birthdate: coach.birthdate(),
-                role: coach.role()
-            };
-
-            let path = "/api/coaches";
-
-            const createNewCoach = (data) => {
-                coaches.push(data);
-                cleanFormCoach();
-                hiddeTableButtonCoach.push("some value");
-            };
-
-            httpAjax.post(path, newCoach, createNewCoach);
-        }      
-        else {
+        if (coach.id()){
             let coachData = {
                 teamId: teamId,
                 id: coach.id(),
@@ -101,9 +80,28 @@
             };
 
             httpAjax.put(path, coachData, updateCoachData)
-      
+
             displayButtonAdd(true);
             displayButtonSave(false);
+        }      
+        else {
+            let newCoach = {
+                teamId: teamId,
+                name: coach.name(),
+                surname: coach.surname(),
+                birthdate: coach.birthdate(),
+                role: coach.role()
+            };
+
+            let path = "/api/coaches";
+
+            const createNewCoach = (data) => {
+                coaches.push(data);
+                cleanFormCoach();
+                hiddeTableButtonCoach.push("some value");
+            };
+
+            httpAjax.post(path, newCoach, createNewCoach);
         }
     };
  
