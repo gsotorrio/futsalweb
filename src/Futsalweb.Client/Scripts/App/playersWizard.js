@@ -166,9 +166,11 @@
         goCoacheswizard: goCoacheswizard
     };
 
+    // On initialize
+    ko.applyBindings(viewModel);
+
     $(function () {
         console.log("Ready!!!");
-        ko.applyBindings(viewModel);
 
         const path = "/api/teams/" + teamId + "/players";
 

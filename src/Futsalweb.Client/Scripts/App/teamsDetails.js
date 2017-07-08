@@ -33,9 +33,10 @@
     };
 
     // On initialize
+    ko.applyBindings(viewModel);
+
     $(function () {
         console.log("Ready!!!");
-        ko.applyBindings(viewModel);
 
         httpAjax.get("/api/teams/" + teamId, function (data) { teamData(data) });
       

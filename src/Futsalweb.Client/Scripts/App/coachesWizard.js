@@ -129,9 +129,10 @@
     };
 
     // On initialize
+    ko.applyBindings(viewModel);
+
     $(function () {
         console.log("Ready!!!");
-        ko.applyBindings(viewModel);
 
         let path = "/api/teams/" + teamId + "/coaches";
 
