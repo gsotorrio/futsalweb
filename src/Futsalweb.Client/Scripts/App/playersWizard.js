@@ -142,12 +142,11 @@
     };
 
     const goManagerWizard = () => {
-        window.location.href = "http://localhost:5159/Teams/" + teamId + "/manager";
-        ;
-    }
+        navigateBetewnViews("/Teams/" + teamId + "/manager");
+    };
 
     const goCoacheswizard = () => {
-        window.location.href = "http://localhost:5159/Teams/" + teamId + "/coaches";
+        navigateBetewnViews("/Teams/" + teamId + "/coaches");
     };
 
     //ViewModel

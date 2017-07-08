@@ -106,11 +106,11 @@
     };
  
     const goPlayersWizard = () => {
-        window.location.href = "http://localhost:5159/Teams/" + teamId + "/players";
+        navigateBetewnViews("/Teams/" + teamId + "/players");
     }
 
     const goTeamList = () => {
-        window.location.href = "http://localhost:5159/Teams";
+        navigateBetewnViews("/Teams");
     };
  
     // ViewModel

@@ -22,7 +22,7 @@
             const path = "/api/teams";
 
             const goPlayersWizard = () => {
-                window.location.href = "http://localhost:5159/Teams/" + newTeam.id + "/Players";
+                navigateBetewnViews("/Teams/" + newTeam.id + "/Players");
 
             };
 
@@ -32,7 +32,7 @@
             const path = "/api/teams";
             
             const goPlayersWizard = (data) => {
-                window.location.href = "http://localhost:5159/Teams/" + data.id + "/Players";
+                navigateBetewnViews("/Teams/" + data.id + "/Players");
             };
 
             httpAjax.post(path, newTeam, goPlayersWizard);

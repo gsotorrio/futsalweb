@@ -1,20 +1,20 @@
 ﻿"use strict";
 
 const HttpAjax = function () {
-    const protocoloHost = "http://localhost:5159";
+    const protocolHost = new ProtocolHost();
 
     this.get = (url, callback) => {
-        $.get(protocoloHost + url, callback)
+        $.get(protocolHost.protocolHost + url, callback)
     };
 
     this.post = (url, data, callback) => {
-        $.post(protocoloHost + url, data, callback)
+        $.post(protocolHost.protocolHost + url, data, callback)
     };
 
     this.put = (url, data, callback) => {
         $.ajax({
             type: "PUT",
-            url: protocoloHost + url,
+            url: protocolHost.protocolHost + url,
             contentType: "application/json",
             data: JSON.stringify(data)
         }).done(callback);
@@ -22,7 +22,7 @@ const HttpAjax = function () {
 
     this.delete = (url, callback) => {
         $.ajax({
-            url: protocoloHost + url,
+            url: protocolHost.protocolHost + url,
             method: "DELETE"
         }).done(callback)
     };

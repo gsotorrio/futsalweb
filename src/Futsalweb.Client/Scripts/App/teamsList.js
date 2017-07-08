@@ -33,7 +33,7 @@
     }; // messege: Are you sure???
 
     const goDetailView = (data) => {
-        window.location.href = "http://localhost:5159/Teams/" + data.id + "/details";
+        navigateBetewnViews("/Teams/" + data.id + "/details");
     };
   
     //ViewModel

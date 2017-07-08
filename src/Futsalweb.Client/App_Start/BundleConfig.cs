@@ -15,6 +15,7 @@ namespace Futsalweb.Client
 
             bundles.Add(new ScriptBundle("~/bundles/others").Include(
                 "~/Scripts/App/httpAjax.js",
+                "~/Scripts/App/navigate.js",
                 "~/Scripts/ie10-viewport-bug-workaround.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
