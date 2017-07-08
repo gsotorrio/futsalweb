@@ -2,7 +2,7 @@
 
 (function () {
     // Variables
-    let httpAjax = new HttpAjax();
+    const httpAjax = new HttpAjax();
 
     let teams = ko.observableArray();
 
@@ -50,7 +50,7 @@
     $(function () {
         console.log("Ready!!!");
         ko.applyBindings(viewModel);
-        let path = "/api/teams";
+        const path = "/api/teams";
 
         const showEmtyMassege = (data) => {
             if (data.length == 0) {
