@@ -2,7 +2,7 @@
 
 (function () {
     // Variables
-    let httpAjax = new HttpAjax();
+    const httpAjax = new HttpAjax();
 
     let team = {
         id: ko.observable(),
@@ -12,7 +12,6 @@
 
     // Public Functions
     const createUpdateTeam = () => {
-
         let newTeam = {
             id: team.id(),
             name: team.name(),
@@ -20,7 +19,7 @@
         };
 
         if (newTeam.id) {
-            let path = "/api/teams";
+            const path = "/api/teams";
 
             const goPlayersWizard = () => {
                 window.location.href = "http://localhost:5159/Teams/" + newTeam.id + "/Players";
@@ -30,9 +29,8 @@
             httpAjax.put(path, newTeam, goPlayersWizard);
         }
         else {
-            let path = "/api/teams";
+            const path = "/api/teams";
             
-
             const goPlayersWizard = (data) => {
                 window.location.href = "http://localhost:5159/Teams/" + data.id + "/Players";
             };
