@@ -4,6 +4,7 @@
     // Variables
     const teamId = location.pathname.split('/')[2];
     const httpAjax = new HttpAjax();
+    const router = new Router();
 
     let displayButtonAdd = ko.observable(true);
     let displayButtonSave = ko.observable(false);
@@ -42,7 +43,7 @@
     };
 
     const removeCoach = (coach) => {
-        let path = "/api/coaches/" + coach.id;
+        let path = "api/coaches/" + coach.id;
 
         const deleteCoach = function () {
             coaches.remove(coach);
@@ -51,7 +52,7 @@
             }
         };
         
-        httpAjax.delete(path, deleteCoach);
+        httpAjax.delete(router.makeUrl(path), deleteCoach);
     };
 
     const createUpdateCoach = () => {
@@ -65,7 +66,7 @@
                 role: coach.role()
             };
 
-            let path = "/api/coaches";
+            let path = "api/coaches";
 
             const updateCoachData = (data) => {
                 let indexCoach;
@@ -79,7 +80,7 @@
                 cleanFormCoach();
             };
 
-            httpAjax.put(path, coachData, updateCoachData)
+            httpAjax.put(router.makeUrl(path), coachData, updateCoachData)
 
             displayButtonAdd(true);
             displayButtonSave(false);
@@ -93,7 +94,7 @@
                 role: coach.role()
             };
 
-            let path = "/api/coaches";
+            let path = "api/coaches";
 
             const createNewCoach = (data) => {
                 coaches.push(data);
@@ -101,16 +102,16 @@
                 hiddeTableButtonCoach.push("some value");
             };
 
-            httpAjax.post(path, newCoach, createNewCoach);
+            httpAjax.post(router.makeUrl(path), newCoach, createNewCoach);
         }
     };
  
     const goPlayersWizard = () => {
-        navigateBetewnViews("/Teams/" + teamId + "/players");
+        router.goTo("Teams/" + teamId + "/players");
     }
 
     const goTeamList = () => {
-        navigateBetewnViews("/Teams");
+        router.goTo("Teams");
     };
  
     // ViewModel
@@ -134,7 +135,7 @@
     $(function () {
         console.log("Ready!!!");
 
-        let path = "/api/teams/" + teamId + "/coaches";
+        let path = "api/teams/" + teamId + "/coaches";
 
         let putDatasForm = (data) => {
             if (data.length > 0) {
@@ -143,6 +144,6 @@
             }
         };
 
-        httpAjax.get(path, putDatasForm);
+        httpAjax.get(router.makeUrl(path), putDatasForm);
     });
 })();

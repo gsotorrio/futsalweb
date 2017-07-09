@@ -4,6 +4,7 @@
     // Variables
     const teamId = location.pathname.split('/')[2];
     const httpAjax = new HttpAjax();
+    const router = new Router();
 
     let teamData = ko.observableArray();
     let players = ko.observableArray();
@@ -11,15 +12,15 @@
 
     // Functions
     const goManagerWizard = () => {
-        navigateBetewnViews("/Teams/" + teamId + "/manager");
+        router.goTo("Teams/" + teamId + "/manager");
     };
 
     const goPlayersWizard = () => {
-        navigateBetewnViews("/Teams/" + teamId + "/Players");
+        router.goTo("Teams/" + teamId + "/Players");
     };
 
     const goCoachesWizard = () => {
-        navigateBetewnViews("/Teams/" + teamId + "/coaches");
+        router.goTo("Teams/" + teamId + "/coaches");
     };
 
     // ViewModel
@@ -38,10 +39,10 @@
     $(function () {
         console.log("Ready!!!");
 
-        httpAjax.get("/api/teams/" + teamId, function (data) { teamData(data) });
+        httpAjax.get(router.makeUrl("api/teams/" + teamId), function (data) { teamData(data) });
       
-        httpAjax.get("/api/teams/" + teamId + "/players", function (data) { players(data) });
+        httpAjax.get(router.makeUrl("api/teams/" + teamId + "/players"), function (data) { players(data) });
         
-        httpAjax.get("/api/teams/" + teamId + "/coaches", function (data) { coaches(data) });
+        httpAjax.get(router.makeUrl("api/teams/" + teamId + "/coaches"), function (data) { coaches(data) });
     });
 })();

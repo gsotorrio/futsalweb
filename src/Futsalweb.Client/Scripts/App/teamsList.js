@@ -3,6 +3,7 @@
 (function () {
     // Variables
     const httpAjax = new HttpAjax();
+    const router = new Router();
 
     let teams = ko.observableArray();
 
@@ -18,7 +19,7 @@
 
     // Public Functions
     const remove = (team) => {
-        let path = "/api/teams/" + team.id;
+        let path = "api/teams/" + team.id;
 
         const deleteTeam = function () {
                 teams.remove(team);
@@ -28,12 +29,12 @@
                 }
         };
 
-        httpAjax.delete(path, deleteTeam)
+        httpAjax.delete(router.makeUrl(path), deleteTeam)
 
     }; // messege: Are you sure???
 
     const goDetailView = (data) => {
-        navigateBetewnViews("/Teams/" + data.id + "/details");
+        router.goTo("Teams/" + data.id + "/details");
     };
   
     //ViewModel
@@ -51,7 +52,7 @@
 
     $(function () {
         console.log("Ready!!!");
-        const path = "/api/teams";
+        const path = "api/teams";
 
         const showEmtyMassege = (data) => {
             if (data.length == 0) {
@@ -62,6 +63,6 @@
                 hiddeTable.push("some value");
             }
         };
-        httpAjax.get(path, showEmtyMassege);
+        httpAjax.get(router.makeUrl(path), showEmtyMassege);
     });
 })();
