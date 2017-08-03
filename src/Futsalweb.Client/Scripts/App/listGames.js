@@ -1,2 +1,5 @@
 ﻿"use strict";
-alert("holamundo");
+
+(function () {
+
+})();
