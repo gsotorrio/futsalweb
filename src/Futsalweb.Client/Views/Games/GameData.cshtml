@@ -7,4 +7,115 @@
 }
 
 <h2>Game Data</h2>
-<hr />
+<table id="" class="table table-striped">
+    <thead>
+        <tr>
+            <th class="hideId"> </th>
+            <th>Home Team</th>
+            <th>Visit Team</th>
+            <th>Date</th>
+            <th>Place</th>
+            <th>Type</th>
+        </tr>
+    </thead>
+
+    <tbody data-bind="foreach: ">
+        <tr>
+            <td class="hideId" data-bind="text: "></td>
+            <td data-bind="text: "></td>
+            <td data-bind="text: "></td>
+            <td data-bind="text: "></td>
+            <td data-bind="text: "></td>
+            <td data-bind="text: "></td>
+        </tr>
+    </tbody>
+</table>
+
+<input data-bind="click: " type="button" value="Edit" class="col-md-offset-10 col-md-2 btn btn-primary">
+
+
+<br /><br /><br />
+
+<h2>Teams Statistics</h2>
+<table id="" class="table table-striped">
+    <thead>
+        <tr>
+            <th class="hideId"> </th>
+            <th>Team</th>
+            <th>Goals</th>
+            <th>Shuts</th>
+            <th>Faults</th>
+            <th>Cards</th>
+        </tr>
+    </thead>
+
+    <tbody data-bind="foreach: ">
+        <tr>
+            <td class="hideId" data-bind="text: "></td>
+            <td data-bind="text: "></td>
+            <td data-bind="text: "></td>
+            <td data-bind="text: "></td>
+            <td data-bind="text: "></td>
+            <td data-bind="text: "></td>
+        </tr>
+    </tbody>
+</table>
+
+<br /><br /><br />
+
+<h2>Player Statistics</h2>
+<table id="" class="table table-striped">
+    <thead>
+        <tr>
+            <th class="hideId"> </th>
+            <th>Player</th>
+            <th>Shuts</th>
+            <th>Goals</th>
+            <th>Faults</th>
+            <th>Cards</th>
+            <th>Time</th>
+        </tr>
+    </thead>
+
+    <tbody data-bind="foreach: ">
+        <tr>
+            <td class="hideId" data-bind="text: "></td>
+            <td data-bind="text: "></td>
+            <td data-bind="text: "></td>
+            <td data-bind="text: "></td>
+            <td data-bind="text: "></td>
+            <td data-bind="text: "></td>
+            <td data-bind="text: "></td>
+        </tr>
+    </tbody>
+</table>
+
+<br /><br /><br />
+
+<h2>Goals Statistics</h2>
+<table id="" class="table table-striped">
+    <thead>
+        <tr>
+            <th class="hideId"> </th>
+            <th>Team</th>
+            <th>Half</th>
+            <th>Time</th>
+            <th>Who is playing</th>
+        </tr>
+    </thead>
+
+    <tbody data-bind="foreach: ">
+        <tr>
+            <td class="hideId" data-bind="text: "></td>
+            <td data-bind="text: "></td>
+            <td data-bind="text: "></td>
+            <td data-bind="text: "></td>
+            <td data-bind="text: "></td>
+        </tr>
+    </tbody>
+</table>
+
+<br /><br /><br />
+
+<input data-bind="click: " type="button" value="Go Game" class="col-md-offset-1 col-md-2 btn btn-primary">
+<input data-bind="click: " type="button" value="Exit" class="col-md-offset-6 col-md-2 btn btn-primary">
