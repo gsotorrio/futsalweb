@@ -7,4 +7,31 @@
     <script src="~/Scripts/App/.js"></script>
 }
 
-<h1>Your Games</h1>
+<h2>Your Games</h2>
+<hr />
+
+<table id="tableTeams" class="table table-striped">
+    <thead>
+        <tr>
+            <th class="hideId">Game Id</th>
+            <th>Home Team - Visit Team</th>
+            <th>Type</th>
+            <th>Date</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody data-bind="foreach: teams">
+        <tr>
+            <td class="hideId" data-bind="text: "></td>
+            <td data-bind="text: "></td>
+            <td data-bind="text: "></td>
+            <td data-bind="text: "></td>
+            <td data-bind="click: $root."><a href="#">Edit</a></td>
+            <td data-bind="click: $root."><a href="#">Delete</a></td>
+        </tr>
+    </tbody>
+</table>
+
+<input type="button" value="New Game" class="col-md-offset-9 col-md-2 btn btn-primary" onclick="">
