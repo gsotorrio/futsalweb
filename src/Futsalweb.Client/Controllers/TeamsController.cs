@@ -35,4 +35,25 @@ namespace Futsalweb.Client.Controllers
             return View();
         }
     }
+    public class GamesController : Controller
+    {
+        // GET: games/ListGames
+        public ActionResult ListGames()
+        {
+            return View();
+        }
+
+        // GET: games/CreateGames
+        public ActionResult CreateGames()
+        {
+            return View();
+        }
+
+        // GET: games/PlayersGame
+        public ActionResult PlayersGame()
+        {
+            return View();
+        }
+    }
+
 }

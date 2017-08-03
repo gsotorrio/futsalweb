@@ -191,6 +191,9 @@
     <Content Include="Views\Teams\Players.cshtml" />
     <Content Include="Views\Teams\Coaches.cshtml" />
     <Content Include="Views\Teams\Details.cshtml" />
+    <Content Include="Views\Games\ListGames.cshtml" />
+    <Content Include="Views\Games\CreateGames.cshtml" />
+    <Content Include="Views\Games\PlayersGame.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
