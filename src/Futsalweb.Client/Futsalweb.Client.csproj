@@ -146,6 +146,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Scripts\App\coachesWizard.js" />
+    <Content Include="Scripts\App\gameDetails.js" />
     <Content Include="Scripts\App\gamePlayersWizazrd.js" />
     <Content Include="Scripts\App\gamesDataWizard.js" />
     <Content Include="Scripts\App\httpAjax.js" />
@@ -197,6 +198,7 @@
     <Content Include="Views\Games\ListGames.cshtml" />
     <Content Include="Views\Games\CreateGames.cshtml" />
     <Content Include="Views\Games\PlayersGame.cshtml" />
+    <Content Include="Views\Games\GameData.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

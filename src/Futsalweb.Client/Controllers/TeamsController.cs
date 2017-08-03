@@ -54,6 +54,12 @@ namespace Futsalweb.Client.Controllers
         {
             return View();
         }
+
+        // GET: games/GameData
+        public ActionResult GameData()
+        {
+            return View();
+        }
     }
 
 }
