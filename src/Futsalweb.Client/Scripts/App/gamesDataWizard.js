@@ -4,9 +4,17 @@
     // Variables
     const httpAjax = new HttpAjax();
 
+    let arrayTeams = [];
+    function showData(data) {
+        arrayTeams = data;
+    }
+    const path = "/api/teams";
+    httpAjax.get(path, showData);
+
     let gameData = {
         idGame: ko.observable(),
-        homeTeam: ko.observable(),
+        homeTeam: ko.observableArray(arrayTeams),
+        selectTeam: ko.observable(),  
         visitTeam: ko.observable(),
         dateGame: ko.observable(),
         timeGame: ko.observable(),
@@ -30,8 +38,10 @@
             console.log(newGame)
         }
         else {
-            navigateBetewnViews("/Games/PlayersGame");
+            //navigateBetewnViews("/Games/PlayersGame");
             console.log(newGame);
+            console.log(arrayTeams);
+
         }
     };
 
@@ -43,4 +53,7 @@
     // On initialize
     ko.applyBindings(viewModel);
 
+    $(function () {
+        console.log("Ready!!!");
+    });
 })();
