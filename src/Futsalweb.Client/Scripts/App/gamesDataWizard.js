@@ -4,16 +4,11 @@
     // Variables
     const httpAjax = new HttpAjax();
 
-    let arrayTeams = [];
-    function showData(data) {
-        arrayTeams = data;
-    }
-    const path = "/api/teams";
-    httpAjax.get(path, showData);
-
+    let arrayTeams = ko.observableArray();
+      
     let gameData = {
         idGame: ko.observable(),
-        homeTeam: ko.observableArray(arrayTeams),
+        homeTeam: arrayTeams,
         selectTeam: ko.observable(),  
         visitTeam: ko.observable(),
         dateGame: ko.observable(),
@@ -26,7 +21,7 @@
     const createUpdateGame = () => {
         let newGame = {
             idGame: gameData.idGame(),
-            homeTeam: gameData.homeTeam(),
+            homeTeam: gameData.selectTeam(),
             visitTeam: gameData.visitTeam(),
             dateGame: gameData.dateGame(),
             timeGame: gameData.timeGame(),
@@ -40,8 +35,7 @@
         else {
             //navigateBetewnViews("/Games/PlayersGame");
             console.log(newGame);
-            console.log(arrayTeams);
-
+            console.log(arrayTeams());
         }
     };
 
@@ -55,5 +49,14 @@
 
     $(function () {
         console.log("Ready!!!");
+
+        function showData(data) {
+            arrayTeams(data);
+            for (var i = 0; i < data.length; i++){
+                arrayTeams.push(data[i].name);
+            }
+        }
+        const path = "/api/teams";
+        httpAjax.get(path, showData);
     });
 })();

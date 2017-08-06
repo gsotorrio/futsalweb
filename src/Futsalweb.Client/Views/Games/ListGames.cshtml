@@ -14,7 +14,8 @@
     <thead>
         <tr>
             <th class="hideId">Game Id</th>
-            <th>Home Team - Visit Team</th>
+            <th>Home Team</th>
+            <th>Visit Team</th>
             <th>Type</th>
             <th>Date</th>
             <th></th>
@@ -22,14 +23,15 @@
         </tr>
     </thead>
 
-    <tbody data-bind="foreach: teams">
+    <tbody data-bind="foreach: games">
         <tr>
-            <td class="hideId" data-bind="text: "></td>
-            <td data-bind="text: "></td>
-            <td data-bind="text: "></td>
-            <td data-bind="text: "></td>
-            <td data-bind="click: $root."><a href="#">Edit</a></td>
-            <td data-bind="click: $root."><a href="#">Delete</a></td>
+            <td class="hideId" data-bind="text: idGame"></td>
+            <td data-bind="text: homeTeam"></td>
+            <td data-bind="text: visitTeam"></td>
+            <td data-bind="text: typeGame"></td>
+            <td data-bind="text: dateGame"></td>
+            <td data-bind="click: $root.goDetails"><a href="#">Datail</a></td>
+            <td data-bind="click: $root.remove"><a href="#">Delete</a></td>
         </tr>
     </tbody>
 </table>
