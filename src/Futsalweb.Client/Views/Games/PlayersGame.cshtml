@@ -5,10 +5,38 @@
 @section scripts{
 <script src="~/Scripts/App/gamePlayersWizazrd.js"></script>
 }
-<h2>Player in Game</h2>
+<h2>Players in Game</h2>
 <hr />
 
 <br /><br /><br />
+
+<table id="tablePlayers" class="table table-striped">
+    <thead>
+        <tr>
+            <th class="hideId">idPlayer</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Position</th>
+            <th>Number</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody data-bind="foreach: players">
+        <tr>
+            <td class="hideId" data-bind="text: idPlayer"></td>
+            <td data-bind="text: playername"></td>
+            <td data-bind="text: playerSurname"></td>
+            <td data-bind="text: playerPosition"></td>
+            <td data-bind="text: playerNumber"></td>
+            <td data-bind=""></td>
+        </tr>
+    </tbody>
+</table>
+
+<input data-bind="click: " type="button" value="Add Player" class="col-md-offset-8 col-md-2 btn btn-primary">
+
+<br /><br />
 
 <input data-bind="click: " type="button" value="Back" class="col-md-offset-1 col-md-2 btn btn-primary">
 <input data-bind="click: " type="button" value="Finish" class="col-md-offset-6 col-md-2 btn btn-primary">
