@@ -13,6 +13,7 @@
         playerPosition: ko.observable(),
         playerNumber: ko.observable()
     };
+
     // Public Functions
     const cleanForm = () => {
         player.playerId("");
