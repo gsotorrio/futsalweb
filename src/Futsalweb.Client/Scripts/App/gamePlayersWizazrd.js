@@ -14,6 +14,8 @@
         playerNumber: ko.observable()
     };
 
+    let playersInGame = ko.observableArray();
+
     // Public Functions
     const cleanForm = () => {
         player.playerId("");
@@ -40,6 +42,7 @@
     let viewModel = {
         players: players,
         player: player,
+        playersInGame: playersInGame,
         cleanForm: cleanForm,
         createNewPlayer: createNewPlayer
     };
@@ -51,7 +54,7 @@
 
         const path = "/api/teams/" + "2dfd1476-c5a9-41d5-b989-3de4bb79b0bf" + "/players";
 
-        const putDatasForm = (data) => {
+        const putDataForm = (data) => {
             let arrayPlayers = [];
                 
             for (var i = 0; i < data.length; i++) {
@@ -69,6 +72,6 @@
             players(arrayPlayers);
         };
 
-        httpAjax.get(path, putDatasForm);
+        httpAjax.get(path, putDataForm);
     });
 })();
