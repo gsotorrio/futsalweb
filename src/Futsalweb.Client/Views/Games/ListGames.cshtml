@@ -10,7 +10,11 @@
 <h2>Your Games</h2>
 <hr />
 
-<table id="tableTeams" class="table table-striped">
+<div data-bind="if: displayMassage">
+    <div class="alert alert-info" " role="alert"><h2>No game was created. If you want to create a game, please pres <strong>"New Game"</strong> button.</h2></div>
+</div>
+
+<table id="tableGames" class="table table-striped" data-bind="visible: hiddeTable().length > 0">
     <thead>
         <tr>
             <th class="hideId">Game Id</th>
