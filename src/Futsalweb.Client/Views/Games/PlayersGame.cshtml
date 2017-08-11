@@ -29,7 +29,7 @@
             <td data-bind="text: playerSurname"></td>
             <td data-bind="text: playerPosition"></td>
             <td data-bind="text: playerNumber"></td>
-            <td><input type="checkbox" value="" data-bind="checked: $root.playersInGame" /></td>
+            <td><input type="checkbox" value="" data-bind="checked: $root.playerSelected" /></td>
         </tr>
     </tbody>
 </table>
@@ -74,4 +74,4 @@
 <br /><br />
 
 <input data-bind="click: " type="button" value="Back" class="col-md-offset-1 col-md-2 btn btn-primary">
-<input data-bind="click: " type="button" value="Finish" class="col-md-offset-6 col-md-2 btn btn-primary">
+<input data-bind="click: trying" type="button" value="Finish" class="col-md-offset-6 col-md-2 btn btn-primary">

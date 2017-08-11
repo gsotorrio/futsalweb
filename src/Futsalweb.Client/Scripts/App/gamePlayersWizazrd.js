@@ -11,10 +11,9 @@
         playerName: ko.observable(),
         playerSurname: ko.observable(),
         playerPosition: ko.observable(),
-        playerNumber: ko.observable()
+        playerNumber: ko.observable(),
+        playerSelected: ko.observable()
     };
-
-    let playersInGame = ko.observableArray();
 
     // Public Functions
     const cleanForm = () => {
@@ -38,13 +37,22 @@
         cleanForm();
     };
 
+    const slectPlayers = (data) => {
+        console.log(data.name);
+    };
+
+    const trying = () => {
+        console.log(players())
+        console.log("tocame los huevos")
+    };
+
     // ViewModel
     let viewModel = {
         players: players,
         player: player,
-        playersInGame: playersInGame,
         cleanForm: cleanForm,
-        createNewPlayer: createNewPlayer
+        createNewPlayer: createNewPlayer,
+        trying: trying
     };
     // On initialize
     ko.applyBindings(viewModel);
