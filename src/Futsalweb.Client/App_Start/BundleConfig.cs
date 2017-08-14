@@ -13,9 +13,9 @@ namespace Futsalweb.Client
             bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
                         "~/Scripts/knockout-{version}.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/others").Include(
+            bundles.Add(new ScriptBundle("~/bundles/app").Include(
                 "~/Scripts/App/httpAjax.js",
-                "~/Scripts/App/navigate.js",
+                "~/Scripts/App/router.js",
                 "~/Scripts/ie10-viewport-bug-workaround.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're

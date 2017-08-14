@@ -4,6 +4,7 @@
     // Variables
     const teamId = location.pathname.split('/')[2];
     const httpAjax = new HttpAjax();
+    const router = new Router();
 
     let displayButtonAdd = ko.observable(true);
     let displayButtonSave = ko.observable(false);
@@ -74,7 +75,7 @@
                 status: player.status()
             };
 
-            const path = "/api/players";
+            const path = "api/players";
 
             const updateDataPlayer = (data) => {
                 let indexPlayer;
@@ -88,14 +89,14 @@
                 cleanFormPlayer();
             };
 
-            httpAjax.put(path, playerData, updateDataPlayer);
+            httpAjax.put(router.makeUrl(path), playerData, updateDataPlayer);
 
             displayButtonAdd(true);
             displayButtonSave(false);
         }
 
         else {
-            const path = "/api/players";
+            const path = "api/players";
 
             const createNewPlayer = (data) => {
                 players.push(data);
@@ -103,12 +104,12 @@
                 hiddeTableButtonPlayer.push("some value");
             };
 
-            httpAjax.post(path, newPlayer, createNewPlayer);
+            httpAjax.post(router.makeUrl(path), newPlayer, createNewPlayer);
         }
     };
 
     const removePlayer = (player) => {
-        const path = "/api/players/" + player.id;
+        const path = "api/players/" + player.id;
 
         const deletePlayer = function () {
             players.remove(player);
@@ -117,7 +118,7 @@
             }
         };
 
-        httpAjax.delete(path, deletePlayer);
+        httpAjax.delete(router.makeUrl(path), deletePlayer);
     };
 
     const putDataInForm = (selectedPlayer) => {
@@ -142,11 +143,11 @@
     };
 
     const goManagerWizard = () => {
-        navigateBetewnViews("/Teams/" + teamId + "/manager");
+        router.goTo("Teams/" + teamId + "/manager");
     };
 
     const goCoacheswizard = () => {
-        navigateBetewnViews("/Teams/" + teamId + "/coaches");
+        router.goTo("Teams/" + teamId + "/coaches");
     };
 
     //ViewModel
@@ -172,7 +173,7 @@
     $(function () {
         console.log("Ready!!!");
 
-        const path = "/api/teams/" + teamId + "/players";
+        const path = "api/teams/" + teamId + "/players";
 
         const putDatasForm = (data) => {
             if (data.length > 0) {
@@ -181,6 +182,6 @@
             };
         }
 
-        httpAjax.get(path, putDatasForm);
+        httpAjax.get(router.makeUrl(path), putDatasForm);
     });
 })();

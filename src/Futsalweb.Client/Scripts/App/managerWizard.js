@@ -3,6 +3,7 @@
 (function () {
     // Variables
     const httpAjax = new HttpAjax();
+    const router = new Router();
 
     let team = {
         id: ko.observable(),
@@ -19,23 +20,23 @@
         };
 
         if (newTeam.id) {
-            const path = "/api/teams";
+            const path = "api/teams";
 
             const goPlayersWizard = () => {
-                navigateBetewnViews("/Teams/" + newTeam.id + "/Players");
+                router.goTo("Teams/" + newTeam.id + "/Players");
 
             };
 
-            httpAjax.put(path, newTeam, goPlayersWizard);
+            httpAjax.put(router.makeUrl(path), newTeam, goPlayersWizard);
         }
         else {
-            const path = "/api/teams";
+            const path = "api/teams";
             
             const goPlayersWizard = (data) => {
-                navigateBetewnViews("/Teams/" + data.id + "/Players");
+                router.goTo("Teams/" + data.id + "/Players");
             };
 
-            httpAjax.post(path, newTeam, goPlayersWizard);
+            httpAjax.post(router.makeUrl(path), newTeam, goPlayersWizard);
         }
     };
 
@@ -55,7 +56,7 @@
         let teamId = pathUrl.match(regularExpreesion);
 
         if (teamId) {
-            let path = "/api/teams/" + teamId;
+            let path = "api/teams/" + teamId;
 
             const putDatasForm = (data) => {
                 team.id(data.id);
@@ -63,7 +64,7 @@
                 team.category(data.category);
             };
 
-            httpAjax.get(path, putDatasForm);
+            httpAjax.get(router.makeUrl(path), putDatasForm);
         }
     });
 })();

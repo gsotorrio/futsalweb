@@ -150,8 +150,12 @@
     <Content Include="Scripts\App\gamePlayersWizazrd.js" />
     <Content Include="Scripts\App\gamesDataWizard.js" />
     <Content Include="Scripts\App\httpAjax.js" />
+<<<<<<< HEAD
     <Content Include="Scripts\App\listGames.js" />
     <Content Include="Scripts\App\navigate.js" />
+=======
+    <Content Include="Scripts\App\router.js" />
+>>>>>>> c1a5cf90d5cc551f3df7c06b820d5a76b1451d8e
     <Content Include="Scripts\App\teamsDetails.js" />
     <Content Include="Scripts\App\managerWizard.js" />
     <Content Include="Scripts\App\playersWizard.js" />
