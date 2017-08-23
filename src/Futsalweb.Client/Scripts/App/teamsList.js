@@ -59,6 +59,7 @@
                 displayMassage(true);
             }
             else {
+                console.log(data);
                 teams(data);
                 hiddeTable.push("some value");
             }

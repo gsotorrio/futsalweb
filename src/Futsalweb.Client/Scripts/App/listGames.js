@@ -41,21 +41,16 @@
     $(function () {
         console.log("Ready!!!");
 
-        if (games.length == 0) {
-            displayMassage(false);
-        }
-        else {
-            games(data);
-            hiddeTable.push("some value");
-        }
+            let imagineGame = {
+                idGame: 1513515,
+                homeTeam: "Boskozaleak",
+                visitTeam: "Jarrilleros",
+                typeGame: "amistoso",
+                dateGame: "12-12-2012"
+            };
 
-        let imagineGame = {
-            idGame: 1513515,
-            homeTeam: "Boskozaleak",
-            visitTeam: "Jarrilleros",
-            typeGame: "amistoso",
-            dateGame: "12-12-2012"
-        };
-        games(imagineGame);
+            games(imagineGame);
+            hiddeTable.push("some value");
+            displayMassage(false);
     });
 })();
