@@ -4,6 +4,9 @@
     // Variables
     const httpAjax = new HttpAjax();
 
+    let hiddeForm = ko.observableArray([]);
+    let displayMassage = ko.observable(true);
+
     let players = ko.observableArray();
 
     let player = {
@@ -16,6 +19,11 @@
     };
 
     // Public Functions
+    const showForm = () => {
+        hiddeForm.push("some value");
+        displayMassage(false);
+    };
+
     const cleanForm = () => {
         player.playerId("");
         player.playerName("");
@@ -48,8 +56,11 @@
 
     // ViewModel
     let viewModel = {
+        hiddeForm: hiddeForm,
+        displayMassage: displayMassage,
         players: players,
         player: player,
+        showForm: showForm,
         cleanForm: cleanForm,
         createNewPlayer: createNewPlayer,
         trying: trying
