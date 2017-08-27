@@ -44,6 +44,7 @@
         gameData: gameData,
         createUpdateGame: createUpdateGame
     };
+
     // On initialize
     ko.applyBindings(viewModel);
 
