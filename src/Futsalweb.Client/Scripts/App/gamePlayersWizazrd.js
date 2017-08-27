@@ -49,11 +49,6 @@
         console.log(data.name);
     };
 
-    const trying = () => {
-        console.log(players())
-        console.log("tocame los huevos")
-    };
-
     // ViewModel
     let viewModel = {
         hiddeForm: hiddeForm,
@@ -63,7 +58,6 @@
         showForm: showForm,
         cleanForm: cleanForm,
         createNewPlayer: createNewPlayer,
-        trying: trying
     };
     // On initialize
     ko.applyBindings(viewModel);
