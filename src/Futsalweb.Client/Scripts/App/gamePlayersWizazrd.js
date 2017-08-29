@@ -9,13 +9,15 @@
 
     let players = ko.observableArray();
 
+    let listPlayers = ko.observableArray([players]);
+    let playersChosed = ko.observableArray()
+
     let player = {
         playerId: ko.observable(),
         playerName: ko.observable(),
         playerSurname: ko.observable(),
         playerPosition: ko.observable(),
         playerNumber: ko.observable(),
-        playerSelected: ko.observable()
     };
 
     // Public Functions
@@ -45,12 +47,16 @@
         cleanForm();
     };
 
-    const slectPlayers = (data) => {
-        console.log(data.name);
+    const showPlayers = (data) => {
+        console.log(listPlayers());
+
+        console.log(playersChosed());
     };
 
     // ViewModel
     let viewModel = {
+        listPlayers: listPlayers,
+        playersChosed: playersChosed,
         hiddeForm: hiddeForm,
         displayMassage: displayMassage,
         players: players,
@@ -58,6 +64,7 @@
         showForm: showForm,
         cleanForm: cleanForm,
         createNewPlayer: createNewPlayer,
+        showPlayers: showPlayers
     };
     // On initialize
     ko.applyBindings(viewModel);

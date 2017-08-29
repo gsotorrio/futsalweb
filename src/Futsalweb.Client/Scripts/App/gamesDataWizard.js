@@ -8,9 +8,9 @@
       
     let gameData = {
         idGame: ko.observable(),
-        homeTeam: teams,
+        myTeam: teams,
         selectTeam: ko.observable(),  
-        visitTeam: ko.observable(),
+        rivalTeam: ko.observable(),
         dateGame: ko.observable(),
         timeGame: ko.observable(),
         placeGame: ko.observable(),
@@ -21,8 +21,8 @@
     const createUpdateGame = () => {
         let newGame = {
             idGame: gameData.idGame(),
-            homeTeam: gameData.selectTeam(),
-            visitTeam: gameData.visitTeam(),
+            myTeam: gameData.selectTeam(),
+            rivalTeam: gameData.rivalTeam(),
             dateGame: gameData.dateGame(),
             timeGame: gameData.timeGame(),
             placeGame: gameData.placeGame(),
@@ -35,7 +35,6 @@
         else {
             //navigateBetewnViews("/Games/PlayersGame");
             console.log(newGame);
-            console.log(teams());
         }
     };
 
@@ -44,7 +43,7 @@
         gameData: gameData,
         createUpdateGame: createUpdateGame
     };
-
+ 
     // On initialize
     ko.applyBindings(viewModel);
 
