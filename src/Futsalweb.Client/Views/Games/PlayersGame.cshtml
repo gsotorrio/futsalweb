@@ -70,8 +70,8 @@
 
     <tbody data-bind="foreach: players">
         <tr>
-            <td><input type="checkbox" value="" data-bind="checkedValue: $data, checked: $root.selectPlayers"></td>
             <td class="hideId" data-bind="text: playerId"></td>
+            <td><input type="checkbox" data-bind="checkedValue: playerId, checked: $('tr').selectPlayers"></td>
             <td data-bind="text: playerName"></td>
             <td data-bind="text: playerSurname"></td>
             <td data-bind="text: playerPosition"></td>

@@ -8,8 +8,6 @@
     let displayMassage = ko.observable(true);
 
     let players = ko.observableArray();
-
-    let listPlayers = ko.observableArray([players]);
     let playersChosed = ko.observableArray()
 
     let player = {
@@ -48,14 +46,12 @@
     };
 
     const showPlayers = (data) => {
-        console.log(listPlayers());
-
         console.log(playersChosed());
+        console.log(players());
     };
 
     // ViewModel
     let viewModel = {
-        listPlayers: listPlayers,
         playersChosed: playersChosed,
         hiddeForm: hiddeForm,
         displayMassage: displayMassage,
