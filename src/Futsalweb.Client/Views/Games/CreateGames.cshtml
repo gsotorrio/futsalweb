@@ -13,8 +13,12 @@
     <input type="hidden" data-bind="textInput: gameData.idGame">
     <div class="form-group">
         <label for="" class="col-sm-2 control-label">My Team</label>
-        <div class="col-sm-8">
-            <select type="text" class="form-control" placeholder="Home Team" data-bind="options: gameData.myTeam, value: gameData.selectTeam"></select>
+        <div class="col-sm-4">
+            <select type="text" class="form-control" data-bind="options: gameData.myTeam, value: gameData.selectTeam"></select>
+        </div>
+        <div data-bind="visible: visitGuest">
+            <div><input type="radio" value="Home" data-bind="checked: visitGuestChoise" /> Home</div>
+            <div><input type="radio" value="Guest" data-bind="checked: visitGuestChoise" /> Guest</div>
         </div>
     </div>
     <div class="form-group">

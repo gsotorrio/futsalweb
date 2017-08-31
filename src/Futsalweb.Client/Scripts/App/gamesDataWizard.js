@@ -5,11 +5,14 @@
     const httpAjax = new HttpAjax();
 
     let teams = ko.observableArray();
-      
+     
+    let visitGuest = ko.observable(true);
+    let visitGuestChoise = ko.observable();
+
     let gameData = {
         idGame: ko.observable(),
         myTeam: teams,
-        selectTeam: ko.observable(),  
+        selectTeam: ko.observable(),
         rivalTeam: ko.observable(),
         dateGame: ko.observable(),
         timeGame: ko.observable(),
@@ -19,10 +22,22 @@
 
     // Public Functions
     const createUpdateGame = () => {
+        let homeTeam = "";
+        let guestTeam = "";
+
+        if (visitGuestChoise() == "Home") {
+            homeTeam = gameData.selectTeam();
+            guestTeam = gameData.rivalTeam();
+        }
+        else {
+            guestTeam = gameData.selectTeam();
+            homeTeam = gameData.rivalTeam();
+        }
+
         let newGame = {
             idGame: gameData.idGame(),
-            myTeam: gameData.selectTeam(),
-            rivalTeam: gameData.rivalTeam(),
+            homeTeam: homeTeam,
+            guestTeam: guestTeam,
             dateGame: gameData.dateGame(),
             timeGame: gameData.timeGame(),
             placeGame: gameData.placeGame(),
@@ -40,6 +55,9 @@
 
     // View Model
     const viewModel = {
+        teams: teams,
+        visitGuest: visitGuest,
+        visitGuestChoise: visitGuestChoise,
         gameData: gameData,
         createUpdateGame: createUpdateGame
     };
