@@ -75,6 +75,7 @@
             for (var i = 0; i < data.length; i++){
                 arrayTeams.push(data[i].name);
             }
+            arrayTeams.push("Write yourself");
             teams(arrayTeams);
         }
 
