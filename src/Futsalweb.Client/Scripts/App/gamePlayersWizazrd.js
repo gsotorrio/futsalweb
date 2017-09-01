@@ -46,13 +46,13 @@
     };
 
     const showPlayers = (data) => {
-        console.log(playersChosed());
-        console.log(players());
+        let playersMatch = playersChosed();
+        console.log(playersMatch);
     };
 
     // ViewModel
     let viewModel = {
-        playersChosed: playersChosed,
+        selectPlayers: playersChosed,
         hiddeForm: hiddeForm,
         displayMassage: displayMassage,
         players: players,

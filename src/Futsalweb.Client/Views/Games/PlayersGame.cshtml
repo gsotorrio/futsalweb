@@ -61,19 +61,17 @@
 <table id="tablePlayers" class="table table-striped">
     <thead>
         <tr>
-            <th class="hideId">idPlayer</th>
+            <th></th>
             <th>Name</th>
             <th>Surname</th>
             <th>Position</th>
             <th>Number</th>
-            <th></th>
         </tr>
     </thead>
 
     <tbody data-bind="foreach: players">
         <tr>
-            <td class="hideId" data-bind="text: playerId"></td>
-            <td><input type="checkbox" value="hola" data-bind="checkedValue: playerId, checked: $root.selectPlayers"></td>
+            <td><input type="checkbox" data-bind="checkedValue: playerId, checked: $parent.selectPlayers"></td>
             <td data-bind="text: playerName"></td>
             <td data-bind="text: playerSurname"></td>
             <td data-bind="text: playerPosition"></td>
