@@ -3,6 +3,7 @@
 (function () {
     // Variables
     const httpAjax = new HttpAjax();
+    const router = new Router();
 
     let games = ko.observableArray();
 
@@ -24,7 +25,7 @@
     };
 
     const goDetails = () => {
-        navigateBetewnViews("/Teams/" + data.id + "/details");
+        router.goTo("games/gameData");
     };
     // ViewModel
     let viewModel = {

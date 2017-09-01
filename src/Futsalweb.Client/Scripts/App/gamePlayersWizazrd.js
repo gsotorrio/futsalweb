@@ -3,6 +3,7 @@
 (function () {
     // Variables
     const httpAjax = new HttpAjax();
+    const router = new Router();
 
     let hiddeForm = ko.observableArray([]);
     let displayMassage = ko.observable(true);
@@ -47,7 +48,8 @@
 
     const showPlayers = (data) => {
         let playersMatch = playersChosed();
-        console.log(playersMatch);
+        
+        router.goTo("Games/ListGames");
     };
 
     // ViewModel

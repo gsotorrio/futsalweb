@@ -3,6 +3,7 @@
 (function () {
     // Variables
     const httpAjax = new HttpAjax();
+    const router = new Router();
 
     let teams = ko.observableArray();
      
@@ -48,7 +49,7 @@
             console.log(newGame)
         }
         else {
-            //navigateBetewnViews("/Games/PlayersGame");
+            router.goTo("games/playersGame");
             console.log(newGame);
         }
     };
