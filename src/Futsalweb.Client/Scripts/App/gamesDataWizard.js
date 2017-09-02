@@ -5,21 +5,23 @@
     const httpAjax = new HttpAjax();
     const router = new Router();
 
+    let hiddeTextBox = ko.observableArray([])
+    let displayMassage = ko.observable(true);
+
     let teams = ko.observableArray();
     let selectTeam = ko.observable();
 
     selectTeam.subscribe(function (item) {
         if (item == "Write yourself") {
             console.log("molo mazo");
+            displayMassage(false);
+            hiddeTextBox.push("Some value")
         }
     });
- 
-   
 
     let gameData = {
         idGame: ko.observable(),
-        //myTeam: teams,
-        //selectTeam: ko.observable(),
+        homeTeam: selectTeam(),
         rivalTeam: ko.observable(),
         dateGame: ko.observable(),
         timeGame: ko.observable(),
@@ -29,22 +31,9 @@
 
     // Public Functions
     const createUpdateGame = () => {
-        let homeTeam = "";
-        let guestTeam = "";
-
-        if (visitGuestChoise() == "Home") {
-            homeTeam = gameData.selectTeam();
-            guestTeam = gameData.rivalTeam();
-        }
-        else {
-            guestTeam = gameData.selectTeam();
-            homeTeam = gameData.rivalTeam();
-        }
-
         let newGame = {
             idGame: gameData.idGame(),
-            homeTeam: homeTeam,
-            guestTeam: guestTeam,
+            homeTeam:gameData.homeTeam,
             dateGame: gameData.dateGame(),
             timeGame: gameData.timeGame(),
             placeGame: gameData.placeGame(),
@@ -55,13 +44,15 @@
             console.log(newGame)
         }
         else {
-            router.goTo("games/playersGame");
+            //router.goTo("games/playersGame");
             console.log(newGame);
         }
     };
 
     // View Model
     const viewModel = {
+        hiddeTextBox: hiddeTextBox,
+        displayMassage: displayMassage,
         teams: teams,
         selectTeam: selectTeam,
         gameData: gameData,
