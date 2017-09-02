@@ -6,14 +6,20 @@
     const router = new Router();
 
     let teams = ko.observableArray();
-     
-    let visitGuest = ko.observable(true);
-    let visitGuestChoise = ko.observable();
+    let selectTeam = ko.observable();
+
+    selectTeam.subscribe(function (item) {
+        if (item == "Write yourself") {
+            console.log("molo mazo");
+        }
+    });
+ 
+   
 
     let gameData = {
         idGame: ko.observable(),
-        myTeam: teams,
-        selectTeam: ko.observable(),
+        //myTeam: teams,
+        //selectTeam: ko.observable(),
         rivalTeam: ko.observable(),
         dateGame: ko.observable(),
         timeGame: ko.observable(),
@@ -57,8 +63,7 @@
     // View Model
     const viewModel = {
         teams: teams,
-        visitGuest: visitGuest,
-        visitGuestChoise: visitGuestChoise,
+        selectTeam: selectTeam,
         gameData: gameData,
         createUpdateGame: createUpdateGame
     };
