@@ -13,38 +13,45 @@
     <input type="hidden" data-bind="textInput: gameData.idGame">
     <div class="form-group">
         <label for="" class="col-sm-2 control-label">Home Team</label>
-        <div class="col-sm-4" data-bind="if: displayMassage">
-            <select type="text" class="form-control" data-bind="options: teams, value: selectTeam"></select>
+        <div class="col-sm-8" data-bind="if: displayTeamHome">
+            <select type="text" class="form-control" data-bind="options: teamsHome, value: selectTeamHome"></select>
         </div>
-
-        <div class="col-sm-4">
-            <input type="text" class="form-control" placeholder="Write team name" data-bind="visible: hiddeTextBox().length > 0">
+        <div class="col-sm-8">
+            <input type="text" class="form-control" placeholder="Write team name" data-bind="visible: hiddeHomeTextBox().length > 0">
         </div>
     </div>
+
     <div class="form-group">
         <label for="" class="col-sm-2 control-label">Guest Team</label>
+        <div class="col-sm-8" data-bind="if: displayTeamGuest">
+            <select type="text" class="form-control" data-bind="options: teamsGuest, value: selectTeamGuest"></select>
+        </div>
         <div class="col-sm-8">
-            <input type="text" class="form-control" placeholder="Visit Team" data-bind="textInput: gameData.rivalTeam">
+            <input type="text" class="form-control" placeholder="Write team name" data-bind="visible: hiddeGuestTextBox().length > 0">
         </div>
     </div>
+
     <div class="form-group">
         <label for="" class="col-sm-2 control-label">Date</label>
         <div class="col-sm-8">
             <input type="date" class="form-control" placeholder="Date" data-bind="textInput: gameData.dateGame">
         </div>
     </div>
+
     <div class="form-group">
         <label for="" class="col-sm-2 control-label">Time</label>
         <div class="col-sm-8">
             <input type="time" class="form-control" placeholder="Time" data-bind="textInput: gameData.timeGame">
         </div>
     </div>
+
     <div class="form-group">
         <label for="" class="col-sm-2 control-label">Place</label>
         <div class="col-sm-8">
             <input type="text" class="form-control" placeholder="Place" data-bind="textInput: gameData.placeGame">
         </div>
     </div>
+
     <div class="form-group">
         <label for="" class="col-sm-2 control-label">Type</label>
         <div class="col-sm-8">

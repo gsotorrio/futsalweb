@@ -5,28 +5,44 @@
     const httpAjax = new HttpAjax();
     const router = new Router();
 
-    let hiddeTextBox = ko.observableArray([])
-    let displayMassage = ko.observable(true);
+    let teamsHome = ko.observableArray();
+    let selectTeamHome = ko.observable();
 
-    let teams = ko.observableArray();
-    let selectTeam = ko.observable();
+    let teamsGuest = ko.observableArray();
+    let selectTeamGuest = ko.observable();
 
-    selectTeam.subscribe(function (item) {
+    let hiddeHomeTextBox = ko.observableArray([]);
+    let displayTeamHome = ko.observable(true);
+
+    let hiddeGuestTextBox = ko.observableArray(["some value"]);
+    let displayTeamGuest = ko.observable(false);
+
+    selectTeamHome.subscribe(function (item) {
         if (item == "Write yourself") {
-            console.log("molo mazo");
-            displayMassage(false);
-            hiddeTextBox.push("Some value")
+            displayTeamHome(false);
+            hiddeHomeTextBox.push("Some value");
+            displayTeamGuest(true);
+            hiddeGuestTextBox.splice(0, 1);
+        }
+    });
+
+    selectTeamGuest.subscribe(function (item) { 
+        if (item == "Write rival team") {
+            displayTeamHome(true);
+            hiddeHomeTextBox.splice(0, 1);
+            displayTeamGuest(false);
+            hiddeGuestTextBox.push("some value");
         }
     });
 
     let gameData = {
-        idGame: ko.observable(),
-        homeTeam: selectTeam(),
-        rivalTeam: ko.observable(),
-        dateGame: ko.observable(),
-        timeGame: ko.observable(),
-        placeGame: ko.observable(),
-        typeGame: ko.observable()
+        //idGame: ko.observable(),
+        //homeTeam: selectTeam(),
+        //rivalTeam: ko.observable(),
+        //dateGame: ko.observable(),
+        //timeGame: ko.observable(),
+        //placeGame: ko.observable(),
+        //typeGame: ko.observable()
     };
 
     // Public Functions
@@ -51,10 +67,14 @@
 
     // View Model
     const viewModel = {
-        hiddeTextBox: hiddeTextBox,
-        displayMassage: displayMassage,
-        teams: teams,
-        selectTeam: selectTeam,
+        teamsGuest: teamsGuest,
+        selectTeamGuest: selectTeamGuest,
+        hiddeHomeTextBox: hiddeHomeTextBox,
+        displayTeamHome: displayTeamHome,
+        hiddeGuestTextBox: hiddeGuestTextBox,
+        displayTeamGuest: displayTeamGuest,
+        teamsHome: teamsHome,
+        selectTeamHome: selectTeamHome,
         gameData: gameData,
         createUpdateGame: createUpdateGame
     };
@@ -65,14 +85,18 @@
     $(function () {
         console.log("Ready!!!");
 
-        let arrayTeams = [];
+        let arrayTeamsHome = [];
+        let arrayTeamsGuest = [];
         
         function showData(data) {
             for (var i = 0; i < data.length; i++){
-                arrayTeams.push(data[i].name);
+                arrayTeamsHome.push(data[i].name);
+                arrayTeamsGuest.push(data[i].name);
             }
-            arrayTeams.push("Write yourself");
-            teams(arrayTeams);
+            arrayTeamsHome.push("Write yourself");
+            arrayTeamsGuest.push("Write rival team")
+            teamsHome(arrayTeamsHome);
+            teamsGuest(arrayTeamsGuest);
         }
 
         const path = "/api/teams";
