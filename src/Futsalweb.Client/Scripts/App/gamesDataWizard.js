@@ -18,13 +18,11 @@
     let displayTeamGuest = ko.observable(false);
 
     let gameData = {
-        //idGame: ko.observable(),
-        //homeTeam: selectTeam(),
-        //rivalTeam: ko.observable(),
-        //dateGame: ko.observable(),
-        //timeGame: ko.observable(),
-        //placeGame: ko.observable(),
-        //typeGame: ko.observable()
+        idGame: ko.observable(),
+        dateGame: ko.observable(),
+        timeGame: ko.observable(),
+        placeGame: ko.observable(),
+        typeGame: ko.observable()
     };
 
     // Private functions
