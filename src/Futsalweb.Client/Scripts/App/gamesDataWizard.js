@@ -17,24 +17,6 @@
     let hiddeGuestTextBox = ko.observableArray(["some value"]);
     let displayTeamGuest = ko.observable(false);
 
-    selectTeamHome.subscribe(function (item) {
-        if (item == "Write yourself") {
-            displayTeamHome(false);
-            hiddeHomeTextBox.push("Some value");
-            displayTeamGuest(true);
-            hiddeGuestTextBox.splice(0, 1);
-        }
-    });
-
-    selectTeamGuest.subscribe(function (item) { 
-        if (item == "Write rival team") {
-            displayTeamHome(true);
-            hiddeHomeTextBox.splice(0, 1);
-            displayTeamGuest(false);
-            hiddeGuestTextBox.push("some value");
-        }
-    });
-
     let gameData = {
         //idGame: ko.observable(),
         //homeTeam: selectTeam(),
@@ -44,6 +26,25 @@
         //placeGame: ko.observable(),
         //typeGame: ko.observable()
     };
+
+    // Private functions
+    selectTeamHome.subscribe(function (item) {
+        if (item == "Write yourself") {
+            displayTeamHome(false);
+            hiddeHomeTextBox.push("Some value");
+            displayTeamGuest(true);
+            hiddeGuestTextBox.splice(0, 1);
+        }
+    });
+
+    selectTeamGuest.subscribe(function (item) {
+        if (item == "Write rival team") {
+            displayTeamHome(true);
+            hiddeHomeTextBox.splice(0, 1);
+            displayTeamGuest(false);
+            hiddeGuestTextBox.push("some value");
+        }
+    });
 
     // Public Functions
     const createUpdateGame = () => {
@@ -67,14 +68,14 @@
 
     // View Model
     const viewModel = {
+        teamsHome: teamsHome,
+        selectTeamHome: selectTeamHome,
         teamsGuest: teamsGuest,
         selectTeamGuest: selectTeamGuest,
         hiddeHomeTextBox: hiddeHomeTextBox,
         displayTeamHome: displayTeamHome,
         hiddeGuestTextBox: hiddeGuestTextBox,
         displayTeamGuest: displayTeamGuest,
-        teamsHome: teamsHome,
-        selectTeamHome: selectTeamHome,
         gameData: gameData,
         createUpdateGame: createUpdateGame
     };
