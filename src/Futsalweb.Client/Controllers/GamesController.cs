@@ -15,7 +15,7 @@ namespace Futsalweb.Client.Controllers
         }
 
         // GET: games/create
-        public ActionResult Create()
+        public ActionResult Manager()
         {
             return View();
         }

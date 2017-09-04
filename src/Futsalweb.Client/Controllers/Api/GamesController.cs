@@ -25,12 +25,13 @@ namespace Futsalweb.Client.Controllers.Api
             return Ok(_gameSrv.GetAllGames().Select(g => new
             {
                 g.Id, 
-                g.HomeTeam,
-                g.GuestTeam,
+                TeamName = g.TeamName,
+                g.RivalTeam,
                 date = g.Date.ToShortDateString(),
                 time = g.Date.ToShortTimeString(),
                 g.Location,
-                g.Type
+                g.Type,
+                g.PlayedAtHome
             }));
         }
 
@@ -40,11 +41,12 @@ namespace Futsalweb.Client.Controllers.Api
             var game = _gameSrv.CreateGame(new Game
             {
                 Id = gameVM.Id,
-                GuestTeam = gameVM.GuestTeam,
-                HomeTeam = gameVM.HomeTeam,
+                RivalTeam = gameVM.RivalTeam,
+                TeamId = gameVM.TeamId,
                 Type = gameVM.Type,
                 Location = gameVM.Location,
-                Date = DateTime.Parse($"{gameVM.Date} {gameVM.Time}")
+                Date = DateTime.Parse($"{gameVM.Date} {gameVM.Time}"),
+                PlayedAtHome = gameVM.PlayedAtHome
             });
 
             gameVM.Id = game.Id;
@@ -58,11 +60,12 @@ namespace Futsalweb.Client.Controllers.Api
             _gameSrv.UpdateTeam(new Game
             {
                 Id = gameVM.Id,
-                GuestTeam = gameVM.GuestTeam,
-                HomeTeam = gameVM.HomeTeam,
+                RivalTeam = gameVM.RivalTeam,
+                TeamId = gameVM.TeamId,
                 Type = gameVM.Type,
                 Location = gameVM.Location,
-                Date = DateTime.Parse($"{gameVM.Date} {gameVM.Time}")
+                Date = DateTime.Parse($"{gameVM.Date} {gameVM.Time}"),
+                PlayedAtHome = gameVM.PlayedAtHome
             });
 
             return StatusCode(HttpStatusCode.NoContent);

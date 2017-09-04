@@ -251,7 +251,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "    {\n        \"homeTeam\": \"test\",\n        \"guestTeam\": \"test\",\n        \"date\": \"2005-05-05\",\n        \"time\": \"12:00 AM\",\n        \"location\": \"test\",\n        \"type\": \"test\"\n    }"
+							"raw": "    {\n        \"teamId\": \"0ffca5b6-5d63-4798-bd1b-5386f34219df\",\n        \"rivalTeam\": \"Madrid\",\n        \"date\": \"2005-05-05\",\n        \"time\": \"12:00 AM\",\n        \"location\": \"test\",\n        \"type\": \"test\",\n        \"playedAtHome\": true\n    }"
 						},
 						"description": ""
 					},
@@ -271,7 +271,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": \"2c786ca1-c8b5-4bc0-93bf-7f6543501c96\",\n    \"homeTeam\": \"this is working\",\n    \"guestTeam\": \"test\",\n    \"date\": \"2005-05-05\",\n    \"time\": \"12:00 AM\",\n    \"location\": \"test\",\n    \"type\": \"test\"\n}"
+							"raw": "{\n    \"id\": \"c62b907b-1d72-4907-8f4b-1beb96d4e4e4\",\n    \"teamId\": \"650d3ac8-3d8d-431f-9172-364e00ccdcf5\",\n    \"rivalTeam\": \"blablalbalbalabad\",\n    \"date\": \"2005-05-05\",\n    \"time\": \"12:00 AM\",\n    \"location\": \"test\",\n    \"type\": \"test\",\n    \"playedAtHome\": true\n}"
 						},
 						"description": ""
 					},
@@ -280,7 +280,7 @@
 				{
 					"name": "http://localhost:5159/api/games/2c786ca1-c8b5-4bc0-93bf-7f6543501c96",
 					"request": {
-						"url": "http://localhost:5159/api/games/2c786ca1-c8b5-4bc0-93bf-7f6543501c96",
+						"url": "http://localhost:5159/api/games/c62b907b-1d72-4907-8f4b-1beb96d4e4e4",
 						"method": "DELETE",
 						"header": [],
 						"body": {},

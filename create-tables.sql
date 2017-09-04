@@ -1,6 +1,17 @@
-﻿USE [FutsalwebDB]
+﻿/*    ==Scripting Parameters==
+
+    Source Server Version : SQL Server 2016 (13.0.4001)
+    Source Database Engine Edition : Microsoft SQL Server Enterprise Edition
+    Source Database Engine Type : Standalone SQL Server
+
+    Target Server Version : SQL Server 2017
+    Target Database Engine Edition : Microsoft SQL Server Standard Edition
+    Target Database Engine Type : Standalone SQL Server
+*/
+
+USE [FutsalwebDB]
 GO
-/****** Object:  Table [dbo].[Coaches]    Script Date: 04-Sep-17 9:46:55 AM ******/
+/****** Object:  Table [dbo].[Coaches]    Script Date: 04-Sep-17 11:44:48 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -18,25 +29,26 @@ CREATE TABLE [dbo].[Coaches](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Games]    Script Date: 04-Sep-17 9:46:55 AM ******/
+/****** Object:  Table [dbo].[Games]    Script Date: 04-Sep-17 11:44:48 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Games](
 	[Id] [uniqueidentifier] NOT NULL,
-	[HomeTeam] [nvarchar](100) NOT NULL,
-	[GuestTeam] [nvarchar](100) NOT NULL,
+	[TeamId] [uniqueidentifier] NOT NULL,
+	[RivalTeam] [nvarchar](100) NOT NULL,
 	[Date] [datetime] NOT NULL,
 	[Location] [nvarchar](100) NOT NULL,
 	[Type] [nvarchar](100) NOT NULL,
+	[PlayedAtHome] [bit] NOT NULL,
  CONSTRAINT [PK_Games] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Players]    Script Date: 04-Sep-17 9:46:55 AM ******/
+/****** Object:  Table [dbo].[Players]    Script Date: 04-Sep-17 11:44:48 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -59,7 +71,7 @@ CREATE TABLE [dbo].[Players](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Teams]    Script Date: 04-Sep-17 9:46:55 AM ******/
+/****** Object:  Table [dbo].[Teams]    Script Date: 04-Sep-17 11:44:48 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -78,6 +90,11 @@ ALTER TABLE [dbo].[Coaches]  WITH CHECK ADD  CONSTRAINT [FK_Coaches_Teams] FOREI
 REFERENCES [dbo].[Teams] ([Id])
 GO
 ALTER TABLE [dbo].[Coaches] CHECK CONSTRAINT [FK_Coaches_Teams]
+GO
+ALTER TABLE [dbo].[Games]  WITH CHECK ADD  CONSTRAINT [FK_Games_Teams] FOREIGN KEY([TeamId])
+REFERENCES [dbo].[Teams] ([Id])
+GO
+ALTER TABLE [dbo].[Games] CHECK CONSTRAINT [FK_Games_Teams]
 GO
 ALTER TABLE [dbo].[Players]  WITH CHECK ADD  CONSTRAINT [FK_Players_Teams] FOREIGN KEY([TeamId])
 REFERENCES [dbo].[Teams] ([Id])

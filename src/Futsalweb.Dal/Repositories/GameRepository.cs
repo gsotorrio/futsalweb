@@ -32,7 +32,11 @@ namespace Futsalweb.Dal.Repositories
         {
             using (var db = new SqlConnection(_connectionString))
             {
-                return db.Query<Game>("SELECT * FROM Games;");
+                return db.Query<Game>(
+                                    @"SELECT G.Id, T.Name AS [TeamName], G.RivalTeam, G.Date, G.Location, G.Type, G.PlayedAtHome 
+                                    FROM Games G
+                                    INNER JOIN Teams T 
+                                    ON T.Id = G.TeamId;");
             }
         }
 
@@ -40,7 +44,7 @@ namespace Futsalweb.Dal.Repositories
         {
             using (var db = new SqlConnection(_connectionString))
             {
-                db.Execute("INSERT INTO Games VALUES (@Id, @HomeTeam, @GuestTeam, @Date, @Location, @Type);", game);
+                db.Execute("INSERT INTO Games VALUES (@Id, @TeamId, @RivalTeam, @Date, @Location, @Type, @PlayedAtHome);", game);
             }
         }
 
@@ -49,7 +53,7 @@ namespace Futsalweb.Dal.Repositories
             using (var db = new SqlConnection(_connectionString))
             {
                 db.Execute(
-                    @"UPDATE Games SET HomeTeam = @HomeTeam, GuestTeam = @GuestTeam, Date = @Date, Location = @Location, Type = @Type 
+                    @"UPDATE Games SET TeamId = @TeamId, RivalTeam = @RivalTeam, Date = @Date, Location = @Location, Type = @Type, PlayedAtHome = @PlayedAtHome 
                       WHERE Id = @Id;", 
                     game);
             }

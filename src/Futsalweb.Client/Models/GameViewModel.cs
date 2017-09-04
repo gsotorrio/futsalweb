@@ -9,9 +9,9 @@ namespace Futsalweb.Client.Models
     {
         public Guid Id { get; set; }
 
-        public string HomeTeam { get; set; }
+        public Guid TeamId { get; set; }
 
-        public string GuestTeam { get; set; }
+        public string RivalTeam { get; set; }
 
         public string Date { get; set; }
 
@@ -20,5 +20,7 @@ namespace Futsalweb.Client.Models
         public string Location { get; set; }
 
         public string Type { get; set; }
+
+        public bool PlayedAtHome { get; set; }
     }
 }
