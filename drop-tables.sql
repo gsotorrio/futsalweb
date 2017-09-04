@@ -1,4 +1,6 @@
-﻿DROP TABLE Coaches
+﻿USE [FutsalwebDB]
+
+DROP TABLE Coaches
 DROP TABLE Players
 DROP TABLE Teams
 DROP TABLE Games
