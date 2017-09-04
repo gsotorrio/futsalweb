@@ -1,35 +1,32 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Futsalweb.Client.Controllers
 {
-    public class TeamsController : Controller
+    public class GamesController : Controller
     {
-        // GET: teams/list
+        // GET: games/list
         public ActionResult List()
         {
             return View();
         }
 
-        // GET: teams/Manager
-        public ActionResult Manager()
+        // GET: games/create
+        public ActionResult Create()
         {
             return View();
         }
 
-        // GET: teams/Players
+        // GET: games/player
         public ActionResult Players()
         {
             return View();
         }
 
-        // GET: teams/Coaches
-        public ActionResult Coaches()
-        {
-            return View();
-        }
-
-        // GET: teams/Details
+        // GET: games/details
         public ActionResult Details()
         {
             return View();
