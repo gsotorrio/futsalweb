@@ -221,6 +221,74 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Games API",
+			"description": "Games GRUD",
+			"item": [
+				{
+					"name": "http://localhost:5159/api/games",
+					"request": {
+						"url": "http://localhost:5159/api/games",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5159/api/games",
+					"request": {
+						"url": "http://localhost:5159/api/games",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"homeTeam\": \"test\",\n        \"guestTeam\": \"test\",\n        \"date\": \"2005-05-05\",\n        \"time\": \"12:00 AM\",\n        \"location\": \"test\",\n        \"type\": \"test\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5159/api/games",
+					"request": {
+						"url": "http://localhost:5159/api/games",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"2c786ca1-c8b5-4bc0-93bf-7f6543501c96\",\n    \"homeTeam\": \"this is working\",\n    \"guestTeam\": \"test\",\n    \"date\": \"2005-05-05\",\n    \"time\": \"12:00 AM\",\n    \"location\": \"test\",\n    \"type\": \"test\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5159/api/games/2c786ca1-c8b5-4bc0-93bf-7f6543501c96",
+					"request": {
+						"url": "http://localhost:5159/api/games/2c786ca1-c8b5-4bc0-93bf-7f6543501c96",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
