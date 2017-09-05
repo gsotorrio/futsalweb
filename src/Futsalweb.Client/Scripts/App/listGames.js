@@ -16,7 +16,6 @@
     };
 
     let hiddeTable = ko.observableArray([])
-
     let displayMassage = ko.observable(false);
 
     //Public Functions
@@ -41,17 +40,18 @@
 
     $(function () {
         console.log("Ready!!!");
+        const path = "api/games";
 
-            let imagineGame = {
-                idGame: 1513515,
-                homeTeam: "Boskozaleak",
-                visitTeam: "Jarrilleros",
-                typeGame: "amistoso",
-                dateGame: "12-12-2012"
-            };
-
-            games(imagineGame);
-            hiddeTable.push("some value");
-            displayMassage(false);
+        const showEmtyMassege = (data) => {
+            if (data.length == 0) {
+                displayMassage(true);
+            }
+            else {
+                console.log(data);
+                games(data);
+                hiddeTable.push("some value");
+            }
+        };
+        httpAjax.get(router.makeUrl(path), showEmtyMassege);
     });
 })();
