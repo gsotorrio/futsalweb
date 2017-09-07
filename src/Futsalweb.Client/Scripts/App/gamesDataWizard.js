@@ -5,6 +5,7 @@
     const httpAjax = new HttpAjax();
     const router = new Router();
 
+    let teams = ko.observableArray();
     let myTeams = ko.observableArray();
     let selectMyTeam = ko.observable();
 
@@ -19,39 +20,36 @@
         typeGame: ko.observable()
     };
 
-    let teamId = "";
-    let asd = "hola";
-    // Pricate Function
-    const getUrlTeams = () => {
+    // Private Function
+    const getIdTeams = () => {
         let myTeam = selectMyTeam().join();
-        let arrayTeams = [];
+        let teamId = "";
 
-        const path = "/api/teams";
-
-        const getTeams = (data) => {
-            for (var i = 0; i < data.length; i++) { 
-                if (data[i].name == myTeam) { 
-                    arrayTeams.push(data[i]);
-                }
+        for (var i = 0; i < teams().length; i++) {
+            if (teams()[i].name == myTeam) {
+                teamId = teams()[i].id;
             }
-        };
-        httpAjax.get(path, getTeams);
-        return arrayTeams;
+        }
+        return teamId;
     };
 
-    // Public Functions
-    const createUpdateGame = () => {
+    const getTrueOrFalse = () => {
         let playedAtHome;
         if (wherePlayed()) {
             playedAtHome = true;
         }
         else { playedAtHome = false };
-        
+
+        return playedAtHome
+    };
+
+    // Public Functions
+    const createUpdateGame = () => {    
         let newGame = {
-            teamId: "be7ad550-e901-47a1-9941-1255dcf3d35b",
+            teamId: getIdTeams(),
             idGame: gameData.idGame(),
             rivalTeam: gameData.rivalTeam(),
-            playedAtHome: playedAtHome,
+            playedAtHome: getTrueOrFalse(),
             date: gameData.dateGame(),
             time: gameData.timeGame(), 
             location: gameData.locationGame(),
@@ -69,13 +67,13 @@
             //};
 
             //httpAjax.post(router.makeUrl(path), newGame, goSelectPlayersWizard);
-            getUrlTeams();
             console.log(newGame);
         }
     };
 
     // View Model
     const viewModel = {
+        teams: teams,
         myTeams: myTeams,
         selectMyTeam: selectMyTeam,
         wherePlayed: wherePlayed,
@@ -89,13 +87,16 @@
     $(function () {
         console.log("Ready!!!");
 
-        let arraymyTeams = [];
+        let arraymyTeamsNames = [];
+        let arrayTeams = []
         
         function showData(data) {
             for (var i = 0; i < data.length; i++){
-                arraymyTeams.push(data[i].name);
+                arraymyTeamsNames.push(data[i].name);
+                arrayTeams.push(data[i]);
             }
-            myTeams(arraymyTeams);
+            myTeams(arraymyTeamsNames);
+            teams(arrayTeams);
         }
         const path = "/api/teams";
 
