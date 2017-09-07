@@ -8,11 +8,11 @@
     let games = ko.observableArray();
 
     let game = {
-        idGame: ko.observable(),
-        homeTeam: ko.observable(),
-        visitTeam: ko.observable(),
-        typeGame: ko.observable(),
-        dateGame: ko.observable()
+        id: ko.observable(),
+        teamId: ko.observable(),
+        rivalTeam: ko.observable(),
+        type: ko.observable(),
+        date: ko.observable()
     };
 
     let hiddeTable = ko.observableArray([])

@@ -8,11 +8,7 @@
     let myTeams = ko.observableArray();
     let selectMyTeam = ko.observable();
 
-    let hiddeHomeTextBox = ko.observableArray([]);
-    let displayTeamHome = ko.observable(true);
-
-    let hiddeGuestTextBox = ko.observableArray(["some value"]);
-    let displayTeamGuest = ko.observable(false);
+    let wherePlayed = ko.observable(true);
 
     let gameData = {
         rivalTeam: ko.observable(),
@@ -23,22 +19,57 @@
         typeGame: ko.observable()
     };
 
+    let teamId = "";
+    let asd = "hola";
+    // Pricate Function
+    const getUrlTeams = () => {
+        let myTeam = selectMyTeam().join();
+        let arrayTeams = [];
+
+        const path = "/api/teams";
+
+        const getTeams = (data) => {
+            for (var i = 0; i < data.length; i++) { 
+                if (data[i].name == myTeam) { 
+                    arrayTeams.push(data[i]);
+                }
+            }
+        };
+        httpAjax.get(path, getTeams);
+        return arrayTeams;
+    };
+
     // Public Functions
     const createUpdateGame = () => {
+        let playedAtHome;
+        if (wherePlayed()) {
+            playedAtHome = true;
+        }
+        else { playedAtHome = false };
+        
         let newGame = {
+            teamId: "be7ad550-e901-47a1-9941-1255dcf3d35b",
             idGame: gameData.idGame(),
-            homeTeam:gameData.homeTeam,
-            dateGame: gameData.dateGame(),
-            timeGame: gameData.timeGame(),
-            placeGame: gameData.placeGame(),
-            typeGame: gameData.typeGame()
+            rivalTeam: gameData.rivalTeam(),
+            playedAtHome: playedAtHome,
+            date: gameData.dateGame(),
+            time: gameData.timeGame(), 
+            location: gameData.locationGame(),
+            type: gameData.typeGame()
         };
 
         if (newGame.idGame){
             console.log(newGame)
         }
         else {
-            //router.goTo("games/playersGame");
+            //let path = "api/games"
+
+            //const goSelectPlayersWizard = () => {
+            //    console.log("Done");
+            //};
+
+            //httpAjax.post(router.makeUrl(path), newGame, goSelectPlayersWizard);
+            getUrlTeams();
             console.log(newGame);
         }
     };
@@ -47,10 +78,7 @@
     const viewModel = {
         myTeams: myTeams,
         selectMyTeam: selectMyTeam,
-        hiddeHomeTextBox: hiddeHomeTextBox,
-        displayTeamHome: displayTeamHome,
-        hiddeGuestTextBox: hiddeGuestTextBox,
-        displayTeamGuest: displayTeamGuest,
+        wherePlayed: wherePlayed,
         gameData: gameData,
         createUpdateGame: createUpdateGame
     };
@@ -69,7 +97,6 @@
             }
             myTeams(arraymyTeams);
         }
-
         const path = "/api/teams";
 
         httpAjax.get(path, showData);

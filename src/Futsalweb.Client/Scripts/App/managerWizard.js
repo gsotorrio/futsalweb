@@ -24,7 +24,6 @@
 
             const goPlayersWizard = () => {
                 router.goTo("Teams/" + newTeam.id + "/Players");
-
             };
 
             httpAjax.put(router.makeUrl(path), newTeam, goPlayersWizard);

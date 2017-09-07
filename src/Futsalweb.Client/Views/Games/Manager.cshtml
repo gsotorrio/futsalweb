@@ -14,21 +14,21 @@
     <div class="form-group">
         <label for="" class="col-sm-2 control-label">My Team</label>
         <div class="col-sm-8">
-            <select type="text" class="form-control" data-bind="options: myTeams, value: selectMyTeam"></select>
+            <select class="form-control" data-bind="options: myTeams, selectedOptions: selectMyTeam"></select>
         </div>
     </div>
 
     <div class="form-group">
         <label for="" class="col-sm-2 control-label">Rival Team</label>
         <div class="col-sm-8">
-            <input type="text" class="form-control" placeholder="Write team name" data-bind="gameData.rivalTeam">
+            <input type="text" class="form-control" placeholder="Write team name" data-bind="textInput: gameData.rivalTeam">
         </div>
     </div>
 
     <div class="form-group">
         <div>
             <label for="" class="col-sm-2 control-label">Played at home?</label>
-            <input type="checkbox" value="Home" data-bind="" />         
+            <input class="col-sm-8" type="checkbox" value="" data-bind="checked: wherePlayed" />
         </div>
     </div>
 
