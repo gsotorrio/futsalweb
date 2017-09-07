@@ -13,7 +13,7 @@
 
     let gameData = {
         rivalTeam: ko.observable(),
-        idGame: ko.observable(),
+        id: ko.observable(),
         dateGame: ko.observable(),
         timeGame: ko.observable(),
         locationGame: ko.observable(),
@@ -47,7 +47,7 @@
     const createUpdateGame = () => {    
         let newGame = {
             teamId: getIdTeams(),
-            idGame: gameData.idGame(),
+            id: gameData.id(),
             rivalTeam: gameData.rivalTeam(),
             playedAtHome: getTrueOrFalse(),
             date: gameData.dateGame(),
@@ -60,14 +60,14 @@
             console.log(newGame)
         }
         else {
-            //let path = "api/games"
+            let path = "api/games"
 
-            //const goSelectPlayersWizard = () => {
-            //    console.log("Done");
-            //};
+            const goSelectPlayersWizard = (data) => {
+                router.goTo("games/" + data.id  + "/players");
 
-            //httpAjax.post(router.makeUrl(path), newGame, goSelectPlayersWizard);
-            console.log(newGame);
+            };
+
+            httpAjax.post(router.makeUrl(path), newGame, goSelectPlayersWizard);
         }
     };
 
@@ -86,6 +86,22 @@
 
     $(function () {
         console.log("Ready!!!");
+        let pathUrl = location.pathname;
+        let regularExpreesion = /[a-z\d-]{36}/g;
+        let gameId = pathUrl.match(regularExpreesion);
+
+        if (gameId) {
+            let path = "api/games/" + gameId;
+
+            const putDatasForm = (data) => {
+                console.log(data)
+            };
+
+            httpAjax.get(router.makeUrl(path), putDatasForm);
+        }
+
+        // Something
+        const path = "/api/teams";
 
         let arraymyTeamsNames = [];
         let arrayTeams = []
@@ -98,7 +114,6 @@
             myTeams(arraymyTeamsNames);
             teams(arrayTeams);
         }
-        const path = "/api/teams";
 
         httpAjax.get(path, showData);
     });

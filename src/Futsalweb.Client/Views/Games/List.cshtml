@@ -30,10 +30,10 @@
     <tbody data-bind="foreach: games">
         <tr>
             <td class="hideId" data-bind="text: id"></td>
-            <td data-bind="text: teamId"></td>
+            <td data-bind="text: teamName"></td>
             <td data-bind="text: rivalTeam"></td>
-            <td data-bind="text: type"></td>
             <td data-bind="text: date"></td>
+            <td data-bind="text: time"></td>
             <td data-bind="click: $root.goDetails"><a href="#">Detail</a></td>
             <td data-bind="click: $root.remove"><a href="#">Delete</a></td>
         </tr>

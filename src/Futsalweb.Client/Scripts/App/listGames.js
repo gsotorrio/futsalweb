@@ -9,23 +9,34 @@
 
     let game = {
         id: ko.observable(),
-        teamId: ko.observable(),
+        teamName: ko.observable(),
         rivalTeam: ko.observable(),
-        type: ko.observable(),
-        date: ko.observable()
+        date: ko.observable(),
+        time: ko.observable()
     };
 
     let hiddeTable = ko.observableArray([])
     let displayMassage = ko.observable(false);
 
     //Public Functions
-    const remove = () => {
+    const remove = (game) => {
+        let path = "api/games/" + game.id;
 
+        const deleteGame= function () {
+            games.remove(game);
+            if (games().length == 0) {
+                hiddeTable([]);
+                displayMassage(true);
+            }
+        };
+
+        httpAjax.delete(router.makeUrl(path), deleteGame)
     };
 
-    const goDetails = () => {
-        router.goTo("games/gameData");
+    const goDetails = (data) => {
+        router.goTo("games/" + data.id + "/details");
     };
+
     // ViewModel
     let viewModel = {
         games: games,
