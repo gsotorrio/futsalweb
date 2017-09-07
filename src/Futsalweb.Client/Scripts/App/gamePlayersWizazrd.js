@@ -69,8 +69,28 @@
 
     $(function () {
         console.log("Ready!!!");
+        let pathUrl = location.pathname;
+        let regularExpreesion = /[a-z\d-]{36}/g;
+        let gameId = pathUrl.match(regularExpreesion);
 
-        const path = "/api/teams/" + "2dfd1476-c5a9-41d5-b989-3de4bb79b0bf" + "/players";
+        let teamId = "";
+
+        // Get my team id
+        const pathTeamId = "/api/games/" + gameId;
+
+        const getmyTeamId = (data) => {
+            let teamName = "";
+            for (var i = 0; i < data.length; i++) {
+                if(data[i] == gameId){
+                    teamName = data[i].id;
+                }
+            }
+        };
+
+        httpAjax.get(pathTeamId, getmyTeamId);
+
+        // Get players in my team
+        const path = "/api/teams/" + temaId + "/players";
 
         const putDataForm = (data) => {
             let arrayPlayers = [];
