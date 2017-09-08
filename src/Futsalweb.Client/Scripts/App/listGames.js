@@ -11,6 +11,8 @@
         id: ko.observable(),
         teamName: ko.observable(),
         rivalTeam: ko.observable(),
+        location: ko.observable(),
+        playedAtHome: ko.observable,
         date: ko.observable(),
         time: ko.observable()
     };
