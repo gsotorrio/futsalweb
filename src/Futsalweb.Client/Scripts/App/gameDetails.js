@@ -11,7 +11,7 @@
 
     // Functions
     const goGamesList = () => {
-        router.goTo("games/" + gameId + "/listGames");
+        router.goTo("games/list");
     };
 
     // View Model
@@ -25,6 +25,6 @@
     $(function () {
         console.log("Ready!!!");        
 
-        httpAjax.get("/api/games/" + gameId, game(data));
+        httpAjax.get("/api/games/" + gameId, function (data) { game(data); });
     });
 })();
