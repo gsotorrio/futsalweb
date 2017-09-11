@@ -2,6 +2,8 @@
 
 (function () {
     // Variables
+    const gameId = location.pathname.split('/')[2];
+
     const httpAjax = new HttpAjax();
     const router = new Router();
 
@@ -48,10 +50,13 @@
 
     const showPlayers = (data) => {
         let playersMatch = playersChosed();
-        
-        router.goTo("Games/ListGames");
+        console.log(playersMatch);
+        //router.goTo("Games/ListGames");
     };
 
+    const goManagerWizard = () => {
+        router.goTo("games/" + gameId + "/manager");
+    };
     // ViewModel
     let viewModel = {
         selectPlayers: playersChosed,
@@ -62,6 +67,7 @@
         showForm: showForm,
         cleanForm: cleanForm,
         createNewPlayer: createNewPlayer,
+        goManagerWizard: goManagerWizard,
         showPlayers: showPlayers
     };
     // On initialize
@@ -73,28 +79,40 @@
         let regularExpreesion = /[a-z\d-]{36}/g;
         let gameId = pathUrl.match(regularExpreesion);
 
-        let teamId = "";
+        // Get my team name.
+        let teamName = "";
 
-        // Get my team id
-        const pathTeamId = "/api/games/" + gameId;
+        const pathGame = "/api/games/" + gameId;
 
-        const getmyTeamId = (data) => {
-            let teamName = "";
+        const getmyTeamName = (data) => {
             for (var i = 0; i < data.length; i++) {
-                if(data[i] == gameId){
-                    teamName = data[i].id;
+                if(data[i].id == gameId){
+                    teamName = data[i].teamName;
                 }
             }
         };
+        httpAjax.get(pathGame, getmyTeamName);
 
-        httpAjax.get(pathTeamId, getmyTeamId);
+        // Get My team id.
+        let teamId = ""
 
-        // Get players in my team
-        const path = "/api/teams/" + temaId + "/players";
+        const pathTeams = "/api/teams/";
+
+        const getTeamId = (data) => {
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].name == teamName) {
+                    teamId = data[i].id;
+                }
+            }
+        };
+        httpAjax.get(pathTeams, getTeamId);
+
+        //Get players in my team
+        const path = "/api/teams/" +  + "/players";
 
         const putDataForm = (data) => {
             let arrayPlayers = [];
-                
+
             for (var i = 0; i < data.length; i++) {
                 let playerData = {
                     playerId: data[i].id,
@@ -109,7 +127,6 @@
             
             players(arrayPlayers);
         };
-
         httpAjax.get(path, putDataForm);
     });
 })();

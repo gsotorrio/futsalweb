@@ -36,7 +36,7 @@
     };
 
     const goDetails = (data) => {
-        router.goTo("games/" + data.id + "/details");
+        router.goTo("Games/" + data.id + "/Details");
     };
 
     // ViewModel
