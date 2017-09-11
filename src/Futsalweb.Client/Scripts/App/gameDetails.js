@@ -2,12 +2,16 @@
 
 (function () {
     // Variables
+    const gameId = location.pathname.split('/')[2];
+
     const httpAjax = new HttpAjax();
     const router = new Router();
 
+    let game = ko.observableArray();
+
     // Functions
     const goGamesList = () => {
-        router.goTo("games/listGames");
+        router.goTo("games/" + gameId + "/listGames");
     };
 
     // View Model
@@ -19,6 +23,8 @@
     ko.applyBindings(viewModel);
 
     $(function () {
-        console.log("Ready!!!");
+        console.log("Ready!!!");        
+
+        httpAjax.get("/api/games/" + gameId, game(data));
     });
 })();

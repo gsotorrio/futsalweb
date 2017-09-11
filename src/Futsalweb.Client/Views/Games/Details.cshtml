@@ -10,23 +10,25 @@
 <table id="" class="table table-striped">
     <thead>
         <tr>
-            <th class="hideId"> </th>
-            <th>Home Team</th>
-            <th>Visit Team</th>
-            <th>Date</th>
-            <th>Place</th>
+            <th class="hideId">Game Id </th>
+            <th>My Team</th>
+            <th>Rival Team</th>
+            <th>Location</th>
+            <th>Played At Home</th>
             <th>Type</th>
+            <th>Date</th>
         </tr>
     </thead>
 
     <tbody data-bind="foreach: ">
         <tr>
-            <td class="hideId" data-bind="text: "></td>
-            <td data-bind="text: "></td>
-            <td data-bind="text: "></td>
-            <td data-bind="text: "></td>
-            <td data-bind="text: "></td>
-            <td data-bind="text: "></td>
+            <td class="hideId" data-bind="text: id"></td>
+            <td data-bind="text: teamName"></td>
+            <td data-bind="text: rivalTeam"></td>
+            <td data-bind="text: location"></td>
+            <td data-bind="text: playedAtHome"></td>
+            <td data-bind="text: date"></td>
+            <td data-bind="text: time"></td>
         </tr>
     </tbody>
 </table>
