@@ -57,6 +57,7 @@
     const goManagerWizard = () => {
         router.goTo("games/" + gameId + "/manager");
     };
+
     // ViewModel
     let viewModel = {
         selectPlayers: playersChosed,
@@ -96,7 +97,7 @@
         // Get My team id.
         let teamId = ""
 
-        const pathTeams = "/api/teams/";
+        const pathTeams = "/api/teams";
 
         const getTeamId = (data) => {
             for (var i = 0; i < data.length; i++) {
@@ -104,29 +105,27 @@
                     teamId = data[i].id;
                 }
             }
+
+            //Get players in my team
+            const path = "/api/teams/" + teamId + "/players";
+
+            const putDataForm = (data) => {
+                let arrayPlayers = [];
+
+                for (var i = 0; i < data.length; i++) {
+                    let playerData = {
+                        playerId: data[i].id,
+                        playerName: data[i].name,
+                        playerSurname: data[i].surname,
+                        playerPosition: data[i].position,
+                        playerNumber: data[i].number
+                    };
+                    arrayPlayers.push(playerData);
+                }
+                players(arrayPlayers);
+            };
+            httpAjax.get(path, putDataForm);
         };
         httpAjax.get(pathTeams, getTeamId);
-
-        //Get players in my team
-        const path = "/api/teams/" +  + "/players";
-
-        const putDataForm = (data) => {
-            let arrayPlayers = [];
-
-            for (var i = 0; i < data.length; i++) {
-                let playerData = {
-                    playerId: data[i].id,
-                    playerName: data[i].name,
-                    playerSurname: data[i].surname,
-                    playerPosition: data[i].position,
-                    playerNumber: data[i].number
-                };
-                
-                arrayPlayers.push(playerData);
-            }
-            
-            players(arrayPlayers);
-        };
-        httpAjax.get(path, putDataForm);
     });
 })();

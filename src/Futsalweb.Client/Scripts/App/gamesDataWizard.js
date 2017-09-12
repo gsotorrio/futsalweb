@@ -58,13 +58,13 @@
 
         if (newGame.idGame){
             console.log(newGame)
+            router.goTo("games/" + data.id + "/players");
         }
         else {
             let path = "api/games"
 
             const goSelectPlayersWizard = (data) => {
                 router.goTo("games/" + data.id  + "/players");
-
             };
 
             httpAjax.post(router.makeUrl(path), newGame, goSelectPlayersWizard);
@@ -100,7 +100,7 @@
             httpAjax.get(router.makeUrl(path), putDatasForm);
         }
 
-        // Something
+        // Teams drop down list.
         const path = "/api/teams";
 
         let arraymyTeamsNames = [];

@@ -13,7 +13,7 @@ namespace Futsalweb.Client
             routes.MapRoute(
                 name: "GamesManager",
                 url: "games/{id}/manager",
-                defaults: new { controller = "Teams", action = "Manager" }
+                defaults: new { controller = "Games", action = "Manager" }
             );
 
             routes.MapRoute(
