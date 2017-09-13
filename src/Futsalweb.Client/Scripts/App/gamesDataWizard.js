@@ -101,7 +101,8 @@
                         gameData.locationGame(data[i].location);
                         gameData.typeGame(data[i].type);
                         gameData.rivalTeam(data[i].rivalTeam);
-                        gameData.dateGame(data[i].time);
+                        gameData.dateGame(data[i].date.split("/").reverse().join("-"));
+                        gameData.timeGame(data[i].time);
                         wherePlayed(data[i].playedAtHome);
                         myTeamsNames([data[i].teamName]);
                     }
