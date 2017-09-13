@@ -49,7 +49,7 @@ namespace Futsalweb.Dal.Repositories
                                     FROM Games G
                                     INNER JOIN Teams T 
                                     ON T.Id = G.TeamId
-                                    WHERE G.Id = @Id;", id).Single();
+                                    WHERE G.Id = @Id;", new { Id = id }).Single();
             }
         }
 
