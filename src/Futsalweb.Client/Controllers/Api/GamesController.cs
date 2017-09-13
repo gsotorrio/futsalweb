@@ -35,6 +35,12 @@ namespace Futsalweb.Client.Controllers.Api
             }));
         }
 
+        // GET: api/games/id
+        public IHttpActionResult Get(Guid id)
+        {
+            return Ok(_gameSrv.GetGameById(id));
+        }
+
         // POST: api/games
         public IHttpActionResult Post([FromBody] GameViewModel gameVM)
         {

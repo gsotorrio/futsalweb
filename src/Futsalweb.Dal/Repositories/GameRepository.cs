@@ -40,6 +40,19 @@ namespace Futsalweb.Dal.Repositories
             }
         }
 
+        public Game GetById(Guid id)
+        {
+            using (var db = new SqlConnection(_connectionString))
+            {
+                return db.Query<Game>(
+                                    @"SELECT G.Id, T.Name AS [TeamName], G.RivalTeam, G.Date, G.Location, G.Type, G.PlayedAtHome 
+                                    FROM Games G
+                                    INNER JOIN Teams T 
+                                    ON T.Id = G.TeamId
+                                    WHERE G.Id = @Id;", id).Single();
+            }
+        }
+
         public void Save(Game game)
         {
             using (var db = new SqlConnection(_connectionString))

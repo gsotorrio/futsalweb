@@ -9,6 +9,7 @@ using Futsalweb.Domain.Entities;
 
 namespace Futsalweb.Business.Services
 {
+
     public class GameService : IGameService
     {
         private readonly IGameRepository _gameRepo;
@@ -33,6 +34,11 @@ namespace Futsalweb.Business.Services
         public List<Game> GetAllGames()
         {
             return _gameRepo.GetAll().ToList();
+        }
+
+        public Game GetGameById(Guid id)
+        {
+            return _gameRepo.GetById(id);
         }
 
         public void UpdateTeam(Game game)
