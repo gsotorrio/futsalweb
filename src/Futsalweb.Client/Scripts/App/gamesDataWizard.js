@@ -9,7 +9,7 @@
     let myTeams = ko.observableArray();
     let selectMyTeam = ko.observable();
 
-    let wherePlayed = ko.observable(true);
+    let wherePlayed = ko.observable(false);
 
     let gameData = {
         rivalTeam: ko.observable(),
@@ -91,10 +91,19 @@
         let gameId = pathUrl.match(regularExpreesion);
 
         if (gameId) {
-            let path = "api/games/" + gameId;
+            let path = "api/games";
 
             const putDatasForm = (data) => {
-                console.log(data)
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].id == gameId) {
+                        console.log(data[i])
+                        gameData.locationGame(data[i].location);
+                        gameData.typeGame(data[i].type);
+                        gameData.rivalTeam(data[i].rivalTeam);
+                        gameData.dateGame(data[i].time);
+                        wherePlayed(data[i].playedAtHome)
+                    }
+                }
             };
 
             httpAjax.get(router.makeUrl(path), putDatasForm);
