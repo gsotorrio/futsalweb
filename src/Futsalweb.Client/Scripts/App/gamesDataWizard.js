@@ -6,7 +6,7 @@
     const router = new Router();
 
     let teams = ko.observableArray();
-    let myTeams = ko.observableArray();
+    let myTeamsNames = ko.observableArray();
     let selectMyTeam = ko.observable();
 
     let wherePlayed = ko.observable(false);
@@ -56,9 +56,9 @@
             type: gameData.typeGame()
         };
 
-        if (newGame.idGame){
-            console.log(newGame)
-            router.goTo("games/" + data.id + "/players");
+        if (newGame.id){
+            console.log(newGame);
+            //router.goTo("games/" + data.id + "/players");
         }
         else {
             let path = "api/games"
@@ -74,7 +74,7 @@
     // View Model
     const viewModel = {
         teams: teams,
-        myTeams: myTeams,
+        myTeamsNames: myTeamsNames,
         selectMyTeam: selectMyTeam,
         wherePlayed: wherePlayed,
         gameData: gameData,
@@ -97,11 +97,13 @@
                 for (var i = 0; i < data.length; i++) {
                     if (data[i].id == gameId) {
                         console.log(data[i])
+                        gameData.id(data[i].id);
                         gameData.locationGame(data[i].location);
                         gameData.typeGame(data[i].type);
                         gameData.rivalTeam(data[i].rivalTeam);
                         gameData.dateGame(data[i].time);
-                        wherePlayed(data[i].playedAtHome)
+                        wherePlayed(data[i].playedAtHome);
+                        myTeamsNames([data[i].teamName]);
                     }
                 }
             };
@@ -120,7 +122,7 @@
                 arraymyTeamsNames.push(data[i].name);
                 arrayTeams.push(data[i]);
             }
-            myTeams(arraymyTeamsNames);
+            myTeamsNames(arraymyTeamsNames);
             teams(arrayTeams);
         }
 
