@@ -20,36 +20,86 @@
         typeGame: ko.observable()
     };
 
-    // Private Function
-    const getIdTeams = () => {
-        let myTeam = selectMyTeam().join();
-        let teamId = "";
+    // Useful object.
+    function Useful() {
+        this.convertDate = function (date) {
+            var arrayDate = date.split("/");
 
-        for (var i = 0; i < teams().length; i++) {
-            if (teams()[i].name == myTeam) {
-                teamId = teams()[i].id;
+            var a = arrayDate[0];
+            var b = arrayDate[1];
+            var c = ""
+
+            c = a;
+            a = b;
+            b = c;
+
+            arrayDate[0] = a;
+            arrayDate[1] = b;
+
+            arrayDate.reverse();
+
+            return arrayDate.join("-");
+        };
+
+        this.convertTime = function (time) {
+            if (time.length == 8) {
+                var arrayTime = time.slice(0, 5).split(":");
+                var string = time.slice(6)
+
+                if (string == "PM") {
+                    arrayTime[0] = +arrayTime[0] + 12;
+                    return arrayTime.join(":");
+                }
+                else {
+                    return 0 + arrayTime.join(":");
+                }
             }
-        }
-        return teamId;
-    };
+            else {
+                var arrayTime = time.slice(0, 4).split(":");
+                var string = time.slice(5)
 
-    const getTrueOrFalse = () => {
-        let playedAtHome;
-        if (wherePlayed()) {
-            playedAtHome = true;
-        }
-        else { playedAtHome = false };
+                if (string == "PM") {
+                    arrayTime[0] = +arrayTime[0] + 12;
+                    return arrayTime.join(":");
+                }
+                else {
+                    return 0 + arrayTime.join(":");
+                }
+            }
+        };
 
-        return playedAtHome
-    };
+        this.getIdTeams = function () {
+            let myTeam = selectMyTeam().join();
+            let teamId = "";
+
+            for (var i = 0; i < teams().length; i++) {
+                if (teams()[i].name == myTeam) {
+                    teamId = teams()[i].id;
+                }
+            }
+            return teamId;
+        };
+
+        this.getTrueOrFalse = function () {
+            let playedAtHome;
+            if (wherePlayed()) {
+                playedAtHome = true;
+            }
+            else { playedAtHome = false };
+
+            return playedAtHome
+        };
+    }
+
+    var useful = new Useful();
 
     // Public Functions
     const createUpdateGame = () => {    
         let newGame = {
-            teamId: getIdTeams(),
+            teamId: useful.getIdTeams(),
             id: gameData.id(),
             rivalTeam: gameData.rivalTeam(),
-            playedAtHome: getTrueOrFalse(),
+            playedAtHome: useful.getTrueOrFalse(),
             date: gameData.dateGame(),
             time: gameData.timeGame(), 
             location: gameData.locationGame(),
@@ -57,8 +107,13 @@
         };
 
         if (newGame.id){
-            console.log(newGame);
-            //router.goTo("games/" + data.id + "/players");
+            let path = "api/games";
+
+            const goSelectPlayersWizard = () => {
+                router.goTo("games/" + newGame.id + "/players");
+            };
+
+            httpAjax.put(router.makeUrl(path), newGame, goSelectPlayersWizard);
         }
         else {
             let path = "api/games"
@@ -87,56 +142,6 @@
     $(function () {
         console.log("Ready!!!");
 
-        function ConvertTimeDate() {
-            this.date = function (date) {
-                var arrayDate = date.split("/");
-
-                var a = arrayDate[0];
-                var b = arrayDate[1];
-                var c = ""
-
-                c = a;
-                a = b;
-                b = c;
-
-                arrayDate[0] = a;
-                arrayDate[1] = b;
-
-                arrayDate.reverse();
-
-                return arrayDate.join("-");
-            };
-
-            this.time = function (time) {
-                if(time.length == 8){
-                    var arrayTime = time.slice(0,5).split(":");
-                    var string = time.slice(6)
-
-                    if (string == "PM") {
-                        arrayTime[0] = +arrayTime[0] + 12;
-                        return arrayTime.join(":");
-                    }
-                    else{
-                        return arrayTime.join(":");
-                    }
-                }
-                else{
-                    var arrayTime = time.slice(0, 4).split(":");
-                    var string = time.slice(5)
-
-                    if (string == "PM") {
-                        arrayTime[0] = +arrayTime[0] + 12;
-                        return arrayTime.join(":");
-                    }
-                    else{
-                        return arrayTime.join(":");
-                    }
-                }
-            };
-        }
-
-        var date = new ConvertTimeDate();
-
         let pathUrl = location.pathname;
         let regularExpreesion = /[a-z\d-]{36}/g;
         let gameId = pathUrl.match(regularExpreesion);
@@ -152,8 +157,8 @@
                         gameData.locationGame(data[i].location);
                         gameData.typeGame(data[i].type);
                         gameData.rivalTeam(data[i].rivalTeam);
-                        gameData.dateGame(date.date(data[i].date));
-                        gameData.timeGame(date.time(data[i].time));
+                        gameData.dateGame(useful.convertDate(data[i].date));
+                        gameData.timeGame(useful.convertTime(data[i].time));
                         wherePlayed(data[i].playedAtHome);
                         myTeamsNames([data[i].teamName]);
                     }
