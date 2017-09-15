@@ -86,6 +86,57 @@
 
     $(function () {
         console.log("Ready!!!");
+
+        function ConvertTimeDate() {
+            this.date = function (date) {
+                var arrayDate = date.split("/");
+
+                var a = arrayDate[0];
+                var b = arrayDate[1];
+                var c = ""
+
+                c = a;
+                a = b;
+                b = c;
+
+                arrayDate[0] = a;
+                arrayDate[1] = b;
+
+                arrayDate.reverse();
+
+                return arrayDate.join("-");
+            };
+
+            this.time = function (time) {
+                if(time.length == 8){
+                    var arrayTime = time.slice(0,5).split(":");
+                    var string = time.slice(6)
+
+                    if (string == "PM") {
+                        arrayTime[0] = +arrayTime[0] + 12;
+                        return arrayTime.join(":");
+                    }
+                    else{
+                        return arrayTime.join(":");
+                    }
+                }
+                else{
+                    var arrayTime = time.slice(0, 4).split(":");
+                    var string = time.slice(5)
+
+                    if (string == "PM") {
+                        arrayTime[0] = +arrayTime[0] + 12;
+                        return arrayTime.join(":");
+                    }
+                    else{
+                        return arrayTime.join(":");
+                    }
+                }
+            };
+        }
+
+        var date = new ConvertTimeDate();
+
         let pathUrl = location.pathname;
         let regularExpreesion = /[a-z\d-]{36}/g;
         let gameId = pathUrl.match(regularExpreesion);
@@ -101,8 +152,8 @@
                         gameData.locationGame(data[i].location);
                         gameData.typeGame(data[i].type);
                         gameData.rivalTeam(data[i].rivalTeam);
-                        gameData.dateGame(data[i].date.split("/").reverse().join("-"));
-                        gameData.timeGame(data[i].time);
+                        gameData.dateGame(date.date(data[i].date));
+                        gameData.timeGame(date.time(data[i].time));
                         wherePlayed(data[i].playedAtHome);
                         myTeamsNames([data[i].teamName]);
                     }
