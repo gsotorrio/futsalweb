@@ -86,11 +86,7 @@
         const pathGame = "/api/games/" + gameId;
 
         const getmyTeamName = (data) => {
-            for (var i = 0; i < data.length; i++) {
-                if(data[i].id == gameId){
-                    teamName = data[i].teamName;
-                }
-            }
+            teamName = data.name;
         };
         httpAjax.get(pathGame, getmyTeamName);
 
