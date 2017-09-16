@@ -80,6 +80,5 @@
         let regularExpreesion = /[a-z\d-]{36}/g;
         let gameId = pathUrl.match(regularExpreesion);
 
-
     });
 })();

@@ -179,6 +179,7 @@
     <Compile Include="Controllers\Api\GamesController.cs" />
     <Compile Include="Controllers\Api\PlayersController.cs" />
     <Compile Include="Controllers\Api\TeamsController.cs" />
+    <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="Controllers\TeamsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -203,6 +204,7 @@
     <Content Include="Views\Games\Manager.cshtml" />
     <Content Include="Views\Games\Players.cshtml" />
     <Content Include="Views\Games\Details.cshtml" />
+    <Content Include="Views\App\Display.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
