@@ -61,6 +61,17 @@
 						"description": "Delete coache by ID"
 					},
 					"response": []
+				},
+				{
+					"name": "http://localhost:5159/api/coaches/796bdde8-c4e0-4481-8280-2730bf43c2d7/team",
+					"request": {
+						"url": "http://localhost:5159/api/coaches/796bdde8-c4e0-4481-8280-2730bf43c2d7/team",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "It gets the team of a coache"
+					},
+					"response": []
 				}
 			]
 		},
@@ -282,6 +293,42 @@
 					"request": {
 						"url": "http://localhost:5159/api/games/c62b907b-1d72-4907-8f4b-1beb96d4e4e4",
 						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5159/api/games/2919B3CE-7896-40D4-A004-BAF62886CE52/players",
+					"request": {
+						"url": "http://localhost:5159/api/games/2919B3CE-7896-40D4-A004-BAF62886CE52/players",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\"95F90820-10E5-4E57-B938-63D216BB9905\", \"6B57A92C-7111-47BE-89AC-936586CE2704\", \"6B3DFF5A-1230-4693-BDCF-E0FA1FB68F67\"]\n\n\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5159/api/games/71453598-16ce-4309-bc52-d566d46a4931",
+					"request": {
+						"url": "http://localhost:5159/api/games/71453598-16ce-4309-bc52-d566d46a4931",
+						"method": "GET",
 						"header": [],
 						"body": {},
 						"description": ""
