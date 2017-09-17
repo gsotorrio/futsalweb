@@ -11,7 +11,7 @@
 
 USE [FutsalwebDB]
 GO
-/****** Object:  Table [dbo].[Coaches]    Script Date: 04-Sep-17 11:44:48 AM ******/
+/****** Object:  Table [dbo].[Coaches]    Script Date: 17-Sep-17 1:10:43 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -29,7 +29,22 @@ CREATE TABLE [dbo].[Coaches](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Games]    Script Date: 04-Sep-17 11:44:48 AM ******/
+/****** Object:  Table [dbo].[GamePlayedByPlayers]    Script Date: 17-Sep-17 1:10:43 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[GamePlayedByPlayers](
+	[GameId] [uniqueidentifier] NOT NULL,
+	[PlayerId] [uniqueidentifier] NOT NULL,
+ CONSTRAINT [PK_GamePlayedByPlayers] PRIMARY KEY CLUSTERED 
+(
+	[GameId] ASC,
+	[PlayerId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Games]    Script Date: 17-Sep-17 1:10:43 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -48,7 +63,7 @@ CREATE TABLE [dbo].[Games](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Players]    Script Date: 04-Sep-17 11:44:48 AM ******/
+/****** Object:  Table [dbo].[Players]    Script Date: 17-Sep-17 1:10:43 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -71,7 +86,7 @@ CREATE TABLE [dbo].[Players](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Teams]    Script Date: 04-Sep-17 11:44:48 AM ******/
+/****** Object:  Table [dbo].[Teams]    Script Date: 17-Sep-17 1:10:43 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -90,6 +105,16 @@ ALTER TABLE [dbo].[Coaches]  WITH CHECK ADD  CONSTRAINT [FK_Coaches_Teams] FOREI
 REFERENCES [dbo].[Teams] ([Id])
 GO
 ALTER TABLE [dbo].[Coaches] CHECK CONSTRAINT [FK_Coaches_Teams]
+GO
+ALTER TABLE [dbo].[GamePlayedByPlayers]  WITH CHECK ADD  CONSTRAINT [FK_GamePlayedByPlayers_Games1] FOREIGN KEY([GameId])
+REFERENCES [dbo].[Games] ([Id])
+GO
+ALTER TABLE [dbo].[GamePlayedByPlayers] CHECK CONSTRAINT [FK_GamePlayedByPlayers_Games1]
+GO
+ALTER TABLE [dbo].[GamePlayedByPlayers]  WITH CHECK ADD  CONSTRAINT [FK_GamePlayedByPlayers_Players] FOREIGN KEY([PlayerId])
+REFERENCES [dbo].[Players] ([Id])
+GO
+ALTER TABLE [dbo].[GamePlayedByPlayers] CHECK CONSTRAINT [FK_GamePlayedByPlayers_Players]
 GO
 ALTER TABLE [dbo].[Games]  WITH CHECK ADD  CONSTRAINT [FK_Games_Teams] FOREIGN KEY([TeamId])
 REFERENCES [dbo].[Teams] ([Id])

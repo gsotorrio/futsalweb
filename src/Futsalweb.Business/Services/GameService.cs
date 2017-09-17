@@ -41,6 +41,11 @@ namespace Futsalweb.Business.Services
             return _gameRepo.GetById(id);
         }
 
+        public void SavePlayersForThisGame(Guid id, IEnumerable<Guid> players)
+        {
+            _gameRepo.SavePlayers(id, players);
+        }
+
         public void UpdateTeam(Game game)
         {
             _gameRepo.Update(game);

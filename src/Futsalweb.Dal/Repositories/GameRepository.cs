@@ -61,6 +61,18 @@ namespace Futsalweb.Dal.Repositories
             }
         }
 
+        public void SavePlayers(Guid id, IEnumerable<Guid> players)
+        {
+            using (var db = new SqlConnection(_connectionString))
+            {
+                db.Execute("INSERT INTO GamePlayedByPlayers VALUES (@GameId, @PlayerId);", players.Select(player => new
+                {
+                    GameId = id,
+                    PlayerId = player
+                }));
+            }
+        }
+
         public void Update(Game game)
         {
             using (var db = new SqlConnection(_connectionString))
