@@ -15,6 +15,13 @@ namespace Futsalweb.Client.Controllers.Api
             _coacheSrv = coacheService;
         }
 
+        // GET
+        [Route("api/coaches/{id}/team")]
+        public IHttpActionResult Get(Guid id)
+        {
+            return Ok(_coacheSrv.GetTeamForThisCoache(id));
+        }
+
         // POST: api/coaches
         public IHttpActionResult Post([FromBody] Coache coache)
         {

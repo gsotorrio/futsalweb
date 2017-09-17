@@ -18,5 +18,6 @@ namespace Futsalweb.Dal.Contracts
         void Delete(Guid id);
 
         Game GetById(Guid id);
+        void SavePlayers(Guid id, IEnumerable<Guid> players);
     }
 }

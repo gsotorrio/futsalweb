@@ -13,5 +13,7 @@ namespace Futsalweb.Business.Contracts
         void UpdateCoache(Coache coache);
 
         void DeleteCoache(Guid id);
+
+        Team GetTeamForThisCoache(Guid id);
     }
 }

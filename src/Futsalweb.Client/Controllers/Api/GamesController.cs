@@ -77,6 +77,15 @@ namespace Futsalweb.Client.Controllers.Api
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        // PUT
+        [Route("api/games/{id}/players")]
+        public IHttpActionResult Put(Guid id, [FromBody] IEnumerable<Guid> players)
+        {
+            _gameSrv.SavePlayersForThisGame(id, players);
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
         // DELETE: api/games/id
         public IHttpActionResult Delete(Guid id)
         {
