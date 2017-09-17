@@ -5,6 +5,7 @@ using Futsalweb.CrossLayer.Settings;
 using Futsalweb.Dal.Contracts;
 using Futsalweb.Domain.Entities;
 using Dapper;
+using System.Linq;
 
 namespace Futsalweb.Dal.Repositories
 {
@@ -30,6 +31,14 @@ namespace Futsalweb.Dal.Repositories
             using (var db = new SqlConnection(_connectionString))
             {
                 db.Execute("DELETE FROM Coaches WHERE TeamId = @TeamId;", new { TeamId = teamId });
+            }
+        }
+
+        public Coache GetById(Guid id)
+        {
+            using (var db = new SqlConnection(_connectionString))
+            {
+                return db.Query<Coache>("SELECT * FROM Coaches WHERE Id = @Id;", new { Id = id }).Single();
             }
         }
 

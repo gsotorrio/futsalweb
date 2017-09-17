@@ -10,10 +10,12 @@ namespace Futsalweb.Business.Services
     public class CoacheService : ICoacheService
     {
         private readonly ICoacheRepository _coacheRepo;
+        private readonly ITeamRepository _teamRepo;
 
-        public CoacheService(ICoacheRepository coacheRepository)
+        public CoacheService(ICoacheRepository coacheRepository, ITeamRepository teamRepository)
         {
             _coacheRepo = coacheRepository;
+            _teamRepo = teamRepository;
         }
 
         public Coache CreateCoache(Coache coache)
@@ -31,6 +33,17 @@ namespace Futsalweb.Business.Services
         public List<Coache> GetAllCoachesForATeam(Guid teamId)
         {
             return _coacheRepo.GetCoachesByTeamId(teamId).ToList();
+        }
+
+        public Team GetTeamForThisCoache(Guid id)
+        {
+            var coache = GetCoacheById(id);
+            return _teamRepo.GetById(coache.TeamId);
+        }
+
+        public Coache GetCoacheById(Guid id)
+        {
+            return _coacheRepo.GetById(id);
         }
 
         public void UpdateCoache(Coache coache)
