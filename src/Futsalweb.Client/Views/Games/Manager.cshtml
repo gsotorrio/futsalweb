@@ -11,10 +11,18 @@
 
 <form class="form-horizontal">
     <input type="hidden" data-bind="textInput: gameData.id">
+
+    <div class="form-group">
+        <div>
+            <label for="" class="col-sm-2 control-label">Played at home?</label>
+            <input class="col-sm-1" type="checkbox" value="" data-bind="checked: wherePlayed" />
+        </div>
+    </div>
+
     <div class="form-group">
         <label for="" class="col-sm-2 control-label">My Team</label>
         <div class="col-sm-8">
-            <select class="form-control" data-bind="options: myTeamsNames, selectedOptions: selectMyTeam"></select>
+            <input type="text" class="form-control" data-bind="textInput: gameData.myTeam" />
         </div>
     </div>
 
@@ -22,13 +30,6 @@
         <label for="" class="col-sm-2 control-label">Rival Team</label>
         <div class="col-sm-8">
             <input type="text" class="form-control" placeholder="Write team name" data-bind="textInput: gameData.rivalTeam">
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div>
-            <label for="" class="col-sm-2 control-label">Played at home?</label>
-            <input class="col-sm-8" type="checkbox" value="" data-bind="checked: wherePlayed" />
         </div>
     </div>
 

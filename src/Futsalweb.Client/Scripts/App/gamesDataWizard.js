@@ -5,13 +5,11 @@
     const httpAjax = new HttpAjax();
     const router = new Router();
 
-    let teams = ko.observableArray();
-    let myTeamsNames = ko.observableArray();
-    let selectMyTeam = ko.observable();
-
     let wherePlayed = ko.observable(false);
+    let teamId = "";
 
     let gameData = {
+        myTeam: ko.observable(),
         rivalTeam: ko.observable(),
         id: ko.observable(),
         dateGame: ko.observable(),
@@ -68,8 +66,8 @@
             }
         };
 
-        this.getIdTeams = function () {
-            let myTeam = selectMyTeam().join();
+        this.getIdTeam = function () {
+            let myTeam = gameData.myTeam().join();
             let teamId = "";
 
             for (var i = 0; i < teams().length; i++) {
@@ -96,7 +94,7 @@
     // Public Functions
     const createUpdateGame = () => {    
         let newGame = {
-            teamId: useful.getIdTeams(),
+            teamId: teamId,
             id: gameData.id(),
             rivalTeam: gameData.rivalTeam(),
             playedAtHome: useful.getTrueOrFalse(),
@@ -128,9 +126,6 @@
 
     // View Model
     const viewModel = {
-        teams: teams,
-        myTeamsNames: myTeamsNames,
-        selectMyTeam: selectMyTeam,
         wherePlayed: wherePlayed,
         gameData: gameData,
         createUpdateGame: createUpdateGame
@@ -160,7 +155,6 @@
                         gameData.dateGame(useful.convertDate(data[i].date));
                         gameData.timeGame(useful.convertTime(data[i].time));
                         wherePlayed(data[i].playedAtHome);
-                        myTeamsNames([data[i].teamName]);
                     }
                 }
             };
@@ -169,18 +163,11 @@
         }
 
         // Teams drop down list.
-        const path = "/api/teams";
-
-        let arraymyTeamsNames = [];
-        let arrayTeams = []
+        const path = "/api/coaches/eb9fb3ef-e8a0-4c8f-8f13-746cc30f023c/team";
         
         function showData(data) {
-            for (var i = 0; i < data.length; i++){
-                arraymyTeamsNames.push(data[i].name);
-                arrayTeams.push(data[i]);
-            }
-            myTeamsNames(arraymyTeamsNames);
-            teams(arrayTeams);
+            gameData.myTeam(data.name);
+            teamId = data.id;
         }
 
         httpAjax.get(path, showData);
