@@ -6,9 +6,9 @@
     const router = new Router();
 
     let wherePlayed = ko.observable(false);
-    let teamId = "";
 
     let gameData = {
+        teamId: ko.observable(),
         myTeam: ko.observable(),
         rivalTeam: ko.observable(),
         id: ko.observable(),
@@ -94,7 +94,7 @@
     // Public Functions
     const createUpdateGame = () => {    
         let newGame = {
-            teamId: teamId,
+            teamId: gameData.teamId(),
             id: gameData.id(),
             rivalTeam: gameData.rivalTeam(),
             playedAtHome: useful.getTrueOrFalse(),
@@ -167,7 +167,7 @@
         
         function showData(data) {
             gameData.myTeam(data.name);
-            teamId = data.id;
+            gameData.teamId(data.id);
         }
 
         httpAjax.get(path, showData);
