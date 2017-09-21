@@ -49,7 +49,7 @@
                     return arrayTime.join(":");
                 }
                 else {
-                    return 0 + arrayTime.join(":");
+                    return arrayTime.join(":");
                 }
             }
             else {
