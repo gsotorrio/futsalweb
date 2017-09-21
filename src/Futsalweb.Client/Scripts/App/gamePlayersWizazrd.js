@@ -50,8 +50,18 @@
 
     const showPlayers = (data) => {
         let playersMatch = playersChosed();
-        console.log(playersMatch);
-        //router.goTo("Games/ListGames");
+
+        let jPlayers = {
+            playersMatch: playersMatch
+        };
+
+        let path = "api/games/" + gameId + "/players"
+
+        const goToList = () => {
+            router.goTo("Games/List");
+        };
+
+        httpAjax.put(router.makeUrl(path), playersMatch, goToList);
     };
 
     const goManagerWizard = () => {
@@ -71,6 +81,7 @@
         goManagerWizard: goManagerWizard,
         showPlayers: showPlayers
     };
+
     // On initialize
     ko.applyBindings(viewModel);
 
@@ -80,5 +91,49 @@
         let regularExpreesion = /[a-z\d-]{36}/g;
         let gameId = pathUrl.match(regularExpreesion);
 
+        // Get my team name.
+        let teamName = "";
+
+        const pathGame = "/api/games/" + gameId;
+
+        const getmyTeamName = (data) => {
+            teamName = data.teamName;
+        };
+
+        httpAjax.get(pathGame, getmyTeamName);
+
+        // Get My team id.
+        let teamId = ""
+
+        const pathTeams = "/api/teams";
+
+        const getTeamId = (data) => {
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].name == teamName) {
+                    teamId = data[i].id;
+                }
+            }
+
+            //Get players in my team
+            const path = "/api/teams/" + teamId + "/players";
+
+            const putDataForm = (data) => {
+                let arrayPlayers = [];
+
+                for (var i = 0; i < data.length; i++) {
+                    let playerData = {
+                        playerId: data[i].id,
+                        playerName: data[i].name,
+                        playerSurname: data[i].surname,
+                        playerPosition: data[i].position,
+                        playerNumber: data[i].number
+                    };
+                    arrayPlayers.push(playerData);
+                }
+                players(arrayPlayers);
+            };
+            httpAjax.get(path, putDataForm);
+        };
+        httpAjax.get(pathTeams, getTeamId);
     });
 })();
