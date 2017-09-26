@@ -162,7 +162,7 @@
             httpAjax.get(router.makeUrl(path), putDatasForm);
         }
 
-        // Teams drop down list.
+        // Team.
         const path = "/api/coaches/eb9fb3ef-e8a0-4c8f-8f13-746cc30f023c/team";
         
         function showData(data) {
