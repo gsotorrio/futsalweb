@@ -13,7 +13,8 @@
         category: ko.observable()
     };
 
-    let hiddeTable = ko.observableArray([])
+    let hiddeTable = ko.observableArray([]);
+    let hiddeButton = ko.observableArray([]);
 
     let displayMassage = ko.observable(false);
 
@@ -42,6 +43,7 @@
         teams: teams,
         team: team,
         hiddeTable: hiddeTable,
+        hiddeButton: hiddeButton,
         displayMassage: displayMassage,
         remove: remove,
         goDetailView: goDetailView
@@ -65,5 +67,9 @@
             }
         };
         httpAjax.get(router.makeUrl(path), showEmtyMassege);
+
+        if (teams.length == 1) {
+            hiddeButton.push("some value");
+        }
     });
 })();
