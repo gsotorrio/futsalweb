@@ -146,6 +146,8 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Scripts\App\coachesWizard.js" />
+    <Content Include="Scripts\App\decideCall.js" />
+    <Content Include="Scripts\App\fakeServer.js" />
     <Content Include="Scripts\App\gameDetails.js" />
     <Content Include="Scripts\App\gamePlayersWizazrd.js" />
     <Content Include="Scripts\App\gamesDataWizard.js" />

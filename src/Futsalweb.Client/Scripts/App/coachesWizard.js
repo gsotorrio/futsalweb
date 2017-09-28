@@ -5,6 +5,8 @@
     const teamId = location.pathname.split('/')[2];
     const httpAjax = new HttpAjax();
     const router = new Router();
+    const selectServer = new SelectServer();
+
 
     let displayButtonAdd = ko.observable(true);
     let displayButtonSave = ko.observable(false);
@@ -51,8 +53,9 @@
                 hiddeTableButtonCoach([]);
             }
         };
-        
-        httpAjax.delete(router.makeUrl(path), deleteCoach);
+
+        selectServer.callServer("delete", path, deleteCoach);
+        //httpAjax.delete(router.makeUrl(path), deleteCoach);
     };
 
     const createUpdateCoach = () => {
@@ -80,7 +83,8 @@
                 cleanFormCoach();
             };
 
-            httpAjax.put(router.makeUrl(path), coachData, updateCoachData)
+            selectServer.callServer("put", path, newCoach, createNewCoach);
+            //httpAjax.put(router.makeUrl(path), coachData, updateCoachData)
 
             displayButtonAdd(true);
             displayButtonSave(false);
@@ -101,8 +105,8 @@
                 cleanFormCoach();
                 hiddeTableButtonCoach.push("some value");
             };
-
-            httpAjax.post(router.makeUrl(path), newCoach, createNewCoach);
+            selectServer.callServer("post", path, newCoach, createNewCoach);
+            //httpAjax.post(router.makeUrl(path), newCoach, createNewCoach);
         }
     };
  
@@ -144,6 +148,7 @@
             }
         };
 
-        httpAjax.get(router.makeUrl(path), putDatasForm);
+        selectServer.callServer("get", path, putDatasForm);
+        //httpAjax.get(router.makeUrl(path), putDatasForm);
     });
 })();

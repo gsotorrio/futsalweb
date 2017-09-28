@@ -6,6 +6,7 @@
     const httpAjax = new HttpAjax();
     const router = new Router();
 
+
     let displayButtonAdd = ko.observable(true);
     let displayButtonSave = ko.observable(false);
 
