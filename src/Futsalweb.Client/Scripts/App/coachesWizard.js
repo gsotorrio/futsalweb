@@ -7,7 +7,6 @@
     const router = new Router();
     const selectServer = new SelectServer();
 
-
     let displayButtonAdd = ko.observable(true);
     let displayButtonSave = ko.observable(false);
 

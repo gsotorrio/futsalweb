@@ -2,9 +2,11 @@
 
 const httpAjax = new HttpAjax();
 const router = new Router();
+const fakeServer = new FakeServer();
+
 
 const SelectServer = function() {
-    let volean = true;
+    let volean = false;
 
     this.callServer = (method, path, object, callback) => {
         if (volean) {
@@ -31,11 +33,23 @@ const SelectServer = function() {
             }
         }
         else {
+            switch (method) {
+                case "get":
+                    fakeServer.get(callback)
+                    break;
 
+                case "post":
+
+                    break;
+
+                case "put":
+
+                    break;
+
+                case "delete":
+
+                    break;
+            }
         }
     }
 };
-
-var selectServer = new SelectServer();
-
-
