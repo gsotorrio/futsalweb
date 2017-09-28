@@ -54,7 +54,7 @@
             }
         };
 
-        selectServer.callServer("delete", path, deleteCoach);
+        selectServer.callServer("delete", path, "", deleteCoach);
         //httpAjax.delete(router.makeUrl(path), deleteCoach);
     };
 
@@ -83,7 +83,7 @@
                 cleanFormCoach();
             };
 
-            selectServer.callServer("put", path, newCoach, createNewCoach);
+            selectServer.callServer("put", path, coachData, updateCoachData);
             //httpAjax.put(router.makeUrl(path), coachData, updateCoachData)
 
             displayButtonAdd(true);
@@ -148,7 +148,7 @@
             }
         };
 
-        selectServer.callServer("get", path, putDatasForm);
+        selectServer.callServer("get", path, "", putDatasForm);
         //httpAjax.get(router.makeUrl(path), putDatasForm);
     });
 })();

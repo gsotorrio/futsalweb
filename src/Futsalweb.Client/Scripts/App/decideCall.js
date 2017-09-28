@@ -1,6 +1,7 @@
-﻿const httpAjax = new HttpAjax();
+﻿"use strict";
 
-"use strict";
+const httpAjax = new HttpAjax();
+const router = new Router();
 
 const SelectServer = function() {
     let volean = true;
@@ -19,7 +20,7 @@ const SelectServer = function() {
                     break;
 
                 case "put":
-                    httpAjax.put(router.makeUrl(path), object, updateCocallbackachData)
+                    httpAjax.put(router.makeUrl(path), object, callback)
 
                     break;
 
