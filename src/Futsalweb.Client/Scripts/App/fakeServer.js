@@ -29,11 +29,12 @@ const FakeServer = function() {
     ]
 
     this.get = (callback) => {
-
+        callback(arrayCoaches);
     };
 
-    this.post = () => {
-
+    this.post = (object, callback) => {
+        arrayCoaches.push(object);
+        callback(arrayCoaches);
     };
 
     this.put = () => {

@@ -39,15 +39,15 @@ const SelectServer = function() {
                     break;
 
                 case "post":
-
+                    fakeServer.post(object, callback)
                     break;
 
                 case "put":
-
+                    fakeServer.post(object, callback)
                     break;
 
                 case "delete":
-
+                    fakeServer.delete(object, callback)
                     break;
             }
         }
