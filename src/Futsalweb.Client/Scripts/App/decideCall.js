@@ -6,7 +6,7 @@ const fakeServer = new FakeServer();
 
 
 const SelectServer = function() {
-    let volean = false;
+    let volean = true;
 
     this.callServer = (method, path, object, callback) => {
         if (volean) {

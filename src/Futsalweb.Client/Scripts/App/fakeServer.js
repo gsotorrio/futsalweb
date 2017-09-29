@@ -29,13 +29,13 @@ const FakeServer = function() {
     ]
 
     function createguid() {
-        function s4() {
+        function get4caracter() {
             return Math.floor((1 + Math.random()) * 0x10000)
               .toString(16)
               .substring(1);
         }
-        return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-          s4() + '-' + s4() + s4() + s4();
+        return get4caracter() + get4caracter() + '-' + get4caracter() + '-' + get4caracter() + '-' +
+          get4caracter() + '-' + get4caracter() + get4caracter() + get4caracter();
     }
 
     this.get = (callback) => {
