@@ -28,20 +28,41 @@ const FakeServer = function() {
        }
     ]
 
+    function createguid() {
+        function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000)
+              .toString(16)
+              .substring(1);
+        }
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+          s4() + '-' + s4() + s4() + s4();
+    }
+
     this.get = (callback) => {
         callback(arrayCoaches);
     };
 
     this.post = (object, callback) => {
+        let id = createguid();
+        object.id = id;
+
         arrayCoaches.push(object);
         callback(arrayCoaches);
     };
 
-    this.put = () => {
+    this.put = (object, callback) => {
 
+        for (var i = 0; i < arrayCoaches.length; i++) {
+            if (arrayCoaches[i].id == object.id) {
+                arrayCoaches[i] = object;
+            }
+        }
+
+        callback(object);
+        console.log(arrayCoaches);
     };
 
-    this.delete = () => {
-
+    this.delete = (callback) => {
+        callback();
     };
 };
