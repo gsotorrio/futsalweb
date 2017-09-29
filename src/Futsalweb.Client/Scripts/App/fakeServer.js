@@ -46,12 +46,11 @@ const FakeServer = function() {
         let id = createguid();
         object.id = id;
 
-        arrayCoaches.push(object);
-        callback(arrayCoaches);
+        callback(object);
+        console.log(arrayCoaches);
     };
 
     this.put = (object, callback) => {
-
         for (var i = 0; i < arrayCoaches.length; i++) {
             if (arrayCoaches[i].id == object.id) {
                 arrayCoaches[i] = object;
@@ -59,7 +58,6 @@ const FakeServer = function() {
         }
 
         callback(object);
-        console.log(arrayCoaches);
     };
 
     this.delete = (callback) => {
